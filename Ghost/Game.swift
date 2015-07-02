@@ -1,5 +1,5 @@
 //
-//  Constants.swift
+//  Game.swift
 //  Ghost
 //
 //  Created by TovaM on 7/2/15.
@@ -8,7 +8,8 @@
 
 import UIKit
 
-struct Constants {
-
-    
+class Game: NSObject {
+    var players:[Player] = []
+    var minWordSize: Int = 3
 }
+
