@@ -14,7 +14,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Ghost-Facebook-iOS-SDK.xcscheme</key>
+		<key>Pods-Ghost-FBSDKLoginKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,7 +24,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Ghost-ParseFacebookUtils.xcscheme</key>
+		<key>Pods-Ghost-ParseFacebookUtilsV4.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,37 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>7E4CEBA66D1E3D37290281F1</key>
+		<key>21CD93EBC33EAB65D526012E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89CCB16A79AB5A398858FAC3</key>
+		<key>223358705D9AEF9F10E0CD5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A7F9A1673BE94F4DDE88DD6</key>
+		<key>29F8D3EEDB37BD913C52DE50</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>90D011B42E7286538758C355</key>
+		<key>8D0D0A98FA6CBA43FC5AA7AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B72533F35B073A7A0E4DB73C</key>
+		<key>92F0F8B6D547DB236CB773D5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F28EACF2362D10B89CEB1F2B</key>
+		<key>D8ED865E1DA50C6CC901F094</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F43A2791651F5908BE722D5E</key>
+		<key>DAD16394CFB70ACB8872F10C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

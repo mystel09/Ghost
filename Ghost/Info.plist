@@ -25,16 +25,16 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb5Um0ArhEVfpHM5wDJmlf8EbzqjM6o6IC1bFeKfJA</string>
+				<string>fb849300868478670</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>5Um0ArhEVfpHM5wDJmlf8EbzqjM6o6IC1bFeKfJA</string>
+	<string>849300868478670</string>
 	<key>FacebookDisplayName</key>
-	<string>TovaProductions</string>
+	<string>Ghost</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

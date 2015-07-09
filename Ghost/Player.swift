@@ -11,10 +11,12 @@ import UIKit
 class Player: NSObject {
     var name:String
     var playerColor:UIColor
+    var points:Int
     
     init(name:String, playerColor: UIColor) {
         self.name = name
         self.playerColor = playerColor
+        self.points = 0
     }
     
 }

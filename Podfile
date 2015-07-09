@@ -4,7 +4,7 @@ target 'Ghost' do
 	pod 'Parse'
 	pod 'ParseUI'
 	pod 'FBSDKCoreKit'
-	pod 'ParseFacebookUtils'
+	pod 'ParseFacebookUtilsV4'
 end
 
 
