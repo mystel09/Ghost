@@ -42,6 +42,7 @@ class CreateGameViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func StartGame(sender: AnyObject) {
         //check if all names are filled
+        
         for player in self.newGame.players {
             println(player.name)
             if player.name == "" {
@@ -49,9 +50,6 @@ class CreateGameViewController: UITableViewController, UITextFieldDelegate {
                 return
             }
         }
-
-        
-        
         
         self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self)
     }

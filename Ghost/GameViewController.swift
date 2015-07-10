@@ -11,10 +11,14 @@ import UIKit
 class GameViewController: UIViewController  {
     var gameView: UIView!
     private var targets = [TargetView]()
-    var hud: HUDView!
+//    var hud: HUDView!
     var selectedTile = ""
+    var losingWord = "GHOST"
+    var userChallenged = true
+    var tField = UITextField?()
     //stopwatch variables
-    private var secondsLeft: Int = 30
+    @IBOutlet weak var stopwatch: UILabel!
+    private var secondsLeft: Int = 10
     private var timer: NSTimer?
     private var audioController: AudioController = {
         let audioController = AudioController()
@@ -22,7 +26,33 @@ class GameViewController: UIViewController  {
         return audioController
     }()
     var currentGame: Game?
+    @IBOutlet weak var challengeButton: UIBarButtonItem!
     
+     @IBAction func didChallenge(sender: UIBarButtonItem) {
+        userChallenged = true
+        stopStopwatch()
+        var alert = UIAlertController(title: "YOU HAVE BEEN CHALLENGED", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler(configurationTextField)
+        alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
+         println(self.tField?.text)
+            //check with dictionary
+            //if word exists then previous player loses round if NOT then currentplayer loses round
+            
+        }))
+        self.presentViewController(alert, animated: true, completion: {
+            println("completion block")
+        })
+       
+    }
+    func configurationTextField(textField: UITextField!)
+    {
+        println("generating the TextField")
+        textField.placeholder = "Enter your word here"
+        tField = textField
+    
+    }
+    
+
     @IBOutlet weak var keyboardCollectionView: UICollectionView! {
         didSet {
             self.keyboardCollectionView.dataSource = self
@@ -35,20 +65,30 @@ class GameViewController: UIViewController  {
             self.wordCollectionView.delegate = self
         }
     }
-    
+    @IBOutlet weak var scoreCollectionView: UICollectionView! {
+        didSet {
+            self.scoreCollectionView.dataSource = self
+            self.scoreCollectionView.delegate = self
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "brownboard.gif")!)
         self.automaticallyAdjustsScrollViewInsets = false
     }
-
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        startStopwatch()
+    }
     func startStopwatch() {
         //initialize the timer HUD
         secondsLeft = timeToSolve
-        hud.stopWatch.setSeconds(secondsLeft)
+        stopwatch.text = "Time:\(secondsLeft)"
         
         //schedule a new timer
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector:"tick:", userInfo: nil, repeats: true)
+        
     }
     func stopStopwatch() {
         timer?.invalidate()
@@ -56,24 +96,14 @@ class GameViewController: UIViewController  {
     }
     @objc func tick(timer: NSTimer) {
         secondsLeft--
-        hud.stopWatch.setSeconds(secondsLeft)
         if secondsLeft == 0 {
-            self.stopStopwatch()
+            stopStopwatch()
             addToScore()
         }
+        stopwatch.text = "Time left:\(secondsLeft) secs"
     }
-    func checkForLossforRound() {
-       var currentPlayer = currentGame!.getCurrentPlayer()
-        
-        //check
-        
-        //if the player is challenged and timer is up OR word is not in dictionary
-        audioController.playEffect(SoundWrong)
-        //stop the timer
-        self.stopStopwatch()
-        //add to his score
-        
-        // add letter on screen for player
+    
+    func challenge(){ //add challenge button and functionality
         
     }
     func checkForLossforGame() -> Bool {
@@ -86,8 +116,15 @@ class GameViewController: UIViewController  {
    func addToScore(){
         currentGame!.getCurrentPlayer().points++
         if !checkForLossforGame() {
-            //SHOW MESSAGE THAT USER LOST ROUND
+            showMessage("Attention Players", message: "\(currentGame?.getCurrentPlayer().name) lost this round")
+            currentGame?.resetRound()
+            self.wordCollectionView.reloadData()
+            self.scoreCollectionView.reloadData()
+            //println(currentGame?.getCurrentPlayer().points)
         }
+        else{
+            println("Game Ended")
+    }
     }
 }
 
@@ -105,7 +142,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         if collectionView == self.keyboardCollectionView {
             return Constants.Letters.count
         }
-        else {
+        else if collectionView == wordCollectionView {
             if let word = self.currentGame?.currentWord {
                 return count(word)
             }
@@ -113,29 +150,47 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
                 return 0
             }
         }
+        else {
+            return self.currentGame!.players.count
+        }
     }
-    
+
+
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Tile", forIndexPath: indexPath) as! TileViewCell
-        cell.layer.cornerRadius = 19.0
-        cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!)
-        cell.letterLabel.textColor = UIColor.whiteColor()
+        
         
         if collectionView == self.keyboardCollectionView { //Keyboard collection view
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Tile", forIndexPath: indexPath) as! TileViewCell
+            cell.layer.cornerRadius = 19.0
+            cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!)
+            cell.letterLabel.textColor = UIColor.whiteColor()
             cell.layer.borderWidth = 5.0
             cell.letterLabel.text = Constants.Letters[indexPath.row]
             cell.delegate = self
             cell.layer.borderColor = UIColor.whiteColor().CGColor
+            return cell
 
         }
-        else { //Current word collection view
-            cell.layer.borderWidth = 4.0
-            cell.layer.borderColor = self.currentGame?.getCurrentPlayer().playerColor.CGColor //changes by player turn
+        else if collectionView == self.wordCollectionView {
+            //Current word collection view
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Tile", forIndexPath: indexPath) as! TileViewCell
+            cell.layer.cornerRadius = 19.0
+            cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!)
+            cell.letterLabel.textColor = UIColor.whiteColor()
+            cell.layer.borderWidth = 5.0
+            cell.layer.borderColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor.CGColor //changes by player turn
             self.currentGame?.getCurrentPlayer().playerColor
             cell.letterLabel.text = self.currentGame!.currentWord[indexPath.row]
+            return cell
         }
-        
-        return cell
+        else { //scores
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("score", forIndexPath: indexPath) as! PlayerStatusCell
+            cell.PlayerInfoLabel.text = self.currentGame?.players[indexPath.row].name
+            cell.PlayerInfoLabel.textColor = self.currentGame?.players[indexPath.row].playerColor
+            cell.GhostLabel.text = losingWord.substringToIndex(advance(losingWord.startIndex, self.currentGame!.players[indexPath.row].points))
+            
+            return cell
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout:
@@ -148,8 +203,12 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         if collectionView == self.keyboardCollectionView {
                 return CGSize(width: tileWidth, height: tileWidth)
         }
-            else { //word being spelled
+            else if collectionView == self.wordCollectionView { //word being spelled
                 return CGSize(width: tileWidth/2, height: tileWidth)
+            }
+        
+        else {
+            return CGSize(width: tileWidth*2, height: tileWidth/2)
             }
     }
     
@@ -157,8 +216,11 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         if collectionView == self.keyboardCollectionView {
             return CGFloat(Constants.NumberOfPointsInBetween)
         }
-        else {
+        else if collectionView == self.wordCollectionView{
             return CGFloat(Constants.NumberOfPointsInBetween/3)
+        }
+        else {
+            return CGFloat(Constants.NumberOfPointsInBetween)
         }
     }
     
@@ -166,24 +228,33 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         if collectionView == self.keyboardCollectionView {
             return CGFloat(Constants.NumberOfPointsInBetween)
         }
-        else {
+        else if collectionView == self.wordCollectionView{
             return CGFloat(Constants.NumberOfPointsInBetween/2)
         }
+        else {
+            return CGFloat(Constants.NumberOfPointsInBetween)
+        }
     }
-}
+ func showMessage(title: String, message: String) {
+        let alertView = UIAlertView()
+        alertView.title = title
+        alertView.message = message
+        alertView.textFieldAtIndex(0)
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
+    }
+}// end of class
 
 extension GameViewController: TileViewCellDelegate {
     func didTapOnTile(tile: TileViewCell) {
         println(tile.letterLabel.text)
         self.currentGame!.currentWord.append(tile.letterLabel.text!)
         self.wordCollectionView.reloadData()
+        stopStopwatch()
+        currentGame?.goToNextPlayer()
+        startStopwatch()
     }
 }
-    
-
-
-
-
 
 
 

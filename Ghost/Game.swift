@@ -21,5 +21,10 @@ class Game: NSObject {
     func getCurrentPlayer() -> Player {
         return players[indexOfCurrentPlayer]
     }
+    func resetRound() {
+         indexOfCurrentPlayer = 0
+         currentWord = [String]()
+
+    }
 }
 
