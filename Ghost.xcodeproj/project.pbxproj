@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		461A03461B5454C2005B6B6F /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 461A03441B5454C2005B6B6F /* LexicontextAssets.bundle */; };
+		461A03471B5454C2005B6B6F /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 461A03451B5454C2005B6B6F /* libLexicontext.a */; };
 		461F35FA1B4C44A500075ED4 /* ExplodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461F35F91B4C44A500075ED4 /* ExplodeView.swift */; };
 		461F35FE1B4C44B200075ED4 /* TargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461F35FD1B4C44B200075ED4 /* TargetView.swift */; };
 		461F36001B4C45DF00075ED4 /* CounterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461F35FF1B4C45DF00075ED4 /* CounterLabelView.swift */; };
@@ -34,7 +36,7 @@
 		46C722201B4EAB8700732A1C /* brownboard.gif in Resources */ = {isa = PBXBuildFile; fileRef = 46C7221F1B4EAB8700732A1C /* brownboard.gif */; };
 		46C722221B4EAB8F00732A1C /* greybrick.gif in Resources */ = {isa = PBXBuildFile; fileRef = 46C722211B4EAB8F00732A1C /* greybrick.gif */; };
 		46C722261B4EB7DF00732A1C /* ghost.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46C722251B4EB7DF00732A1C /* ghost.jpg */; };
-		C3F71A5A9CCD72E34922D4F1 /* libPods-Ghost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83402AEEB2C65906BDD3619E /* libPods-Ghost.a */; };
+		C8F4D02567966244B03952AB /* libPods-Ghost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83402AEEB2C65906BDD3619E /* libPods-Ghost.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		461A03431B5454C2005B6B6F /* Lexicontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexicontext.h; sourceTree = "<group>"; };
+		461A03441B5454C2005B6B6F /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LexicontextAssets.bundle; sourceTree = "<group>"; };
+		461A03451B5454C2005B6B6F /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLexicontext.a; sourceTree = "<group>"; };
 		461F35F91B4C44A500075ED4 /* ExplodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplodeView.swift; sourceTree = "<group>"; };
 		461F35FD1B4C44B200075ED4 /* TargetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetView.swift; sourceTree = "<group>"; };
 		461F35FF1B4C45DF00075ED4 /* CounterLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterLabelView.swift; sourceTree = "<group>"; };
@@ -91,7 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3F71A5A9CCD72E34922D4F1 /* libPods-Ghost.a in Frameworks */,
+				461A03471B5454C2005B6B6F /* libLexicontext.a in Frameworks */,
+				C8F4D02567966244B03952AB /* libPods-Ghost.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +179,9 @@
 		464929A81B4315D4003C4661 /* Ghost */ = {
 			isa = PBXGroup;
 			children = (
+				461A03431B5454C2005B6B6F /* Lexicontext.h */,
+				461A03441B5454C2005B6B6F /* LexicontextAssets.bundle */,
+				461A03451B5454C2005B6B6F /* libLexicontext.a */,
 				461F36011B4C463000075ED4 /* GameComponents */,
 				461F35F21B4C441100075ED4 /* Views */,
 				461F35F31B4C441800075ED4 /* Controllers */,
@@ -333,6 +342,7 @@
 				46C7221E1B4EAB7F00732A1C /* purplepixel.gif in Resources */,
 				46C722201B4EAB8700732A1C /* brownboard.gif in Resources */,
 				464929B61B4315D4003C4661 /* LaunchScreen.xib in Resources */,
+				461A03461B5454C2005B6B6F /* LexicontextAssets.bundle in Resources */,
 				464929B31B4315D4003C4661 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +543,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Ghost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/TovaM/Downloads/lexicontext-1",
+					"$(PROJECT_DIR)/Ghost",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ghost/Ghost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -547,6 +562,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Ghost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/TovaM/Downloads/lexicontext-1",
+					"$(PROJECT_DIR)/Ghost",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ghost/Ghost-Bridging-Header.h";
 			};

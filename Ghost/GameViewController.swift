@@ -18,7 +18,7 @@ class GameViewController: UIViewController  {
     var tField = UITextField?()
     //stopwatch variables
     @IBOutlet weak var stopwatch: UILabel!
-    private var secondsLeft: Int = 10
+    private var secondsLeft: Int = 3 //time in clock left
     private var timer: NSTimer?
     private var audioController: AudioController = {
         let audioController = AudioController()
@@ -31,12 +31,19 @@ class GameViewController: UIViewController  {
      @IBAction func didChallenge(sender: UIBarButtonItem) {
         userChallenged = true
         stopStopwatch()
-        var alert = UIAlertController(title: "YOU HAVE BEEN CHALLENGED", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "\(currentGame!.getCurrentPlayer().name), YOU HAVE BEEN CHALLENGED", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(configurationTextField)
         alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
          println(self.tField?.text)
             //check with dictionary
-            //if word exists then previous player loses round if NOT then currentplayer loses round
+            if self.challenge(self.tField!.text){ //if word exists then previous player loses round if NOT then currentplayer loses round
+                self.currentGame?.goToLastPlayer()
+                self.addToScore()
+            }
+            else {
+                self.addToScore()
+            }
+
             
         }))
         self.presentViewController(alert, animated: true, completion: {
@@ -74,7 +81,8 @@ class GameViewController: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "brownboard.gif")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "brownboard.gif")!)
+        super.view.backgroundColor = UIColor(red: 200, green: 175, blue: 23, alpha: 0.4)
         self.automaticallyAdjustsScrollViewInsets = false
     }
     override func viewDidAppear(animated: Bool) {
@@ -84,7 +92,7 @@ class GameViewController: UIViewController  {
     func startStopwatch() {
         //initialize the timer HUD
         secondsLeft = timeToSolve
-        stopwatch.text = "Time:\(secondsLeft)"
+        stopwatch.text = "\(currentGame!.getCurrentPlayer().name) Start!" //get players turn
         
         //schedule a new timer
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector:"tick:", userInfo: nil, repeats: true)
@@ -98,17 +106,25 @@ class GameViewController: UIViewController  {
         secondsLeft--
         if secondsLeft == 0 {
             stopStopwatch()
+            currentGame?.goToNextPlayer()
             addToScore()
         }
+        else {
         stopwatch.text = "Time left:\(secondsLeft) secs"
+        }
     }
     
-    func challenge(){ //add challenge button and functionality
-        
+    func challenge(guess :String) -> Bool{ //add challenge button and functionality
+        let dictionary = Lexicontext.sharedDictionary()
+        if let definition = dictionary.definitionFor(guess){
+            return true
+        }
+        else {
+            return false
+        }
     }
     func checkForLossforGame() -> Bool {
         if currentGame!.getCurrentPlayer().points == 5 {
-            audioController.playEffect(SoundWrong)
             return true
         }
         return false
@@ -116,15 +132,17 @@ class GameViewController: UIViewController  {
    func addToScore(){
         currentGame!.getCurrentPlayer().points++
         if !checkForLossforGame() {
-            showMessage("Attention Players", message: "\(currentGame?.getCurrentPlayer().name) lost this round")
+            showMessage("Attention Players", message: "\(currentGame!.getCurrentPlayer().name) lost this round")
             currentGame?.resetRound()
             self.wordCollectionView.reloadData()
             self.scoreCollectionView.reloadData()
             //println(currentGame?.getCurrentPlayer().points)
         }
         else{
-            println("Game Ended")
-    }
+            audioController.playEffect(SoundWrong)
+            self.scoreCollectionView.reloadData()
+            stopwatch.text = "GAME OVER"
+        }
     }
 }
 
@@ -162,12 +180,13 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         if collectionView == self.keyboardCollectionView { //Keyboard collection view
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Tile", forIndexPath: indexPath) as! TileViewCell
             cell.layer.cornerRadius = 19.0
-            cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!)
+            //cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!) //background image
+            cell.backgroundColor = UIColor.darkGrayColor()
             cell.letterLabel.textColor = UIColor.whiteColor()
             cell.layer.borderWidth = 5.0
             cell.letterLabel.text = Constants.Letters[indexPath.row]
             cell.delegate = self
-            cell.layer.borderColor = UIColor.whiteColor().CGColor
+            cell.layer.borderColor = UIColor.clearColor().CGColor // border of tile
             return cell
 
         }
@@ -175,21 +194,36 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
             //Current word collection view
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Tile", forIndexPath: indexPath) as! TileViewCell
             cell.layer.cornerRadius = 19.0
-            cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!)
+            //cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!)
+            cell.backgroundColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor
             cell.letterLabel.textColor = UIColor.whiteColor()
             cell.layer.borderWidth = 5.0
-            cell.layer.borderColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor.CGColor //changes by player turn
+            //cell.layer.borderColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor.CGColor //changes by player turn
             self.currentGame?.getCurrentPlayer().playerColor
             cell.letterLabel.text = self.currentGame!.currentWord[indexPath.row]
+            cell.layer.borderColor = UIColor.clearColor().CGColor
+
             return cell
         }
         else { //scores
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("score", forIndexPath: indexPath) as! PlayerStatusCell
-            cell.PlayerInfoLabel.text = self.currentGame?.players[indexPath.row].name
-            cell.PlayerInfoLabel.textColor = self.currentGame?.players[indexPath.row].playerColor
+            cell.layer.borderWidth = 5.0
+            cell.layer.cornerRadius = 19.0
             cell.GhostLabel.text = losingWord.substringToIndex(advance(losingWord.startIndex, self.currentGame!.players[indexPath.row].points))
+            cell.PlayerInfoLabel.text = self.currentGame?.players[indexPath.row].name
+            cell.PlayerInfoLabel.textColor = UIColor.whiteColor()
+            cell.layer.borderColor = UIColor.clearColor().CGColor
+
+            if self.currentGame?.players[indexPath.row].points == 5 {
+                cell.layer.borderColor = UIColor.blackColor().CGColor
+            }
+          
+            //cell.PlayerInfoLabel.textColor = self.currentGame?.players[indexPath.row].playerColor
+            cell.layer.backgroundColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor.CGColor
+            
             
             return cell
+            
         }
     }
     

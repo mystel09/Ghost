@@ -57,8 +57,11 @@ class CreateGameViewController: UITableViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "StartGameSegue") {
             //game
-            let CreateGameViewController = segue.destinationViewController as! GameViewController
-            CreateGameViewController.currentGame = newGame
+            if let navVC = segue.destinationViewController as? UINavigationController {
+                let CreateGameViewController = navVC.topViewController as! GameViewController
+                CreateGameViewController.currentGame = newGame
+            }
+            
             
         }
         

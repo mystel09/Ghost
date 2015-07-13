@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "21CD93EBC33EAB65D526012E"
+               BlueprintIdentifier = "61579D13383AEE4F55AD8EAD"
                BuildableName = "libPods-Ghost-ParseUI.a"
                BlueprintName = "Pods-Ghost-ParseUI"
                ReferencedContainer = "container:Pods.xcodeproj">

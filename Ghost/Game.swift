@@ -21,8 +21,16 @@ class Game: NSObject {
     func getCurrentPlayer() -> Player {
         return players[indexOfCurrentPlayer]
     }
+    func goToLastPlayer() {
+        if self.indexOfCurrentPlayer == 0 {
+            self.indexOfCurrentPlayer = self.players.count-1
+        }
+        else{
+            self.indexOfCurrentPlayer = self.indexOfCurrentPlayer-1
+        }
+    }
     func resetRound() {
-         indexOfCurrentPlayer = 0
+         indexOfCurrentPlayer = (self.indexOfCurrentPlayer+1) % self.players.count
          currentWord = [String]()
 
     }
