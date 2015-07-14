@@ -30,8 +30,8 @@ class CreateGameViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //TODO:
-        self.newGame.players.append(Player(name: "assd", playerColor: self.colors.removeLast()))
-        self.newGame.players.append(Player(name: "asd", playerColor: self.colors.removeLast()))
+        self.newGame.players.append(Player(name: "", playerColor: self.colors.removeLast()))
+        self.newGame.players.append(Player(name: "", playerColor: self.colors.removeLast()))
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "greybrick.gif")!) //background color
     }
     
@@ -66,6 +66,7 @@ class CreateGameViewController: UITableViewController, UITextFieldDelegate {
         }
         
     }
+    
     
     
     func showMessage(title: String, message: String) {

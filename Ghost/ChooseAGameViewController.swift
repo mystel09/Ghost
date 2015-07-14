@@ -19,7 +19,9 @@ class ChooseAGameViewController: UIViewController {
         
     }
 
-    
+    func unwindToSegue(segue: UIStoryboardSegue) {
+        
+    }
 
 
 }

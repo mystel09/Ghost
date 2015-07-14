@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bPF-Ta-hRt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tai-DS-vkC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -506,7 +506,7 @@
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bPF-Ta-hRt" kind="show" id="RsK-67-1xJ"/>
+                                    <segue destination="bPF-Ta-hRt" kind="modal" id="RsK-67-1xJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -543,7 +543,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zo9-IQ-Ce0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tai-DS-vkC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="InitialVC" automaticallyAdjustsScrollViewInsets="NO" id="tai-DS-vkC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qcr-gH-0RS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -561,7 +561,7 @@
         <!--Navigation Controller-->
         <scene sceneID="EtL-NB-CbC">
             <objects>
-                <navigationController storyboardIdentifier="InitialVC" automaticallyAdjustsScrollViewInsets="NO" id="bPF-Ta-hRt" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bPF-Ta-hRt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QnJ-lG-p5q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

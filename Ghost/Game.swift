@@ -13,6 +13,7 @@ class Game: NSObject {
     var minWordSize: Int = 4
     var indexOfCurrentPlayer = 0
     var currentWord = [String]()
+    var colorOfLetters = [UIColor]()
     
     func goToNextPlayer() {
         self.indexOfCurrentPlayer = (self.indexOfCurrentPlayer+1) % self.players.count
@@ -32,7 +33,15 @@ class Game: NSObject {
     func resetRound() {
          indexOfCurrentPlayer = (self.indexOfCurrentPlayer+1) % self.players.count
          currentWord = [String]()
-
+         colorOfLetters = [UIColor]()
     }
+    
+//    func resetGame() {
+//        self.players = []
+//        self.minWordSize = 4
+//        self.indexOfCurrentPlayer = 0
+//        self.currentWord = []
+//        self.colorOfLetters = []
+//    }
 }
 

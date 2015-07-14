@@ -10,8 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController  {
     var gameView: UIView!
-    private var targets = [TargetView]()
-//    var hud: HUDView!
+   // private var targets = [TargetView]()
     var selectedTile = ""
     var losingWord = "GHOST"
     var userChallenged = true
@@ -31,29 +30,39 @@ class GameViewController: UIViewController  {
      @IBAction func didChallenge(sender: UIBarButtonItem) {
         userChallenged = true
         stopStopwatch()
+        currentGame?.goToLastPlayer() //challenges the player before him
         var alert = UIAlertController(title: "\(currentGame!.getCurrentPlayer().name), YOU HAVE BEEN CHALLENGED", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(configurationTextField)
         alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
-         println(self.tField?.text)
-            //check with dictionary
-            if self.challenge(self.tField!.text){ //if word exists then previous player loses round if NOT then currentplayer loses round
-                self.currentGame?.goToLastPlayer()
-                self.addToScore()
-            }
-            else {
-                self.addToScore()
-            }
-
             
+            var sizeOfWord = self.currentGame?.currentWord.count
+            if sizeOfWord > count(self.tField!.text) {
+                self.addToScore() // too small to even compare
+                return
+            }
+            var subWord = self.tField!.text.substringToIndex(advance(self.tField!.text.startIndex, sizeOfWord!))
+            var gameWord = "".join(self.currentGame!.currentWord)
+            
+            //check with dictionary
+            if self.challenge(self.tField!.text) && subWord == gameWord.lowercaseString  { //if word exists then current player loses round
+               //if word supplied is made of the games word
+                    self.currentGame?.goToNextPlayer()
+                    self.addToScore() // adds to player before the challenger
+                }
+                else {//if NOT then previous player loses round
+
+                 // add point to challengee, already called previous player
+                self.addToScore()
+                
+            }
+        
         }))
         self.presentViewController(alert, animated: true, completion: {
-            println("completion block")
         })
        
     }
     func configurationTextField(textField: UITextField!)
     {
-        println("generating the TextField")
         textField.placeholder = "Enter your word here"
         tField = textField
     
@@ -87,6 +96,7 @@ class GameViewController: UIViewController  {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        stopwatch.text = "\(currentGame!.getCurrentPlayer().name)'s Turn" //get players turn
         startStopwatch()
     }
     func startStopwatch() {
@@ -101,13 +111,16 @@ class GameViewController: UIViewController  {
     func stopStopwatch() {
         timer?.invalidate()
         timer = nil
+        
     }
     @objc func tick(timer: NSTimer) {
         secondsLeft--
         if secondsLeft == 0 {
             stopStopwatch()
-            currentGame?.goToNextPlayer()
             addToScore()
+            // write on top whos turn it is
+            currentGame?.goToNextPlayer()
+            stopwatch.text = "\(currentGame!.getCurrentPlayer().name)'s Turn" //get players turn
         }
         else {
         stopwatch.text = "Time left:\(secondsLeft) secs"
@@ -116,7 +129,7 @@ class GameViewController: UIViewController  {
     
     func challenge(guess :String) -> Bool{ //add challenge button and functionality
         let dictionary = Lexicontext.sharedDictionary()
-        if let definition = dictionary.definitionFor(guess){
+        if dictionary.containsDefinitionFor(guess) {
             return true
         }
         else {
@@ -132,16 +145,16 @@ class GameViewController: UIViewController  {
    func addToScore(){
         currentGame!.getCurrentPlayer().points++
         if !checkForLossforGame() {
-            showMessage("Attention Players", message: "\(currentGame!.getCurrentPlayer().name) lost this round")
+            //showMessage("Attention Players", message: "\(currentGame!.getCurrentPlayer().name) lost this round")
             currentGame?.resetRound()
             self.wordCollectionView.reloadData()
             self.scoreCollectionView.reloadData()
-            //println(currentGame?.getCurrentPlayer().points)
         }
         else{
             audioController.playEffect(SoundWrong)
             self.scoreCollectionView.reloadData()
             stopwatch.text = "GAME OVER"
+            self.presentingViewController?.dismissViewControllerAnimated(true, completion:nil)
         }
     }
 }
@@ -194,12 +207,12 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
             //Current word collection view
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Tile", forIndexPath: indexPath) as! TileViewCell
             cell.layer.cornerRadius = 19.0
+            cell.backgroundColor = self.currentGame?.colorOfLetters[indexPath.row]
             //cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!)
-            cell.backgroundColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor
+            //cell.backgroundColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor
+            //cell.backgroundColor = self.currentGame?.getCurrentPlayer().playerColor
             cell.letterLabel.textColor = UIColor.whiteColor()
             cell.layer.borderWidth = 5.0
-            //cell.layer.borderColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor.CGColor //changes by player turn
-            self.currentGame?.getCurrentPlayer().playerColor
             cell.letterLabel.text = self.currentGame!.currentWord[indexPath.row]
             cell.layer.borderColor = UIColor.clearColor().CGColor
 
@@ -282,9 +295,12 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension GameViewController: TileViewCellDelegate {
     func didTapOnTile(tile: TileViewCell) {
         println(tile.letterLabel.text)
-        self.currentGame!.currentWord.append(tile.letterLabel.text!)
+        println(self.currentGame?.indexOfCurrentPlayer)
+        self.currentGame!.currentWord.append(tile.letterLabel.text!) // appends letter to current word
+        self.currentGame!.colorOfLetters.append(self.currentGame!.getCurrentPlayer().playerColor)
         self.wordCollectionView.reloadData()
         stopStopwatch()
+        // write on top whos turn it is
         currentGame?.goToNextPlayer()
         startStopwatch()
     }
