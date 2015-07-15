@@ -44,7 +44,7 @@ class GameViewController: UIViewController  {
             var gameWord = "".join(self.currentGame!.currentWord)
             
             //check with dictionary
-            if self.challenge(self.tField!.text) && subWord == gameWord.lowercaseString  { //if word exists then current player loses round
+            if self.challenge(self.tField!.text) && subWord == gameWord.lowercaseString && count(gameWord) > self.currentGame?.minWordSize { //if word exists then current player loses round
                //if word supplied is made of the games word
                     self.currentGame?.goToNextPlayer()
                     self.addToScore() // adds to player before the challenger
@@ -52,14 +52,11 @@ class GameViewController: UIViewController  {
                 else {//if NOT then previous player loses round
 
                  // add point to challengee, already called previous player
-                self.addToScore()
-                
+            self.addToScore()
             }
-        
         }))
         self.presentViewController(alert, animated: true, completion: {
         })
-       
     }
     func configurationTextField(textField: UITextField!)
     {
@@ -67,7 +64,6 @@ class GameViewController: UIViewController  {
         tField = textField
     
     }
-    
 
     @IBOutlet weak var keyboardCollectionView: UICollectionView! {
         didSet {
@@ -118,9 +114,6 @@ class GameViewController: UIViewController  {
         if secondsLeft == 0 {
             stopStopwatch()
             addToScore()
-            // write on top whos turn it is
-            currentGame?.goToNextPlayer()
-            stopwatch.text = "\(currentGame!.getCurrentPlayer().name)'s Turn" //get players turn
         }
         else {
         stopwatch.text = "Time left:\(secondsLeft) secs"
@@ -149,12 +142,15 @@ class GameViewController: UIViewController  {
             currentGame?.resetRound()
             self.wordCollectionView.reloadData()
             self.scoreCollectionView.reloadData()
+            currentGame?.goToNextPlayer()
+            stopwatch.text = "\(currentGame!.getCurrentPlayer().name)'s Turn" //get players turn
         }
         else{
             audioController.playEffect(SoundWrong)
             self.scoreCollectionView.reloadData()
-            stopwatch.text = "GAME OVER"
-            self.presentingViewController?.dismissViewControllerAnimated(true, completion:nil)
+            //stopwatch.text = "GAME OVER"
+            showMessage("GAME OVER", message: "\(currentGame!.getCurrentPlayer().name) lost this game")
+            self.performSegueWithIdentifier("RestartGame", sender: self)
         }
     }
 }
@@ -208,9 +204,6 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Tile", forIndexPath: indexPath) as! TileViewCell
             cell.layer.cornerRadius = 19.0
             cell.backgroundColor = self.currentGame?.colorOfLetters[indexPath.row]
-            //cell.backgroundColor = UIColor(patternImage: UIImage(named: "tile.png")!)
-            //cell.backgroundColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor
-            //cell.backgroundColor = self.currentGame?.getCurrentPlayer().playerColor
             cell.letterLabel.textColor = UIColor.whiteColor()
             cell.layer.borderWidth = 5.0
             cell.letterLabel.text = self.currentGame!.currentWord[indexPath.row]
@@ -282,6 +275,17 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
             return CGFloat(Constants.NumberOfPointsInBetween)
         }
     }
+//     @IBAction func restartGame(sender: AnyObject) {
+//        let alert: UIAlertView = UIAlertView()
+//        //alert.title = "Exit"
+//        alert.message = "Want to Play Again?"
+//        let yes = alert.addButtonWithTitle("Yes")
+//        let no = alert.addButtonWithTitle("No")
+//        alert.delegate = self  // set the delegate here
+//        alert.show()
+//        println("This line doesn't wait for the alert to be responded to.")
+//    }
+
  func showMessage(title: String, message: String) {
         let alertView = UIAlertView()
         alertView.title = title

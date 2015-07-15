@@ -19,9 +19,9 @@ class ChooseAGameViewController: UIViewController {
         
     }
 
-    func unwindToSegue(segue: UIStoryboardSegue) {
-        
-    }
+//    func unwindToSegueCG(segue: UIStoryboardSegue) {
+//        self.performSegueWithIdentifier("RestartGame", sender: AnyObject?())
+//    }
 
 
 }
