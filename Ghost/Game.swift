@@ -8,12 +8,18 @@
 
 import UIKit
 
+//enum GameType {
+//    case QuickGame
+//    case Multiplayer
+//}
+
 class Game: NSObject {
     var players:[Player] = []
     var minWordSize: Int = 4
     var indexOfCurrentPlayer = 0
     var currentWord = [String]()
     var colorOfLetters = [UIColor]()
+    //var typeOfGAme = GameType.QuickGame
     
     func goToNextPlayer() {
         self.indexOfCurrentPlayer = (self.indexOfCurrentPlayer+1) % self.players.count

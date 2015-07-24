@@ -303,6 +303,13 @@ extension GameViewController: TileViewCellDelegate {
         self.currentGame!.currentWord.append(tile.letterLabel.text!) // appends letter to current word
         self.currentGame!.colorOfLetters.append(self.currentGame!.getCurrentPlayer().playerColor)
         self.wordCollectionView.reloadData()
+        var gameWord = "".join(self.currentGame!.currentWord)
+        
+        //check with dictionary
+        if self.challenge(gameWord) && count(gameWord) >= currentGame!.minWordSize {
+            stopStopwatch()
+            addToScore()
+        }
         stopStopwatch()
         // write on top whos turn it is
         currentGame?.goToNextPlayer()
