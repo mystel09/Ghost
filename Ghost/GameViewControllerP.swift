@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import GameKit
 
-class GameViewControllerP: UIViewController  {
-        var selectedTile = ""
+class GameViewControllerP: UIViewController, GKGameCenterControllerDelegate {
+    var gcEnabled = Bool() // Stores if the user has Game Center enabled
+    var selectedTile = ""
         var losingWord = "GHOST"
         var userChallenged = true
         var tField = UITextField?()
@@ -88,6 +90,8 @@ class GameViewControllerP: UIViewController  {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            println("\n Hahaha. Having fun \n")
+            
             //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "brownboard.gif")!)
             super.view.backgroundColor = UIColor(red: 200, green: 175, blue: 23, alpha: 0.4)
             self.automaticallyAdjustsScrollViewInsets = false
@@ -316,6 +320,41 @@ class GameViewControllerP: UIViewController  {
             // write on top whos turn it is
             currentGame?.goToNextPlayer()
             startStopwatch()
+        }
+        
+        func authenticateLocalPlayer() {
+            let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+            
+            localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+                if((ViewController) != nil) {
+                    // 1 Show login if player is not logged in
+                    self.presentViewController(ViewController, animated: true, completion: nil)
+                } else if (localPlayer.authenticated) {
+                    // 2 Player is already euthenticated & logged in, load game center
+                    self.gcEnabled = true
+                    
+                    // Get the default leaderboard ID
+                    localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String!, error: NSError!) -> Void in
+                        if error != nil {
+                            println(error)
+                        } else {
+                        }
+                    })
+                    
+                    
+                } else {
+                    // 3 Game center is not enabled on the users device
+                    self.gcEnabled = false
+                    println("Local player could not be authenticated, disabling game center")
+                    println(error)
+                }
+                
+            }
+            
+        }
+        
+        func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+            gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
         }
 }
 

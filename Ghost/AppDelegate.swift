@@ -12,72 +12,122 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var parseLoginHelper: ParseLoginHelper!
+ //   var parseLoginHelper: ParseLoginHelper!
     
     override init() {
         super.init()
-        parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
-            // Initialize the ParseLoginHelper with a callback
-            if let error = error {
-                // 1
-                //ErrorHandling.defaultErrorHandler(error)
-                return
-            } else  if let user = user {
-                // if login was successful, display the TabBarController
-                // 2
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("InitialVC") as! UIViewController
-                // 3
-                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
-            }
-        }
+//        parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
+//            // Initialize the ParseLoginHelper with a callback
+//            if let error = error {
+//                // 1
+//                //ErrorHandling.defaultErrorHandler(error)
+//                return
+//            } else  if let user = user {
+//                // if login was successful, display the TabBarController
+//                // 2
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("InitialVC") as! UIViewController
+//                // 3
+//                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
+//            }
+//        }
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
             Parse.setApplicationId("5Um0ArhEVfpHM5wDJmlf8EbzqjM6o6IC1bFeKfJA", clientKey: "F9tpSTcmlJSMJDH6s5JxYm5xtrtGG9YGOJdS1ty9")
         
+        // Register for Push Notitications
+        if application.applicationState != UIApplicationState.Background {
+            // Track an app open here if we launch with a push, unless
+            // "content_available" was used to trigger a background push (introduced in iOS 7).
+            // In that case, we skip tracking here to avoid double counting the app-open.
+            
+            let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
+            let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
+            var pushPayload = false
+            if let options = launchOptions {
+                pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
+            }
+            if (preBackgroundPush || oldPushHandlerOnly || pushPayload) {
+                PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+            }
+        }
+        if application.respondsToSelector("registerUserNotificationSettings:") {
+            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+        } else {
+            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
+            application.registerForRemoteNotificationTypes(types)
+        }
+        
         
         // Initialize Facebook
         // 1
-        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+      //  PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         // check if we have logged in user
         // 2
-        let user = PFUser.currentUser()
-        
+       // let user = PFUser.currentUser()
+//
         let startViewController: UIViewController;
-        
-        if (user != nil) {
+//
+      //  if (user != nil) {
             // 3
-            // if we have a user, set the TabBarController to be the initial View Controller
+             //if we have a user, set the TabBarController to be the initial View Controller
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             startViewController = storyboard.instantiateViewControllerWithIdentifier("InitialVC") as! UIViewController
-        } else {
+      //  } else {
             // 4
             // Otherwise set the LoginViewController to be the first
-            let loginViewController = PFLogInViewController()
-            loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten | .Facebook
-            loginViewController.delegate = parseLoginHelper
-            loginViewController.signUpController?.delegate = parseLoginHelper
+          //  let loginViewController = PFLogInViewController()
+         //   loginViewController.fields = .UsernameAndPassword | .LogInButton | .SignUpButton | .PasswordForgotten | .Facebook
+         //   loginViewController.delegate = parseLoginHelper
+         //   loginViewController.signUpController?.delegate = parseLoginHelper
             
-            startViewController = loginViewController
-        }
+         //   startViewController = loginViewController
+      //  }
         
-        // 5
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+       //  5
+      self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = startViewController;
         self.window?.makeKeyAndVisible()
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+       return true
     }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        if error.code == 3010 {
+            println("Push notifications are not supported in the iOS Simulator.")
+        } else {
+            println("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+        }
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
+        if application.applicationState == UIApplicationState.Inactive {
+            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        }
+    }
+    
     
     func applicationDidBecomeActive(application: UIApplication) {
-        FBSDKAppEvents.activateApp()
+      //  FBSDKAppEvents.activateApp()
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
-    }
+//    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+//        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+//    }
     
 
     func applicationWillResignActive(application: UIApplication) {

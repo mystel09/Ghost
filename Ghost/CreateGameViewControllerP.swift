@@ -13,12 +13,16 @@
 //
 
 import UIKit
+import GameKit
 
-class CreateGameViewControllerP: UITableViewController, UITextFieldDelegate {
+class CreateGameViewControllerP: UITableViewController, GKGameCenterControllerDelegate{
+    
     var colors: [UIColor] = [Colors.Red,Colors.Purple, Colors.Yellow, Colors.Pink,Colors.Orange,Colors.Green,Colors.Brown,Colors.Blue]
     var newGame: GameP = GameP()
     var currentNumberOfPlayers = 0
     var lastSelectedIndexPath :NSIndexPath?
+
+    var gcEnabled = Bool() // Stores if the user has Game Center enabled
 
     struct Constants {
         static let maxNumberOfPlayers = 4
@@ -35,26 +39,28 @@ class CreateGameViewControllerP: UITableViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        var players = PFUser.currentUser()!["playedWith"] as? [PFUser]
+       // var players = PFUser.currentUser()!["playedWith"] as? [PFUser]
         // query.findObjectsInBackgroundWithBlock { ( results: [AnyObject]?, error: NSError?) -> Void in
         //                if error != nil {
         //                    println("error")
         //                    return
         //                }
         //                let results = results as? [PFObject] ?? []
-        if  players?.count > 0 {
-        for player in players! { //getting all newly added players
-            self.newGame.playersP.append(PlayerP(name: player["username"]! as! String, playerColor: self.colors.count-1))
-            self.colors.removeLast() //remove that from array, while using the last color
-            self.currentNumberOfPlayers++
-        }
-        tableView.reloadData()
-        }
+//        if  players?.count > 0 {
+//        for player in players! { //getting all newly added players
+//            self.newGame.playersP.append(PlayerP(name: player["username"]! as! String, playerColor: self.colors.count-1))
+//            self.colors.removeLast() //remove that from array, while using the last color
+//            self.currentNumberOfPlayers++
+//        }
+//        tableView.reloadData()
+//        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         //TODO:
-//        self.newGame.playersP.append(PlayerP(name: "", playerColor: colors.count-1))
+        self.authenticateLocalPlayer()
+
+        self.newGame.playersP.append(PlayerP(name: "", playerColor: colors.count-1))
 //        self.colors.removeLast() //remove that from array, while using the last color
 //        self.newGame.playersP.append(PlayerP(name: "", playerColor: colors.count-1))
 //        self.colors.removeLast()
@@ -82,35 +88,19 @@ class CreateGameViewControllerP: UITableViewController, UITextFieldDelegate {
          }
     @IBAction func unwindToSegue(segue: UIStoryboardSegue) {
         if segue.identifier == "Save" {
-            //var query = PFQuery(className["playedWith"]
-            var players: [PlayerP] = PFUser.currentUser()!["playedWith"] as! [PlayerP]
-           // query.findObjectsInBackgroundWithBlock { ( results: [AnyObject]?, error: NSError?) -> Void in
-//                if error != nil {
-//                    println("error")
-//                    return
+//                            for player in players { //getting all newly added players
+//                    self.newGame.playersP.append(PlayerP(name: player["username"]! as! String, playerColor: self.colors.count-1))
+//                    self.colors.removeLast() //remove that from array, while using the last color
+//                    self.currentNumberOfPlayers++
 //                }
-//                let results = results as? [PFObject] ?? []
-            
-                for player in players { //getting all newly added players
-                    self.newGame.playersP.append(PlayerP(name: player["username"]! as! String, playerColor: self.colors.count-1))
-                    self.colors.removeLast() //remove that from array, while using the last color
-                    self.currentNumberOfPlayers++
-                }
                 self.tableView.reloadData()
                 
         }
     }
     
     @IBAction func StartGame(sender: AnyObject) {
-        //check if all names are filled
+        //check if at least one other player
         
-        for player in self.newGame.playersP {
-            println(player.name)
-            if player.name == "" {
-                showMessage("Error!", message: "Please select a player to play with.")
-                return
-            }
-        }
         
         self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self)
     }
@@ -121,14 +111,14 @@ class CreateGameViewControllerP: UITableViewController, UITextFieldDelegate {
             if let navVC = segue.destinationViewController as? UINavigationController {
                 let CreateGameViewControllerP = navVC.topViewController as! GameViewControllerP
                 CreateGameViewControllerP.currentGame = newGame
-                newGame.saveInBackgroundWithBlock{(success: Bool, error: NSError?) -> Void in
-                
-                    if success == true {
-                        println("game saved")
-                        return
-                    }
-                  }
-                }
+//                //newGame.saveInBackgroundWithBlock{(success: Bool, error: NSError?) -> Void in
+//                
+//                    if success == true {
+//                        println("game saved")
+//                        return
+//                    }
+//                  }
+               }
             }
         }
     
@@ -175,17 +165,10 @@ class CreateGameViewControllerP: UITableViewController, UITextFieldDelegate {
             return cell
         }
         else {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCellWithIdentifier(Constants.WordSizeCellIdentifier, forIndexPath: indexPath) as! WordSizeCellTableViewCell
-                cell.wordSizeTextField.tag = Constants.WordSizeTag
-                cell.wordSizeTextField.delegate = self
-                return cell
-            }
-            else{
                 let cell = tableView.dequeueReusableCellWithIdentifier(Constants.StartButtonCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
-                return cell
+            return cell
                 
-            }
+            
         }
     }
         override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -198,4 +181,77 @@ class CreateGameViewControllerP: UITableViewController, UITextFieldDelegate {
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 64.0
     }
+    
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController, animated: true, completion: nil)
+            } else if (localPlayer.authenticated) {
+                // 2 Player is already euthenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String!, error: NSError!) -> Void in
+                    if error != nil {
+                        println(error)
+                    } else {
+                    }
+                })
+                
+                
+            } else {
+                // 3 Game center is not enabled on the users device
+                self.gcEnabled = false
+                println("Local player could not be authenticated, disabling game center")
+                println(error)
+            }
+            
+        }
+        
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+extension CreateGameViewController: GKMatchDelegate {
+    
+    var players: [AnyObject]! {
+        get {
+         return self.players
+        }
+    } // GKPlayers in the match
+    
+    //var delegate: GKMatchDelegate!
+    var expectedPlayerCount: Int {
+        get {
+            return self.expectedPlayerCount
+        }
+    }
+    func match(match: GKMatch!, didReceiveData data: NSData!, fromRemotePlayer player: GKPlayer!) {
+        
+    }
+    func match(match: GKMatch!, didReceiveData data: NSData!, fromPlayer playerID: String!) {
+        
+    }
+    // The player state changed (eg. connected or disconnected)
+    func match(match: GKMatch!, player: GKPlayer!, didChangeConnectionState state: GKPlayerConnectionState) {
+        
+    }
+    
+    func match(match: GKMatch!, didFailWithError error: NSError!) {
+        
+    }
+    func match(match: GKMatch!, shouldReinviteDisconnectedPlayer player: GKPlayer!) -> Bool {
+        return true
+    }
+    func match(match: GKMatch!, shouldReinvitePlayer playerID: String!) -> Bool {
+        return true
+    }
+   
+    
 }
