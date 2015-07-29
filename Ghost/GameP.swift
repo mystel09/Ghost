@@ -7,50 +7,34 @@
 //
 
 import UIKit
+import GameKit
 
-class GameP: PFObject, PFSubclassing {
+class GameP: NSObject, NSCoding{
    
-    var playersP:[PlayerP] = []
-   @NSManaged var MinWordSize: Int
-   @NSManaged var IndexOfCurrentPlayer: Int
-   @NSManaged var CurrentWord: [String]!
-   @NSManaged var Color: [Int]
-   
-    func goToNextPlayer() {
-        self.IndexOfCurrentPlayer = (self.IndexOfCurrentPlayer+1) % self.playersP.count
+    var playersP:[PlayerP]!
+    var MinWordSize: Int = 4
+    var IndexOfCurrentPlayer: Int = 0
+    var CurrentWord: [String]!
+    var Color: [UIColor]!
+    var GKTurnTimeoutNone: NSTimeInterval = 0.0
+    
+    // MARK: NSCoding
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        self.playersP = decoder.decodeObjectForKey("playersP") as! [PlayerP]?
+        self.MinWordSize = (decoder.decodeIntegerForKey("MinWordSize"))
+        self.IndexOfCurrentPlayer = decoder.decodeIntegerForKey("IndexOfCurrentPlayer")
+        self.CurrentWord = decoder.decodeObjectForKey("CurrentWord") as! [String]!
+        self.Color = decoder.decodeObjectForKey("Color") as! [UIColor]!
     }
     
-    func getCurrentPlayer() -> PlayerP {
-        return playersP[IndexOfCurrentPlayer]
+    func encodeWithCoder(coder: NSCoder) {
+        coder.encodeObject(self.playersP, forKey: "playersP")
+        coder.encodeInt(Int32(self.MinWordSize), forKey: "MinWordSize")
+        coder.encodeInt(Int32(self.IndexOfCurrentPlayer), forKey: "IndexOfCurrentPlayer")
+        coder.encodeObject(self.CurrentWord, forKey: "CurrentWord")
+        coder.encodeObject(self.Color, forKey: "Color")
     }
-    func goToLastPlayer() {
-        if self.IndexOfCurrentPlayer == 0 {
-            self.IndexOfCurrentPlayer = self.playersP.count-1
-        }
-        else{
-            self.IndexOfCurrentPlayer = self.IndexOfCurrentPlayer-1
-        }
-    }
-    func resetRound() {
-        IndexOfCurrentPlayer = (self.IndexOfCurrentPlayer+1) % self.playersP.count
-        CurrentWord = [String]()
-        Color = []
-    }
-    
-
-    override init () { //boilerplate code that needs to be added for parse
-        super.init()
-    }
-    
-    override class func initialize() { //boilerplate
-        var onceToken : dispatch_once_t = 0;
-        dispatch_once(&onceToken) {
-            // inform Parse about this subclass
-            self.registerSubclass()
-        }
-    }
-    static func parseClassName() -> String {
-        return "Game" //server name, not the classname here
-    }
-    
 }
+

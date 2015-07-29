@@ -334,8 +334,8 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RJ-se-9s3">
-                                                    <rect key="frame" x="104" y="0.0" width="108" height="33"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RJ-se-9s3">
+                                                    <rect key="frame" x="104" y="8" width="108" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -422,7 +422,6 @@
                         <outlet property="scoreCollectionView" destination="hCc-lO-aQ4" id="Syz-Bm-FeB"/>
                         <outlet property="stopwatch" destination="i8E-PL-XvM" id="fal-1u-rOW"/>
                         <outlet property="wordCollectionView" destination="KkV-YA-6P0" id="UBx-Vy-L5z"/>
-                        <segue destination="agr-Li-2DA" kind="presentation" identifier="RestartGame" id="UYL-9I-b9H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vk7-pM-u1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -432,7 +431,7 @@
         <!--Choose a Game Controller-->
         <scene sceneID="9Hc-1e-pFy">
             <objects>
-                <viewController title="Add Friends to Game" id="agr-Li-2DA" userLabel="Choose a Game Controller" customClass="FIndFriends" sceneMemberID="viewController">
+                <viewController title="Add Friends to Game" id="agr-Li-2DA" userLabel="Choose a Game Controller" customClass="ChooseAGameViewController" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d8u-nC-bVl"/>
                         <viewControllerLayoutGuide type="bottom" id="Etr-RT-i8N"/>
@@ -441,8 +440,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cln-ay-kBm">
-                                <rect key="frame" x="177" y="143" width="246" height="123"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cln-ay-kBm">
+                                <rect key="frame" x="177" y="187" width="246" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="246" id="bJC-YD-Kq1"/>
                                 </constraints>
@@ -452,18 +451,18 @@
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bPF-Ta-hRt" kind="show" id="acH-1p-oSS"/>
+                                    <segue destination="bPF-Ta-hRt" kind="show" identifier="CreateGame" id="acH-1p-oSS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQo-fr-GUI">
-                                <rect key="frame" x="177" y="274" width="246" height="120"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQo-fr-GUI">
+                                <rect key="frame" x="177" y="274" width="246" height="76"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="39"/>
                                 <state key="normal" title="Online Game">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eLE-m8-Xdy" kind="show" id="I2N-hp-K8U"/>
+                                    <action selector="StartGame:" destination="agr-Li-2DA" eventType="touchUpInside" id="U72-Wm-8yh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -478,10 +477,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Choose a Game" id="lzc-9Z-nw6"/>
+                    <connections>
+                        <segue destination="poA-cI-ffp" kind="show" identifier="StartOnlineGameSegue" id="OiI-4j-h9t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGz-bM-PAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="634" y="980"/>
+            <point key="canvasLocation" x="602" y="972"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zo9-IQ-Ce0">
@@ -837,8 +839,8 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEg-HP-LEb">
-                                                    <rect key="frame" x="104" y="0.0" width="108" height="33"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEg-HP-LEb">
+                                                    <rect key="frame" x="104" y="8" width="108" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -925,30 +927,11 @@
                         <outlet property="scoreCollectionView" destination="bx6-lg-yNC" id="4Zp-lL-Djf"/>
                         <outlet property="stopwatch" destination="hbq-Qa-deM" id="lmr-ig-8x6"/>
                         <outlet property="wordCollectionView" destination="YU1-hp-Lhs" id="kYW-Cz-5dm"/>
-                        <segue destination="agr-Li-2DA" kind="presentation" id="drw-oG-zn6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blq-Pf-oel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3462" y="1746"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ijp-t5-L3b">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KNt-2s-nKq" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nRq-1f-p8N">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="poA-cI-ffp" kind="relationship" relationship="rootViewController" id="8uX-Hh-ZAA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dx2-sv-IGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2364" y="1978"/>
+            <point key="canvasLocation" x="-76" y="1830"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hLh-kD-XIb">
@@ -973,7 +956,4 @@
         <image name="Menu-50.png" width="50" height="50"/>
         <image name="Plus" width="50" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="oxi-cY-0W7"/>
-    </inferredMetricsTieBreakers>
 </document>
