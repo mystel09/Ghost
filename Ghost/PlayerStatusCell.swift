@@ -28,7 +28,7 @@ class PlayerStatusCell: UICollectionViewCell{
         didSet {
             if let namefield = PlayerInfoLabel {
                 namefield.text = self.playerP?.name
-                namefield.backgroundColor = colors[self.playerP!.color]
+                namefield.backgroundColor = self.playerP!.color
             }
         }
     }

@@ -31,6 +31,7 @@
 		464A41871B5983A300826321 /* GameP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464A41861B5983A300826321 /* GameP.swift */; };
 		465709CC1B570126006AA752 /* PlayerP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465709CB1B570126006AA752 /* PlayerP.swift */; };
 		4668D27B1B4EDBB0004E155B /* PlayerStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4668D27A1B4EDBB0004E155B /* PlayerStatusCell.swift */; };
+		467EC0141B6AA44D00530F11 /* GameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EC0131B6AA44D00530F11 /* GameHelper.swift */; };
 		469D70571B5D38C100A77224 /* WordSizeCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D70561B5D38C100A77224 /* WordSizeCellTableViewCell.swift */; };
 		469D70591B5D391F00A77224 /* GameViewControllerP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D70581B5D391F00A77224 /* GameViewControllerP.swift */; };
 		46C722121B4D8DA900732A1C /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C722111B4D8DA900732A1C /* tile.png */; };
@@ -88,6 +89,7 @@
 		464A41861B5983A300826321 /* GameP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameP.swift; sourceTree = "<group>"; };
 		465709CB1B570126006AA752 /* PlayerP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerP.swift; sourceTree = "<group>"; };
 		4668D27A1B4EDBB0004E155B /* PlayerStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatusCell.swift; sourceTree = "<group>"; };
+		467EC0131B6AA44D00530F11 /* GameHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameHelper.swift; path = ../../../../.Trash/GameHelper.swift; sourceTree = "<group>"; };
 		469D70561B5D38C100A77224 /* WordSizeCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSizeCellTableViewCell.swift; sourceTree = "<group>"; };
 		469D70581B5D391F00A77224 /* GameViewControllerP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewControllerP.swift; sourceTree = "<group>"; };
 		46C722111B4D8DA900732A1C /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile.png; path = "../../../../Downloads/Anagrams-Part-1-Starter/Anagrams/tile.png"; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		469D70531B5D310300A77224 /* ControllersP */ = {
 			isa = PBXGroup;
 			children = (
+				467EC0131B6AA44D00530F11 /* GameHelper.swift */,
 				469D70581B5D391F00A77224 /* GameViewControllerP.swift */,
 			);
 			name = ControllersP;
@@ -446,6 +449,7 @@
 				464929AE1B4315D4003C4661 /* ChooseAGameViewController.swift in Sources */,
 				469D70591B5D391F00A77224 /* GameViewControllerP.swift in Sources */,
 				464A41871B5983A300826321 /* GameP.swift in Sources */,
+				467EC0141B6AA44D00530F11 /* GameHelper.swift in Sources */,
 				464929E11B45C63A003C4661 /* Colors.swift in Sources */,
 				464929DC1B45AB51003C4661 /* Game.swift in Sources */,
 				4668D27B1B4EDBB0004E155B /* PlayerStatusCell.swift in Sources */,

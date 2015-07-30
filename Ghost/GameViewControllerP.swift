@@ -25,7 +25,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             return audioController
             }()
         var currentGame: GameP?
-    var currentMatch: GKTurnBasedMatch?
+    var currentMatch: GKTurnBasedMatch!
     var colors: [UIColor] = [Colors.Red,Colors.Purple, Colors.Yellow, Colors.Pink,Colors.Orange,Colors.Green,Colors.Brown,Colors.Blue]
 
     
@@ -35,7 +35,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             userChallenged = true
             stopStopwatch()
            // currentGame?.goToLastPlayer() //challenges the player before him
-            var lastParticipant: AnyObject = currentMatch!.participants[currentMatch!.participants.count-1]
+            var lastParticipant: AnyObject = currentMatch.participants[currentMatch.participants.count-1]
             var alert = UIAlertController(title: "\(losingWord), YOU HAVE BEEN CHALLENGED", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addTextFieldWithConfigurationHandler(configurationTextField)
             alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
@@ -101,7 +101,8 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         override func viewDidAppear(animated: Bool) {
             super.viewDidAppear(animated)
            // stopwatch.text = "\(currentGame! .name)'s Turn" //get players turn
-            startStopwatch()
+            startTurn()
+            //startStopwatch()
         }
         func startStopwatch() {
             //initialize the timer HUD
@@ -145,19 +146,25 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             return false
         }
     func startTurn() {
-        currentGame = NSKeyedUnarchiver.unarchiveObjectWithData(currentMatch!.matchData) as? GameP //current game variables being updated
+        currentGame = NSKeyedUnarchiver.unarchiveObjectWithData(currentMatch.matchData) as? GameP //current game variables being updated
+        scoreCollectionView.reloadData()
+        wordCollectionView.reloadData()
+        keyboardCollectionView.reloadData()
     }
-    
+    func loadFriendPlayersWithCompletionHandler(_completionHandler: (([GKPlayer]?,
+        NSError?) -> Void)?){
+            
+    }
         func addToScore(){
             //currentGame!.getCurrentPlayer().points++
             if !checkForLossforGame() {
-                showMessage("Attention Players", message: "\(currentMatch?.currentParticipant.player.displayName) lost this round")
+                showMessage("Attention Players", message: "\(currentMatch.currentParticipant.player.displayName) lost this round")
                 //currentGame?.resetRound()
                 self.wordCollectionView.reloadData()
                 self.scoreCollectionView.reloadData()
                 
                var gameData = NSKeyedArchiver.archivedDataWithRootObject(currentGame!)
-            endTurn(currentMatch!, gameData: gameData, nextParticipants: SortArray(currentMatch!.participants as! [GKTurnBasedParticipant]))
+            endTurn(currentMatch, gameData: gameData, nextParticipants: SortArray(currentMatch.participants as! [GKTurnBasedParticipant]))
             //currentGame?.goToNextPlayer()
                 //topwatch.text = "\(currentGame!.getCurrentPlayer().name)'s Turn" //get players turn
             }
@@ -248,8 +255,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                 if self.currentGame?.playersP[indexPath.row].points == 5 {
                     cell.layer.borderColor = UIColor.blackColor().CGColor
                 }
-                cell.layer.backgroundColor = colors[self.currentGame!.playersP[indexPath.row].color].CGColor
-                
+                cell.layer.backgroundColor = self.currentGame!.playersP[indexPath.row].color.CGColor
                 
                 return cell
                 
@@ -368,11 +374,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             startStopwatch()
         }
         
-    }
-extension GameViewControllerP: GKMatchDelegate {
-func match(match: GKMatch!, didReceiveData data: NSData!, fromRemotePlayer player: GKPlayer!) {
-    //player.
-    }
 }
 
 

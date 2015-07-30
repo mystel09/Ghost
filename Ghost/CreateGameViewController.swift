@@ -106,7 +106,7 @@ class CreateGameViewController: UITableViewController, UITextFieldDelegate {
             
             let cell = tableView.dequeueReusableCellWithIdentifier(Constants.PlayerCellIdentifier, forIndexPath: indexPath) as! PlayerViewCell
             cell.player = self.newGame.players[indexPath.row]
-            //cell.nameField.delegate = self
+            cell.nameField.delegate = self
             cell.nameField.tag = indexPath.row
             return cell
         }

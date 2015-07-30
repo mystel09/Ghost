@@ -11,7 +11,7 @@ import UIKit
 class PlayerViewCell: UITableViewCell {
 
    
-    @IBOutlet weak var nameField: UILabel!
+    @IBOutlet weak var nameField: UITextField!
     
     @IBOutlet weak var colorButton: UIButton! {
         didSet {
@@ -30,14 +30,4 @@ class PlayerViewCell: UITableViewCell {
             }
         }
     }
-    var playerP: PlayerP? {
-        didSet {
-            if let nameField = self.nameField,
-                let colorButton = self.colorButton {
-                    nameField.text = self.playerP?.name
-                    colorButton.backgroundColor = colors[self.playerP!.color]
-            }
-        }
-    }
-
 }

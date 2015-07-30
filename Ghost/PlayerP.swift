@@ -12,11 +12,11 @@ import GameKit
 
 class PlayerP: GKLocalPlayer {
      var name:String
-     var color: Int
+     var color: UIColor
      var points: Int
 
 
-    init(name:String, playerColor: Int) {
+    init(name:String, playerColor: UIColor) {
         
         self.name = name
         self.color = playerColor

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import iAd
 
 class GameViewController: UIViewController  {
     var gameView: UIView!
@@ -19,11 +20,6 @@ class GameViewController: UIViewController  {
     @IBOutlet weak var stopwatch: UILabel!
     private var secondsLeft: Int = 3 //time in clock left
     private var timer: NSTimer?
-    private var audioController: AudioController = {
-        let audioController = AudioController()
-        //audioController.preloadAudioEffects(AudioEffectFiles)
-        return audioController
-    }()
     var currentGame: Game?
     @IBOutlet weak var challengeButton: UIBarButtonItem!
     
@@ -86,14 +82,16 @@ class GameViewController: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       // self.canDisplayBannerAds = true
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "brownboard.gif")!)
         super.view.backgroundColor = UIColor(red: 200, green: 175, blue: 23, alpha: 0.4)
         self.automaticallyAdjustsScrollViewInsets = false
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.scoreCollectionView.reloadData()
         stopwatch.text = "\(currentGame!.getCurrentPlayer().name)'s Turn" //get players turn
-        startStopwatch()
+        //startStopwatch()
     }
     func startStopwatch() {
         //initialize the timer HUD
@@ -146,7 +144,6 @@ class GameViewController: UIViewController  {
             stopwatch.text = "\(currentGame!.getCurrentPlayer().name)'s Turn" //get players turn
         }
         else{
-            audioController.playEffect(SoundWrong)
             self.scoreCollectionView.reloadData()
             //stopwatch.text = "GAME OVER"
             showMessage("GAME OVER", message: "\(currentGame!.getCurrentPlayer().name) lost this game")
@@ -178,7 +175,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
         }
         else {
-            return self.currentGame!.players.count
+            return self.currentGame?.players.count ?? 0
         }
     }
 
@@ -217,6 +214,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.layer.cornerRadius = 19.0
             cell.GhostLabel.text = losingWord.substringToIndex(advance(losingWord.startIndex, self.currentGame!.players[indexPath.row].points))
             cell.PlayerInfoLabel.text = self.currentGame?.players[indexPath.row].name
+            //println(self.currentGame?.players[indexPath.row].name)
             cell.PlayerInfoLabel.textColor = UIColor.whiteColor()
             cell.layer.borderColor = UIColor.clearColor().CGColor
 

@@ -11,7 +11,7 @@ import GameKit
 
 class GameP: NSObject, NSCoding{
    
-    var playersP:[PlayerP]!
+    var playersP:[PlayerP] = []
     var MinWordSize: Int = 4
     var IndexOfCurrentPlayer: Int = 0
     var CurrentWord: [String]!
@@ -22,7 +22,7 @@ class GameP: NSObject, NSCoding{
     
     required convenience init(coder decoder: NSCoder) {
         self.init()
-        self.playersP = decoder.decodeObjectForKey("playersP") as! [PlayerP]?
+        self.playersP = (decoder.decodeObjectForKey("playersP") as! [PlayerP]?)!
         self.MinWordSize = (decoder.decodeIntegerForKey("MinWordSize"))
         self.IndexOfCurrentPlayer = decoder.decodeIntegerForKey("IndexOfCurrentPlayer")
         self.CurrentWord = decoder.decodeObjectForKey("CurrentWord") as! [String]!
