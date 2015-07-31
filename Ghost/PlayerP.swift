@@ -14,13 +14,15 @@ class PlayerP: GKLocalPlayer {
      var name:String
      var color: UIColor
      var points: Int
-
-
-    init(name:String, playerColor: UIColor) {
+    var extra: String
+    override var playerID: String { return extra }
+    
+    init(name:String, playerColor: UIColor, playerID: String) {
         
         self.name = name
         self.color = playerColor
         self.points = 0
+        extra = playerID
         super.init()
     }
   }

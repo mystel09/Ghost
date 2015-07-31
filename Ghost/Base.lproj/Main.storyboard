@@ -827,11 +827,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzy-TA-6sg">
-                                                    <rect key="frame" x="8" y="8" width="47" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="103" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="91" id="4Y8-xE-Ny6"/>
-                                                        <constraint firstAttribute="width" constant="47" id="AZu-IY-FCe"/>
+                                                        <constraint firstAttribute="width" constant="103" id="AZu-IY-FCe"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -862,7 +862,7 @@
                                             <constraint firstItem="Mzy-TA-6sg" firstAttribute="top" secondItem="ZvA-Em-Vlq" secondAttribute="topMargin" id="oeS-bK-Jjp"/>
                                             <constraint firstAttribute="centerY" secondItem="dEg-HP-LEb" secondAttribute="centerY" constant="-1" id="om2-lO-BFb"/>
                                             <constraint firstAttribute="centerX" secondItem="dEg-HP-LEb" secondAttribute="centerX" constant="-30" id="w0m-IO-VU7"/>
-                                            <constraint firstItem="dEg-HP-LEb" firstAttribute="leading" secondItem="Mzy-TA-6sg" secondAttribute="trailing" constant="5" id="w10-yz-2Q8"/>
+                                            <constraint firstItem="dEg-HP-LEb" firstAttribute="leading" secondItem="Mzy-TA-6sg" secondAttribute="trailing" constant="-51" id="w10-yz-2Q8"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="GhostLabel" destination="dEg-HP-LEb" id="8WI-8d-9O7"/>
