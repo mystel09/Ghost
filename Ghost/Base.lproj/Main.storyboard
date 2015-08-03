@@ -481,11 +481,12 @@
                     <navigationItem key="navigationItem" title="Choose a Game" id="lzc-9Z-nw6"/>
                     <connections>
                         <segue destination="poA-cI-ffp" kind="show" identifier="StartOnlineGameSegue" id="OiI-4j-h9t"/>
+                        <segue destination="poA-cI-ffp" kind="show" identifier="ContinueGameSegue" id="z2w-qk-VAf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGz-bM-PAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602" y="972"/>
+            <point key="canvasLocation" x="650" y="1000"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zo9-IQ-Ce0">
@@ -962,4 +963,7 @@
         <image name="Menu-50.png" width="50" height="50"/>
         <image name="Plus" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="z2w-qk-VAf"/>
+    </inferredMetricsTieBreakers>
 </document>

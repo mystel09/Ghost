@@ -25,6 +25,8 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         static let minNumberOfPlayers = 2
         static let SettingsIdentifier = "Settings"
         static let StartGameSegue = "StartOnlineGameSegue"
+        static let ContinueGameSegue = "ContinueGameSegue"
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -48,7 +50,6 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
             //game
             if let navVC = segue.destinationViewController as? GameViewControllerP {
                 if Globalmatch?.participants.count != newGame.playersP.count{
-                    
                 for player in Globalmatch!.participants! as! [GKTurnBasedParticipant] {
                     
                     newGame.playersP.append(PlayerP(name: player.player.displayName!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
@@ -60,6 +61,15 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
 
                 })
                 }
+            }
+        }
+        if segue.identifier == Constants.ContinueGameSegue {
+            if let navVC = segue.destinationViewController as? GameViewControllerP {
+                
+                navVC.currentMatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
+                     navVC.currentGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP //current game variables being updated
+                })
+                
             }
         }
     }
@@ -206,21 +216,19 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
         println("didFindMatch")
         println(match.participants.count)
         Globalmatch = match
-        self.dismissViewControllerAnimated(true) {
-        //self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self)
-        }
-        //lookupPlayers()
-        //go to game
-        if match.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-            // We are the current player.
-            
-            acceptInviteWithCompletionHandler { (match, error) -> Void in
-               
-            }
-
-            
-        }
         
+        if newGame.playersP.count > 0 {
+                self.dismissViewControllerAnimated(true) {
+                self.performSegueWithIdentifier(Constants.ContinueGameSegue, sender: self)
+            }
+        }
+        else {
+        //go to game
+        //if match.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
+        
+          self.acceptInviteWithCompletionHandler { (match, error) -> Void in
+            }
+        }
     }
     func lookupPlayers() {
         println("Looking up \(Globalmatch?.participants.count) players...")

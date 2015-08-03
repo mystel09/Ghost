@@ -120,10 +120,8 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         override func viewDidAppear(animated: Bool) {
             super.viewDidAppear(animated)
             //stopwatch.text = "\(getCurrentPlayer()!.name)'s Turn" //get players turn
-                currentMatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
-                    self.currentGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP //current game variables being updated
-                    self.startTurn()
-                })
+            startTurn()
+               // })
         }
         func startStopwatch() {
             //initialize the timer HUD
