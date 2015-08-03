@@ -47,15 +47,19 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         if (segue.identifier == Constants.StartGameSegue) {
             //game
             if let navVC = segue.destinationViewController as? GameViewControllerP {
+                if Globalmatch?.participants.count != newGame.playersP.count{
+                    
                 for player in Globalmatch!.participants! as! [GKTurnBasedParticipant] {
                     
                     newGame.playersP.append(PlayerP(name: player.player.displayName!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
                 }
-                
-                
                 navVC.currentGame = newGame
-                navVC.currentMatch = Globalmatch
-                
+                var gameData = NSKeyedArchiver.archivedDataWithRootObject(newGame)
+                Globalmatch?.saveCurrentTurnWithMatchData(gameData, completionHandler: { (error) -> Void in
+                    navVC.currentMatch = self.Globalmatch
+
+                })
+                }
             }
         }
     }
@@ -68,13 +72,6 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         alertView.show()
     }
    
-    func endTurnWithNextParticipants(nextParticipants: [AnyObject]!,
-        turnTimeout timeout: NSTimeInterval,
-        matchData: NSData!,
-        completionHandler: ((NSError!) -> Void)!){
-            
-            
-    }
     
     func findMatchForRequest(_request: GKMatchRequest!,
         withCompletionHandler completionHandler: ((GKTurnBasedMatch!,
@@ -102,11 +99,10 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         
         var gamecontrol: GKTurnBasedMatchmakerViewController = GKTurnBasedMatchmakerViewController(matchRequest: request)
         
-        
-        
+
         gamecontrol.turnBasedMatchmakerDelegate = self
         self.presentViewController( gamecontrol, animated: true, completion: nil)
-        self.pendingInvite = nil
+        //self.pendingInvite = nil
         request.recipients = self.newGame.playersP
     }
     
@@ -114,7 +110,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     
     func loadMatchDataWithCompletionHandler (_completionHandler: ((NSData!,
         NSError!) -> Void)!) {
-            
+          println("hi")
     }
     func getFriendData(){
         GKLocalPlayer.localPlayer().loadFriendPlayersWithCompletionHandler { (friends, error) -> Void in
@@ -164,17 +160,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     }
 
     
-    // The player state changed (eg. connected or disconnected)
-    func match(match: GKMatch!, player: GKPlayer!, didChangeConnectionState state: GKPlayerConnectionState) {
-        if state == GKPlayerConnectionState.StateDisconnected {
-            // The player has disconnected; update the game's UI
-            println("player disconnected")
-        }
-        else {
-            println("player connected")
-        }
-    }
-    
+
     func match(match: GKMatch!, didFailWithError error: NSError!) {
         
     }

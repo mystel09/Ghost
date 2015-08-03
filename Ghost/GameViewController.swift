@@ -31,16 +31,16 @@ class GameViewController: UIViewController  {
         alert.addTextFieldWithConfigurationHandler(configurationTextField)
         alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
             
-            var sizeOfWord = self.currentGame?.currentWord.count
+            var sizeOfWord = self.currentGame?.currentWord.count //current size of game word
             if sizeOfWord > count(self.tField!.text) {
                 self.addToScore() // too small to even compare
                 return
             }
-            var subWord = self.tField!.text.substringToIndex(advance(self.tField!.text.startIndex, sizeOfWord!))
-            var gameWord = "".join(self.currentGame!.currentWord)
+            var subWord = self.tField!.text.substringToIndex(advance(self.tField!.text.startIndex, sizeOfWord!)) //word in guess
+            var gameWord = "".join(self.currentGame!.currentWord) //word in current game
             
             //check with dictionary
-            if self.challenge(self.tField!.text) && subWord == gameWord.lowercaseString && count(gameWord) > self.currentGame?.minWordSize { //if word exists then current player loses round
+            if self.challenge(self.tField!.text) && subWord == gameWord.lowercaseString { //if word exists then current player loses round
                //if word supplied is made of the games word
                     self.currentGame?.goToNextPlayer()
                     self.addToScore() // adds to player before the challenger

@@ -10,7 +10,7 @@ import UIKit
 import GameKit
 
 
-class PlayerP: GKLocalPlayer {
+class PlayerP: GKLocalPlayer, NSCoding {
      var name:String
      var color: UIColor
      var points: Int
@@ -25,4 +25,23 @@ class PlayerP: GKLocalPlayer {
         extra = playerID
         super.init()
     }
+    // MARK: NSCoding
+    
+    required init(coder decoder: NSCoder) {
+        self.name = decoder.decodeObjectForKey("name") as! String!
+        self.color = decoder.decodeObjectForKey("color") as! UIColor!
+        self.points = decoder.decodeIntegerForKey("points")
+        self.extra = decoder.decodeObjectForKey("extra") as! String!
+        super.init()
+
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        coder.encodeObject(self.name, forKey: "name")
+        coder.encodeObject(self.color, forKey: "color")
+        coder.encodeInt(Int32(self.points), forKey: "points")
+        coder.encodeObject(self.extra, forKey: "extra")
+      
+    }
+
   }
