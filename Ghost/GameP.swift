@@ -16,7 +16,7 @@ class GameP: NSObject, NSCoding{
     var CurrentWord: [String] = []
     var Color: [UIColor] = []
     var GKTurnTimeoutNone: NSTimeInterval = 0.0
-    var firstTurn: Bool = true
+    var gameStarted: Bool = false
     var lastPlayer: PlayerP?
 
     // MARK: NSCoding
@@ -28,7 +28,7 @@ class GameP: NSObject, NSCoding{
         //self.IndexOfCurrentPlayer = decoder.decodeIntegerForKey("IndexOfCurrentPlayer")
         self.CurrentWord = decoder.decodeObjectForKey("CurrentWord") as! [String]!
         self.Color = decoder.decodeObjectForKey("Color") as! [UIColor]!
-        self.firstTurn = decoder.decodeBoolForKey("firstTurn")
+        self.gameStarted = decoder.decodeBoolForKey("gameStarted")
         self.lastPlayer = decoder.decodeObjectForKey("lastPlayer") as! PlayerP!
     }
     
@@ -38,7 +38,7 @@ class GameP: NSObject, NSCoding{
         //coder.encodeInt(Int32(self.IndexOfCurrentPlayer), forKey: "IndexOfCurrentPlayer")
         coder.encodeObject(self.CurrentWord, forKey: "CurrentWord")
         coder.encodeObject(self.Color, forKey: "Color")
-        coder.encodeBool(self.firstTurn, forKey: "firstTurn")
+        coder.encodeBool(self.gameStarted, forKey: "gameStarted")
         coder.encodeObject(self.lastPlayer,forKey: "lastPlayer")
     }
 }

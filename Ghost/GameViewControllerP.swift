@@ -37,8 +37,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         
         super.view.backgroundColor = UIColor(red: 200, green: 175, blue: 23, alpha: 0.4)
         self.automaticallyAdjustsScrollViewInsets = false
-        println(currentGame?.playersP)
-        println("match \(currentMatch?.participants.description)")
+
     }
     // MARK: Internal functions
     
@@ -120,7 +119,17 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         override func viewDidAppear(animated: Bool) {
             super.viewDidAppear(animated)
             //stopwatch.text = "\(getCurrentPlayer()!.name)'s Turn" //get players turn
+           currentMatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
+                 self.currentGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP //current game variables being updated
+               // var pgame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP
+                //println(pgame)
+                //println("game loading match of\(navVC!.currentMatch?.participants)")
+                //                    println("game of\(navVC!.currentGame?.playersP)")
+                //                    println("game of\(navVC!.currentGame?.CurrentWord)")
+            })
+            println("current word is: \(currentGame?.CurrentWord)")
             startTurn()
+            
                // })
         }
         func startStopwatch() {
@@ -185,9 +194,16 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                 self.wordCollectionView.reloadData()
                 self.scoreCollectionView.reloadData()
                 currentGame?.lastPlayer = getCurrentPlayer()
+                if (currentPlayerIndex == currentGame!.playersP.count){
+                    stopwatch.text = "\(currentGame!.playersP[0].name)'s Turn" //get players turn
+                }
+                else {
+                    stopwatch.text = "\(currentGame!.playersP[currentPlayerIndex].name)'s Turn" //get players turn
+                }
+
                var gameData = NSKeyedArchiver.archivedDataWithRootObject(currentGame!)
             endTurn(currentMatch!, gameData: gameData, nextParticipants: SortArray(currentMatch?.participants as! [GKTurnBasedParticipant])) //ends the turn and goes to next player
-                stopwatch.text = "\(currentMatch?.participants[0].displayName)'s Turn" //get players turn
+                
                 
             }
            else{
@@ -210,12 +226,10 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
     }
     func getCurrentPlayer() -> PlayerP? {
         var currentP = currentMatch?.currentParticipant.player.playerID
-        println(currentP)
         var tracker: Int = 0
         for player in currentGame!.playersP {
             tracker++
             if player.playerID == currentP {
-                println(player.playerID)
                 self.currentPlayerIndex = tracker
                 return player
             }
@@ -376,7 +390,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         //MARK: - Game center methods
         func player(player: GKPlayer!, receivedTurnEventForMatch match: GKTurnBasedMatch!, didBecomeActive: Bool) {
             // match has updated, we could be current player
-            println(self.getCurrentPlayer()?.name)
             if player.playerID == GKLocalPlayer.localPlayer().playerID {
             //reload new data
                 startTurn()
@@ -422,7 +435,8 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         func didTapOnTile(tile: TileViewCell) {
            // println(tile.letterLabel.text)
         if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-            println(getCurrentPlayer()!.name)
+            println(currentGame?.lastPlayer?.name)
+            if currentGame?.lastPlayer != getCurrentPlayer(){
 
             self.currentGame?.CurrentWord.append(tile.letterLabel.text!) // appends letter to current word
             self.currentGame?.Color.append(getCurrentPlayer()!.color)
@@ -433,22 +447,25 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             if self.challenge(gameWord) && count(gameWord) >= currentGame!.MinWordSize {
                 stopStopwatch()
                 addToScore() //this auto adds when someone spells a word, too easy
-            }
+                }
+            
             stopStopwatch()
             // write on top whos turn it is
             currentGame?.lastPlayer = getCurrentPlayer()
+            var gameData = NSKeyedArchiver.archivedDataWithRootObject(currentGame!)
+            endTurn(currentMatch!, gameData: gameData, nextParticipants: SortArray(currentMatch!.participants as! [GKTurnBasedParticipant])) //ends the turn and goes to next player
             if (currentPlayerIndex == currentGame!.playersP.count){
                 stopwatch.text = "\(currentGame!.playersP[0].name)'s Turn" //get players turn
             }
             else {
                 stopwatch.text = "\(currentGame!.playersP[currentPlayerIndex].name)'s Turn" //get players turn
             }
-            if (currentGame!.firstTurn){
-                currentGame?.firstTurn = false
+            
+            
+            println("turn ended successfully")
+            println("current word should be: \(currentGame?.CurrentWord)")
             }
-            var gameData = NSKeyedArchiver.archivedDataWithRootObject(currentGame!)
-            endTurn(currentMatch!, gameData: gameData, nextParticipants: SortArray(currentMatch!.participants as! [GKTurnBasedParticipant])) //ends the turn and goes to next player
-            }
+        }
         else {
             println("not your turn")
             }

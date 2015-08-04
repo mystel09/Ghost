@@ -17,8 +17,6 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     var Globalmatch: GKTurnBasedMatch?
 
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
-    var matchStarted = false
-    var pendingInvite: GKInvite?
     
     struct Constants {
         static let maxNumberOfPlayers = 4
@@ -63,16 +61,16 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                 }
             }
         }
-        if segue.identifier == Constants.ContinueGameSegue {
-            if let navVC = segue.destinationViewController as? GameViewControllerP {
+       else if segue.identifier == Constants.ContinueGameSegue {
+             let navVC = segue.destinationViewController as? GameViewControllerP
                 
-                navVC.currentMatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
-                     navVC.currentGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP //current game variables being updated
-                })
-                
-            }
+            navVC?.currentGame = self.newGame
+            println("game loading in match of\(self.Globalmatch?.participants)")
+            navVC!.currentMatch = self.Globalmatch
+
         }
     }
+    
     
     func showMessage(title: String, message: String) {
         let alertView = UIAlertView()
@@ -83,29 +81,26 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     }
    
     
-    func findMatchForRequest(_request: GKMatchRequest!,
-        withCompletionHandler completionHandler: ((GKTurnBasedMatch!,
-        NSError!) -> Void)!){
-            self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self) //start game
-    }
+//    func findMatchForRequest(_request: GKMatchRequest!,
+//        withCompletionHandler completionHandler: ((GKTurnBasedMatch!,
+//        NSError!) -> Void)!){
+//            self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self) //start game
+//    }
     func acceptInviteWithCompletionHandler(completionHandler: ((GKTurnBasedMatch!,
         NSError!) -> Void)!){
-            println("handler")
+            println("accepting invitation")
+            newGame.gameStarted = true
+            self.dismissViewControllerAnimated(true) {
             self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self) //start game
-
-            //newGame.playersP.append(PlayerP(GKLocalPlayer.localPlayer() as! PlayerP)
+            }
             
     }
     
-    func declineInviteWithCompletionHandler(completionHandler: ((NSError!) -> Void)!){
-        
-    }
     func getPlayers() {
         var request: GKMatchRequest = GKMatchRequest()
         request.minPlayers = Constants.minNumberOfPlayers
         request.maxPlayers = Constants.maxNumberOfPlayers
         request.defaultNumberOfPlayers = 2
-        //request.playersToInvite = pla
         
         var gamecontrol: GKTurnBasedMatchmakerViewController = GKTurnBasedMatchmakerViewController(matchRequest: request)
         
@@ -117,11 +112,6 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     }
     
        // MARK: - functions for game
-    
-    func loadMatchDataWithCompletionHandler (_completionHandler: ((NSData!,
-        NSError!) -> Void)!) {
-          println("hi")
-    }
     func getFriendData(){
         GKLocalPlayer.localPlayer().loadFriendPlayersWithCompletionHandler { (friends, error) -> Void in
             // log out info about friends
@@ -168,23 +158,6 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
-
-    
-
-    func match(match: GKMatch!, didFailWithError error: NSError!) {
-        
-    }
-    
-    func match(match: GKMatch!, shouldReinviteDisconnectedPlayer player: GKPlayer!) -> Bool {
-        return true
-    }
-    
-    func match(match: GKMatch!, shouldReinvitePlayer playerID: String!) -> Bool {
-        
-        return true
-    }
-    
-    
 }
 extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate {
     
@@ -215,9 +188,11 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
         //did find match
         println("didFindMatch")
         println(match.participants.count)
+        
         Globalmatch = match
         
-        if newGame.playersP.count > 0 {
+        if newGame.gameStarted {
+//        if newGame.playersP.count > 0 {
                 self.dismissViewControllerAnimated(true) {
                 self.performSegueWithIdentifier(Constants.ContinueGameSegue, sender: self)
             }
@@ -225,7 +200,6 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
         else {
         //go to game
         //if match.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-        
           self.acceptInviteWithCompletionHandler { (match, error) -> Void in
             }
         }
@@ -233,14 +207,11 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
     func lookupPlayers() {
         println("Looking up \(Globalmatch?.participants.count) players...")
     }
-    func player(_player: GKPlayer!,
-        didAcceptInvite invite: GKInvite!){
-            println("accepted invite!")
-            //self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self)
-    }
-    func player(player: GKPlayer!, didRequestMatchWithRecipients recipientPlayers: [AnyObject]!){
-        
-    }
+//    func player(_player: GKPlayer!,
+//        didAcceptInvite invite: GKInvite!){
+//            println("accepted invite!")
+//            //self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self)
+//    }
     
 }
     

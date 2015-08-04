@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460330194.802853"
+            timestampString = "460403429.03296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
-            landmarkName = "didTapOnTile(_:)"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "loadFriendPlayersWithCompletionHandler(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,43 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ghost/ChooseAGameViewController.swift"
-            timestampString = "460327872.250332"
+            timestampString = "460404631.182133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "findMatchForRequest(_:withCompletionHandler:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/ChooseAGameViewController.swift"
-            timestampString = "460327872.250332"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "acceptInviteWithCompletionHandler(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/ChooseAGameViewController.swift"
-            timestampString = "460329110.94923"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "turnBasedMatchmakerViewController(_:didFindMatch:)"
             landmarkType = "5">
             <Locations>
@@ -122,109 +90,29 @@
                   moduleName = "Ghost"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/ChooseAGameViewController.swift"
-                  timestampString = "460330748.53309"
+                  timestampString = "460404828.424348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "229"
-                  endingLineNumber = "229"
-                  offsetFromSymbolStart = "1200">
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "757">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Ghost.ChooseAGameViewController.(turnBasedMatchmakerViewController (Ghost.ChooseAGameViewController) -&gt; (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.GKTurnBasedMatchmakerViewController&gt;, didFindMatch : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.GKTurnBasedMatch&gt;) -&gt; ()).(closure #2)"
+                  symbolName = "Ghost.ChooseAGameViewController.(turnBasedMatchmakerViewController (Ghost.ChooseAGameViewController) -&gt; (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.GKTurnBasedMatchmakerViewController&gt;, didFindMatch : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.GKTurnBasedMatch&gt;) -&gt; ()).(closure #1)"
                   moduleName = "Ghost"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/ChooseAGameViewController.swift"
-                  timestampString = "460330748.533224"
+                  timestampString = "460404828.424546"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "230"
-                  endingLineNumber = "230"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "196"
+                  endingLineNumber = "196"
+                  offsetFromSymbolStart = "15">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/ChooseAGameViewController.swift"
-            timestampString = "460327862.359685"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/ChooseAGameViewController.swift"
-            timestampString = "460329110.94923"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "player(_:didAcceptInvite:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/ChooseAGameViewController.swift"
-            timestampString = "460329000.870368"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "turnBasedMatchmakerViewController(_:didFindMatch:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460330194.802853"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "tick(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460330189.18769"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
