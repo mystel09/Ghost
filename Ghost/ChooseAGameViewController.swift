@@ -17,6 +17,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     var Globalmatch: GKTurnBasedMatch?
 
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
+    var updatedGame: GameP?
     
     struct Constants {
         static let maxNumberOfPlayers = 4
@@ -62,10 +63,11 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
             }
         }
        else if segue.identifier == Constants.ContinueGameSegue {
-             let navVC = segue.destinationViewController as? GameViewControllerP
-                
-            navVC?.currentGame = self.newGame
-            println("game loading in match of\(self.Globalmatch?.participants)")
+            println(updatedGame?.playersP)
+            let navVC = segue.destinationViewController as? GameViewControllerP
+            
+            navVC?.currentGame = self.updatedGame
+            println("game loading in match of \(self.Globalmatch?.participants.count)")
             navVC!.currentMatch = self.Globalmatch
 
         }
@@ -187,23 +189,33 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
     func turnBasedMatchmakerViewController(viewController: GKTurnBasedMatchmakerViewController!, didFindMatch match: GKTurnBasedMatch!) {
         //did find match
         println("didFindMatch")
-        println(match.participants.count)
         
         Globalmatch = match
-        
-        if newGame.gameStarted {
-//        if newGame.playersP.count > 0 {
+        Globalmatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
+            
+            
+            
+            if gameData.length > 0 { //continue game setup
+            self.updatedGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP
+            println(self.updatedGame?.CurrentWord)
+            //if (self.updatedGame?.gameStarted == true)  {
+                
                 self.dismissViewControllerAnimated(true) {
-                self.performSegueWithIdentifier(Constants.ContinueGameSegue, sender: self)
+                    self.performSegueWithIdentifier(Constants.ContinueGameSegue, sender: self)
+                }
             }
-        }
-        else {
-        //go to game
-        //if match.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-          self.acceptInviteWithCompletionHandler { (match, error) -> Void in
+            else {
+                //go to game
+                //if match.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
+                self.acceptInviteWithCompletionHandler { (match, error) -> Void in
+                }
             }
-        }
-    }
+
+        }) //updating game variables
+        
+        
+        //if match.matchData.length != 0  {
+           }
     func lookupPlayers() {
         println("Looking up \(Globalmatch?.participants.count) players...")
     }
