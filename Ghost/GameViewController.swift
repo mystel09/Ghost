@@ -246,7 +246,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
         
         else {
-            return CGSize(width: tileWidth*2, height: tileWidth/2)
+            return CGSize(width: tileWidth*3, height: tileWidth/2)
             }
     }
     

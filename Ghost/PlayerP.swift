@@ -14,7 +14,9 @@ class PlayerP: GKLocalPlayer, NSCoding {
      var name:String
      var color: UIColor
      var points: Int
-    var extra: String
+     var extra: String
+     var wasChallenged: Bool = false
+
     override var playerID: String { return extra }
     
     init(name:String, playerColor: UIColor, playerID: String) {
@@ -32,6 +34,7 @@ class PlayerP: GKLocalPlayer, NSCoding {
         self.color = decoder.decodeObjectForKey("color") as! UIColor!
         self.points = decoder.decodeIntegerForKey("points")
         self.extra = decoder.decodeObjectForKey("extra") as! String!
+        self.wasChallenged = decoder.decodeBoolForKey("wasChallenged")
         super.init()
 
     }
@@ -41,7 +44,7 @@ class PlayerP: GKLocalPlayer, NSCoding {
         coder.encodeObject(self.color, forKey: "color")
         coder.encodeInt(Int32(self.points), forKey: "points")
         coder.encodeObject(self.extra, forKey: "extra")
-      
+        coder.encodeBool(self.wasChallenged, forKey: "wasChallenged")
     }
 
   }

@@ -51,7 +51,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                 if Globalmatch?.participants.count != newGame.playersP.count{
                 for player in Globalmatch!.participants! as! [GKTurnBasedParticipant] {
                     
-                    newGame.playersP.append(PlayerP(name: player.player.displayName!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
+                    newGame.playersP.append(PlayerP(name: player.player.alias!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
                 }
                 navVC.currentGame = newGame
                 var gameData = NSKeyedArchiver.archivedDataWithRootObject(newGame)
@@ -83,15 +83,10 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     }
    
     
-//    func findMatchForRequest(_request: GKMatchRequest!,
-//        withCompletionHandler completionHandler: ((GKTurnBasedMatch!,
-//        NSError!) -> Void)!){
-//            self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self) //start game
-//    }
     func acceptInviteWithCompletionHandler(completionHandler: ((GKTurnBasedMatch!,
         NSError!) -> Void)!){
             println("accepting invitation")
-            newGame.gameStarted = true
+            newGame.gameStarted = false
             self.dismissViewControllerAnimated(true) {
             self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self) //start game
             }
@@ -212,18 +207,7 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
             }
 
         }) //updating game variables
-        
-        
-        //if match.matchData.length != 0  {
-           }
-    func lookupPlayers() {
-        println("Looking up \(Globalmatch?.participants.count) players...")
     }
-//    func player(_player: GKPlayer!,
-//        didAcceptInvite invite: GKInvite!){
-//            println("accepted invite!")
-//            //self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self)
-//    }
     
 }
     
