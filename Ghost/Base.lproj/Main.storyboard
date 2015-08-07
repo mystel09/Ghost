@@ -411,6 +411,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="1ra-H0-ApV">
+                        <barButtonItem key="leftBarButtonItem" title="Exit Game" id="y0J-a3-nTQ">
+                            <connections>
+                                <action selector="didExit:" destination="u81-El-dj2" id="w7g-Ih-YNe"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Challenge!" id="DrN-Xd-tlu">
                             <connections>
                                 <action selector="didChallenge:" destination="u81-El-dj2" id="YsW-Zi-aTg"/>
@@ -424,11 +429,12 @@
                         <outlet property="scoreCollectionView" destination="hCc-lO-aQ4" id="Syz-Bm-FeB"/>
                         <outlet property="stopwatch" destination="i8E-PL-XvM" id="fal-1u-rOW"/>
                         <outlet property="wordCollectionView" destination="KkV-YA-6P0" id="UBx-Vy-L5z"/>
+                        <segue destination="agr-Li-2DA" kind="show" identifier="RestartGame" id="djX-Eo-qjY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vk7-pM-u1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3970" y="980"/>
+            <point key="canvasLocation" x="3954" y="944"/>
         </scene>
         <!--Choose a Game Controller-->
         <scene sceneID="9Hc-1e-pFy">
@@ -967,6 +973,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="X9B-RU-qKy">
+                        <barButtonItem key="leftBarButtonItem" title="Back to Games" id="8hd-Gu-kiK">
+                            <connections>
+                                <action selector="goToGameCenter:" destination="poA-cI-ffp" id="Yw2-gw-UAC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Challenge!" id="RNq-sN-FXk">
                             <connections>
                                 <action selector="didChallenge:" destination="poA-cI-ffp" id="Nt6-YG-oZb"/>
@@ -1010,6 +1021,7 @@
         <image name="Plus" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z2w-qk-VAf"/>
+        <segue reference="djX-Eo-qjY"/>
+        <segue reference="OiI-4j-h9t"/>
     </inferredMetricsTieBreakers>
 </document>

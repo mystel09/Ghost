@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460491291.352444"
+            timestampString = "460592754.551241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447"
-            landmarkName = "didTapOnTile(_:)"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
+            landmarkName = "player(_:receivedTurnEventForMatch:didBecomeActive:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460491291.352444"
+            timestampString = "460592754.551241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "SortArray(_:)"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
+            landmarkName = "player(_:matchEnded:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,27 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460564985.745966"
+            timestampString = "460592754.551241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "didChallenge(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460565143.11854"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
             landmarkName = "player(_:receivedTurnEventForMatch:didBecomeActive:)"
             landmarkType = "5">
          </BreakpointContent>

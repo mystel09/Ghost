@@ -10,7 +10,7 @@ import UIKit
 import GameKit
 
 
-class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegate {
+class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegate, gameViewDelegate, GKLocalPlayerListener {
     
     var colors: [UIColor] = [Colors.Red,Colors.Purple, Colors.Yellow, Colors.Pink,Colors.Orange,Colors.Green,Colors.Brown,Colors.Blue]
     var newGame: GameP = GameP()
@@ -37,7 +37,14 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         super.viewDidLoad()
 
     }
-    
+    func handleExit() {
+        self.navigationController?.popViewControllerAnimated(true)
+        getPlayers()
+        //Globalmatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
+            //
+        //})
+        
+    }
     
     @IBAction func StartGame(sender: AnyObject) {
         //check if at least one other player
@@ -53,6 +60,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                     
                     newGame.playersP.append(PlayerP(name: player.player.alias!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
                 }
+                navVC.delegate = self
                 navVC.currentGame = newGame
                 var gameData = NSKeyedArchiver.archivedDataWithRootObject(newGame)
                 Globalmatch?.saveCurrentTurnWithMatchData(gameData, completionHandler: { (error) -> Void in
@@ -65,7 +73,8 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
        else if segue.identifier == Constants.ContinueGameSegue {
             println(updatedGame?.playersP)
             let navVC = segue.destinationViewController as? GameViewControllerP
-            
+            navVC!.delegate = self
+
             navVC?.currentGame = self.updatedGame
             println("game loading in match of \(self.Globalmatch?.participants.count)")
             navVC!.currentMatch = self.Globalmatch
@@ -96,7 +105,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     func getPlayers() {
         var request: GKMatchRequest = GKMatchRequest()
         request.minPlayers = Constants.minNumberOfPlayers
-        request.maxPlayers = Constants.maxNumberOfPlayers
+        request.maxPlayers = Constants.minNumberOfPlayers
         request.defaultNumberOfPlayers = 2
         
         var gamecontrol: GKTurnBasedMatchmakerViewController = GKTurnBasedMatchmakerViewController(matchRequest: request)
@@ -132,7 +141,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                 } else if (localPlayer.authenticated) {
                     // 2 Player is already euthenticated & logged in, load game center
                     self.gcEnabled = true
-                    
+                    localPlayer.registerListener(self)
                     // Get the default leaderboard ID
                     //                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String!, error: NSError!) -> Void in
                     //                    if error != nil {
@@ -144,6 +153,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                 else if let theError = error {
                     // 3 Game center is not enabled on the users device
                     self.gcEnabled = false
+                    localPlayer.unregisterListener(self)
                     println("Local player could not be authenticated, disabling game center")
                     println(theError)
                     
@@ -184,30 +194,32 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
     func turnBasedMatchmakerViewController(viewController: GKTurnBasedMatchmakerViewController!, didFindMatch match: GKTurnBasedMatch!) {
         //did find match
         println("didFindMatch")
-        
         Globalmatch = match
         Globalmatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
-            
-            
-            
+
             if gameData.length > 0 { //continue game setup
             self.updatedGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP
             println(self.updatedGame?.CurrentWord)
             //if (self.updatedGame?.gameStarted == true)  {
-                
+                if self.Globalmatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
+
                 self.dismissViewControllerAnimated(true) {
                     self.performSegueWithIdentifier(Constants.ContinueGameSegue, sender: self)
                 }
             }
+        }
             else {
                 //go to game
-                //if match.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
+                if self.Globalmatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
                 self.acceptInviteWithCompletionHandler { (match, error) -> Void in
+                    }
                 }
             }
-
+        
         }) //updating game variables
+        
     }
+    
     
 }
     

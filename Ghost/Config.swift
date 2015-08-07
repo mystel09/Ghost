@@ -17,7 +17,7 @@ let FontHUD = UIFont(name:"comic andy", size: 62.0)!
 let FontHUDBig = UIFont(name:"comic andy", size:120.0)!
 let SoundWrong = "wrong.m4a"
 let AudioEffectFiles = [SoundWrong]
-let timeToSolve : Int = 8
+let timeToSolve : Int = 3 // idk why
 
 
 //Random number generator

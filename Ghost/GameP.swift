@@ -16,7 +16,7 @@ class GameP: NSObject, NSCoding{
     var CurrentWord: [String] = []
     var Color: [UIColor] = []
     var GKTurnTimeoutNone: NSTimeInterval = 0.0
-    var gameStarted: Bool = false
+    var gameStarted: Bool = false //player challenged won challenge
     var lastPlayer: PlayerP?
 
     // MARK: NSCoding

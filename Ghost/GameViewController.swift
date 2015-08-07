@@ -23,6 +23,9 @@ class GameViewController: UIViewController  {
     var currentGame: Game?
     @IBOutlet weak var challengeButton: UIBarButtonItem!
     
+    @IBAction func didExit(sender: AnyObject) {
+        self.performSegueWithIdentifier("RestartGame", sender: self)
+    }
      @IBAction func didChallenge(sender: UIBarButtonItem) {
         userChallenged = true
         stopStopwatch()
@@ -95,7 +98,7 @@ class GameViewController: UIViewController  {
     }
     func startStopwatch() {
         //initialize the timer HUD
-        secondsLeft = timeToSolve
+        secondsLeft = 3
         stopwatch.text = "\(currentGame!.getCurrentPlayer().name) Start!" //get players turn
         
         //schedule a new timer
@@ -145,11 +148,27 @@ class GameViewController: UIViewController  {
         }
         else{
             self.scoreCollectionView.reloadData()
-            //stopwatch.text = "GAME OVER"
-            showMessage("GAME OVER", message: "\(currentGame!.getCurrentPlayer().name) lost this game")
-            self.performSegueWithIdentifier("RestartGame", sender: self)
+            stopwatch.text = "GAME OVER"
+            var alertView: UIAlertView = UIAlertView(title: "GAME OVER", message: "\(currentGame!.getCurrentPlayer().name) lost this game", delegate: self, cancelButtonTitle: "OK")
+            alertView.show()
         }
     }
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int){
+        if buttonIndex == 0 {
+            self.performSegueWithIdentifier("RestartGame", sender: self) // help segue look better
+            println("restrt")
+        }
+
+    }
+    func showMessage(title: String, message: String) {
+        let alertView = UIAlertView()
+        alertView.title = title
+        alertView.message = message
+        alertView.textFieldAtIndex(0)
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
+    }
+
 }
 
 extension GameViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -284,14 +303,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
 //        println("This line doesn't wait for the alert to be responded to.")
 //    }
 
- func showMessage(title: String, message: String) {
-        let alertView = UIAlertView()
-        alertView.title = title
-        alertView.message = message
-        alertView.textFieldAtIndex(0)
-        alertView.addButtonWithTitle("OK")
-        alertView.show()
-    }
+
 }// end of class
 
 extension GameViewController: TileViewCellDelegate {
