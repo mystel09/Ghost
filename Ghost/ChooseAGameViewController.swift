@@ -12,7 +12,10 @@ import GameKit
 
 class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegate, gameViewDelegate, GKLocalPlayerListener {
     
-    var colors: [UIColor] = [Colors.Red,Colors.Purple, Colors.Yellow, Colors.Pink,Colors.Orange,Colors.Green,Colors.Brown,Colors.Blue]
+    var colors: [UIColor] = [ Colors.Pink,Colors.Green,Colors.Purple,Colors.Blue]
+
+    
+    //new colors
     var newGame: GameP = GameP()
     var Globalmatch: GKTurnBasedMatch?
 
@@ -40,10 +43,6 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     func handleExit() {
         self.navigationController?.popViewControllerAnimated(true)
         getPlayers()
-        //Globalmatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
-            //
-        //})
-        
     }
     
     @IBAction func StartGame(sender: AnyObject) {
@@ -95,7 +94,6 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     func acceptInviteWithCompletionHandler(completionHandler: ((GKTurnBasedMatch!,
         NSError!) -> Void)!){
             println("accepting invitation")
-            newGame.gameStarted = false
             self.dismissViewControllerAnimated(true) {
             self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self) //start game
             }
@@ -114,7 +112,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         gamecontrol.turnBasedMatchmakerDelegate = self
         self.presentViewController( gamecontrol, animated: true, completion: nil)
         //self.pendingInvite = nil
-        request.recipients = self.newGame.playersP
+        //request.recipients = self.newGame.playersP
     }
     
        // MARK: - functions for game
@@ -201,20 +199,18 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
             self.updatedGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP
             println(self.updatedGame?.CurrentWord)
             //if (self.updatedGame?.gameStarted == true)  {
-                if self.Globalmatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-
+                
                 self.dismissViewControllerAnimated(true) {
                     self.performSegueWithIdentifier(Constants.ContinueGameSegue, sender: self)
                 }
             }
-        }
             else {
                 //go to game
-                if self.Globalmatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
+                
                 self.acceptInviteWithCompletionHandler { (match, error) -> Void in
                     }
                 }
-            }
+            
         
         }) //updating game variables
         

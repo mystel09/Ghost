@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateGameViewController: UITableViewController, UITextFieldDelegate {
-    var colors: [UIColor] = [Colors.Red,Colors.Purple, Colors.Yellow, Colors.Pink,Colors.Orange,Colors.Green,Colors.Brown,Colors.Blue]
+    var colors: [UIColor] = [ Colors.Pink,Colors.Green,Colors.Purple,Colors.Blue]
     var newGame: Game = Game()
     
     struct Constants {
@@ -26,13 +26,22 @@ class CreateGameViewController: UITableViewController, UITextFieldDelegate {
         static let WordSizeTag = 100
     }
 
-    
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //TODO:
         self.newGame.players.append(Player(name: "", playerColor: self.colors.removeLast()))
         self.newGame.players.append(Player(name: "", playerColor: self.colors.removeLast()))
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "greybrick.gif")!) //background color
+        self.view.backgroundColor = UIColorFromRGB(0x848484)
+// sets background color
     }
     
     @IBAction func AddPlayer(sender: AnyObject) {

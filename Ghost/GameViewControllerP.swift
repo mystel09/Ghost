@@ -33,7 +33,10 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
     }
     var delegate: gameViewDelegate?
 
-        var colors: [UIColor] = [Colors.Red,Colors.Purple, Colors.Yellow, Colors.Pink,Colors.Orange,Colors.Green,Colors.Brown,Colors.Blue]
+    var colors: [UIColor] = [ Colors.Pink,Colors.Green,Colors.Purple,Colors.Blue]
+
+    
+    //new color wheel
         var currentPlayerIndex = 0
     
     override func viewDidLoad() {
@@ -58,15 +61,14 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         
         @IBAction func didChallenge(sender: UIBarButtonItem) {
             if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-                if currentGame?.lastPlayer != getCurrentPlayer(){
+                //if currentGame?.lastPlayer != getCurrentPlayer(){
             stopStopwatch()
           //challenges the player before him
             showMessage("Attention Players:", message:"You CHALLENGED \(currentGame!.lastPlayer!.name)")
 
             currentGame?.lastPlayer?.wasChallenged = true //setting the challenge to true
-            stopwatch.text = "\(currentGame!.lastPlayer!.name)'s Turn"
             cleanupTurn()
-            }
+            //}
         }
     }
    
@@ -98,7 +100,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
 //                    self.cleanupTurn()
 //                }
                 self.currentGame?.gameStarted = true //player challenged won challenge
-                self.stopwatch.text = "\(self.currentGame!.lastPlayer!.name)'s Turn" //get players turn
                 self.cleanupTurn()
             }
             else {//if NOT then current player loses round
@@ -140,10 +141,9 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
     
         override func viewDidAppear(animated: Bool) {
             super.viewDidAppear(animated)
-            //stopwatch.text = "\(getCurrentPlayer()!.name)'s Turn" //get players turn
+            stopwatch.text = "\(currentMatch?.currentParticipant.player.alias)'s Turn" //get players turn
             //println("current word is: \(currentGame?.CurrentWord)")
-        if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-            }
+            startTurn()
     }
         func startStopwatch() {
             //initialize the timer HUD
@@ -188,33 +188,34 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             return false
  
         }
-   
     func startTurn() {
-        
-        scoreCollectionView.reloadData()
-        wordCollectionView.reloadData()
-        keyboardCollectionView.reloadData()
-        startStopwatch()
+        if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
+            //reload new data
+            if getCurrentPlayer()!.wasChallenged {
+                challenge()
+            }
+            else if currentGame?.gameStarted == true { // he lost challenge
+                currentGame?.gameStarted = false //reset value
+                addToScore()
+            }
+            else {
+                scoreCollectionView.reloadData()
+                wordCollectionView.reloadData()
+                keyboardCollectionView.reloadData()
+                startStopwatch()
+            }
+        }
     }
     
         func addToScore(){
             getCurrentPlayer()!.points++
-            println(getCurrentPlayer()!.points)
             if !checkForLossforGame() { //if current player lost this round but NOT the whole game
                   showMessage("Attention Players", message: "\(currentMatch!.currentParticipant.player.alias) has lost this round")
                 currentGame?.CurrentWord = []
                 self.wordCollectionView.reloadData()
                 self.scoreCollectionView.reloadData()
                 println("current player index \(currentPlayerIndex)")
-                if (currentPlayerIndex+1 == currentGame!.playersP.count){
-                    stopwatch.text = "\(currentGame!.playersP[0].name)'s Turn" //get players turn
-                }
-                else {
-                    stopwatch.text = "\(currentGame!.playersP[currentPlayerIndex].name)'s Turn" //get players turn
-                }
                 cleanupTurn()
-                NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(3), target: self, selector: "delegate!.handleExit()", userInfo: nil, repeats: false)
-
             }
            else{
                 self.scoreCollectionView.reloadData()
@@ -404,20 +405,17 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         //MARK: - Game center methods
         func player(player: GKPlayer!, receivedTurnEventForMatch match: GKTurnBasedMatch!, didBecomeActive: Bool) {
             currentMatch = match
-            // match has updated, we could be current player
-            if player.playerID == GKLocalPlayer.localPlayer().playerID {
-            //reload new data
-                if getCurrentPlayer()!.wasChallenged {
-                    challenge()
-                }
-                else if currentGame?.gameStarted == true {
-                    currentGame?.gameStarted = false //reset value
-                    addToScore()
-                }
-                else {
-                    startTurn()
-                }
+            if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
 
+            // match has updated, we could be current player
+            
+            currentMatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
+                self.currentGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP
+                self.startTurn()
+                })
+            }
+            else {
+                stopwatch.text = currentMatch?.currentParticipant.player.alias
             }
         }
         func player(player: GKPlayer!, matchEnded match: GKTurnBasedMatch!) {
@@ -456,7 +454,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
     extension GameViewControllerP: TileViewCellDelegate {
         func didTapOnTile(tile: TileViewCell) {
         if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-            if currentGame?.lastPlayer != getCurrentPlayer(){
+            //if currentGame?.lastPlayer?.name != currentMatch?.currentParticipant.player.alias {
                 self.currentGame?.CurrentWord.append(tile.letterLabel.text!) // appends letter to current word
                 self.currentGame?.Color.append(getCurrentPlayer()!.color)
                 self.wordCollectionView.reloadData()
@@ -467,49 +465,29 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                     stopStopwatch()
                     addToScore() //this auto adds when someone spells a word, too easy
                 }
-            
             stopStopwatch()
-            // write on top whos turn it is
             cleanupTurn()
-            if (currentPlayerIndex+1 == currentGame!.playersP.count){
-                stopwatch.text = "\(currentGame!.playersP[0].name)'s Turn" //get players turn
-                //stopwatch.text = "\(currentMatch!.participants[0].alias)'s Turn" //get players turn
-                
-            }
-            else {
-                stopwatch.text = "\(currentGame!.playersP[currentPlayerIndex+1].name)'s Turn" //get players turn
-                //stopwatch.text = "\(currentMatch!.participants[currentPlayerIndex].alias)'s Turn" //get players turn
-
-            }
-            
-            println("turn ended successfully")
-            println("current word should be: \(currentGame?.CurrentWord)")
-                NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(5), target: self, selector: "isMatchActive", userInfo: nil, repeats: false)
-
-            }
+           // }
         
-        else {
-            println("you were last player, or pressed button")
-            }
+//        else {
+//            println("you were last player, or pressed button")
+//            }
         }
         else {
             println("not local player")
             }
 
     }
-        func isMatchActive(timer: NSTimer) {
-            var matchID: String = timer.userInfo
-
+        func isMatchActive() {
             var localPlayer = GKLocalPlayer.localPlayer()
             if localPlayer.playerID == currentMatch?.currentParticipant.player.playerID {
                 self.player(localPlayer, receivedTurnEventForMatch: currentMatch, didBecomeActive: false)
             }
             else {
-                  NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(5), target: self, selector: "isMatchActive:", userInfo: matchID, repeats: false)
+                  NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(5), target: self, selector: "isMatchActive", userInfo: nil, repeats: false)
             }
-
         }
-        func gameCenter() {
+                func gameCenter() {
             delegate!.handleExit()
 
         }
@@ -520,7 +498,17 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
 //            if currentGame?.lastPlayer?.wasChallenged == true { //if the last player was challenged
 //                stopwatch.text =  "\(currentGame!.lastPlayer!.name)'s Turn"
             endTurn(currentMatch!, gameData: gameData, nextParticipants: SortArray(currentMatch!.participants as! [GKTurnBasedParticipant])) //ends the turn and goes to next player
+            
+            stopwatch.text = "\(currentMatch!.currentParticipant.player.alias)'s Turn" //get players turn
+            
+            println("turn ended successfully")
+            println("current word should be: \(currentGame?.CurrentWord)")
+            NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10), target: self, selector: "isMatchActive", userInfo: nil, repeats: false)
+            
+
+
 //            }
+
 //            else {
        
             //endTurn(currentMatch!, gameData: gameData, nextParticipants:currentMatch!.participants as! [GKTurnBasedParticipant]) //ends the turn and goes to next player

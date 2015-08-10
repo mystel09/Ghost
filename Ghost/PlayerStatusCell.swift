@@ -13,8 +13,6 @@ class PlayerStatusCell: UICollectionViewCell{
     @IBOutlet weak var PlayerInfoLabel: UILabel!
     @IBOutlet weak var GhostLabel: UILabel!
     
-    var colors: [UIColor] = [Colors.Red,Colors.Purple, Colors.Yellow, Colors.Pink,Colors.Orange,Colors.Green,Colors.Brown,Colors.Blue]
-
     
     var player: Player? {
         didSet {

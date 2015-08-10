@@ -18,8 +18,6 @@ class PlayerViewCell: UITableViewCell {
             self.colorButton.layer.cornerRadius = 5
         }
     }
-    
-    var colors: [UIColor] = [Colors.Red,Colors.Purple, Colors.Yellow, Colors.Pink,Colors.Orange,Colors.Green,Colors.Brown,Colors.Blue]
 
     var player: Player? {
         didSet {

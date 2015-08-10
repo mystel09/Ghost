@@ -45,6 +45,7 @@
 		46EA27B11B61406F00A4DBBE /* Checked-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EA27AF1B61406F00A4DBBE /* Checked-50.png */; };
 		46EA27B21B61406F00A4DBBE /* Plus-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EA27B01B61406F00A4DBBE /* Plus-50.png */; };
 		46EA27B71B62C61A00A4DBBE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EA27B51B62C4E400A4DBBE /* GameKit.framework */; };
+		46F3DEF01B77E21600F1648C /* GhostIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F3DEEF1B77E21600F1648C /* GhostIcon@2x.png */; };
 		C8F4D02567966244B03952AB /* libPods-Ghost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83402AEEB2C65906BDD3619E /* libPods-Ghost.a */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		46EA27AF1B61406F00A4DBBE /* Checked-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checked-50.png"; sourceTree = "<group>"; };
 		46EA27B01B61406F00A4DBBE /* Plus-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-50.png"; sourceTree = "<group>"; };
 		46EA27B51B62C4E400A4DBBE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		46F3DEEF1B77E21600F1648C /* GhostIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GhostIcon@2x.png"; path = "../../../GhostIcon@2x.png"; sourceTree = "<group>"; };
 		4B3161367677E52022855E8B /* Pods-Ghost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ghost.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ghost/Pods-Ghost.release.xcconfig"; sourceTree = "<group>"; };
 		83402AEEB2C65906BDD3619E /* libPods-Ghost.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ghost.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8881A245114F1F648A05F577 /* Pods-Ghost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ghost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ghost/Pods-Ghost.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				461155D51B6696CA000B3829 /* Enter 2-50.png */,
 				461155D71B6696D0000B3829 /* Menu-50.png */,
 				46EA27B01B61406F00A4DBBE /* Plus-50.png */,
+				46F3DEEF1B77E21600F1648C /* GhostIcon@2x.png */,
 				461155D91B6696D5000B3829 /* Settings-50.png */,
 				461F35F41B4C445600075ED4 /* login */,
 				464929AF1B4315D4003C4661 /* Main.storyboard */,
@@ -390,6 +393,7 @@
 				464929B61B4315D4003C4661 /* LaunchScreen.xib in Resources */,
 				46EA27B21B61406F00A4DBBE /* Plus-50.png in Resources */,
 				461A03461B5454C2005B6B6F /* LexicontextAssets.bundle in Resources */,
+				46F3DEF01B77E21600F1648C /* GhostIcon@2x.png in Resources */,
 				461155D61B6696CA000B3829 /* Enter 2-50.png in Resources */,
 				464929B31B4315D4003C4661 /* Images.xcassets in Resources */,
 				461155DA1B6696D5000B3829 /* Settings-50.png in Resources */,
@@ -605,6 +609,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ghost/Ghost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -624,6 +629,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ghost/Ghost-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

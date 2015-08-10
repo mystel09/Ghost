@@ -27,6 +27,7 @@ class GameViewController: UIViewController  {
         self.performSegueWithIdentifier("RestartGame", sender: self)
     }
      @IBAction func didChallenge(sender: UIBarButtonItem) {
+        if currentGame?.currentWord.count != 0{
         userChallenged = true
         stopStopwatch()
         currentGame?.goToLastPlayer() //challenges the player before him
@@ -54,8 +55,9 @@ class GameViewController: UIViewController  {
             self.addToScore()
             }
         }))
-        self.presentViewController(alert, animated: true, completion: {
-        })
+            self.presentViewController(alert, animated: true, completion: {
+            })
+        }
     }
     func configurationTextField(textField: UITextField!)
     {

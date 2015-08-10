@@ -13,7 +13,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.68000000000000005" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayersHeader" rowHeight="64" id="IsC-TN-gEo">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -26,7 +27,7 @@
                                                 <constraint firstAttribute="width" constant="108" id="WIf-jl-0Mr"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="28"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -67,6 +68,7 @@
                                             </state>
                                         </button>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="JED-7W-pGx" firstAttribute="height" secondItem="DBv-Ky-lwE" secondAttribute="height" id="7bj-5l-rbj"/>
                                         <constraint firstAttribute="centerY" secondItem="DBv-Ky-lwE" secondAttribute="centerY" constant="-1" id="9Ug-qo-8Yq"/>
@@ -93,7 +95,7 @@
                                             <rect key="frame" x="266" y="9" width="69" height="30"/>
                                             <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="15"/>
                                             <state key="normal" title="Add Player">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -116,7 +118,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IET-L8-8yx">
                                             <rect key="frame" x="19" y="0.0" width="145" height="64"/>
                                             <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="28"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -139,12 +141,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum word size:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vk-Xm-39l">
-                                            <rect key="frame" x="8" y="13" width="153.5" height="21"/>
+                                            <rect key="frame" x="8" y="13" width="142.5" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="j0t-2R-j3E"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hKh-XU-AkZ">
@@ -181,7 +183,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Start Game!" id="gx9-9e-mWB">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="KvY-6W-gnZ" kind="presentation" identifier="StartGameSegue" id="exo-Av-lVu"/>
+                                <segue destination="KvY-6W-gnZ" kind="presentation" identifier="StartGameSegue" modalTransitionStyle="partialCurl" id="exo-Av-lVu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -429,7 +431,7 @@
                         <outlet property="scoreCollectionView" destination="hCc-lO-aQ4" id="Syz-Bm-FeB"/>
                         <outlet property="stopwatch" destination="i8E-PL-XvM" id="fal-1u-rOW"/>
                         <outlet property="wordCollectionView" destination="KkV-YA-6P0" id="UBx-Vy-L5z"/>
-                        <segue destination="agr-Li-2DA" kind="show" identifier="RestartGame" id="djX-Eo-qjY"/>
+                        <segue destination="agr-Li-2DA" kind="presentation" identifier="RestartGame" modalTransitionStyle="crossDissolve" id="djX-Eo-qjY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vk7-pM-u1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -451,10 +453,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cln-ay-kBm">
                                 <rect key="frame" x="177" y="187" width="246" height="79"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="246" id="bJC-YD-Kq1"/>
+                                    <constraint firstAttribute="height" constant="79" id="ScY-4f-MGC"/>
+                                    <constraint firstAttribute="width" constant="246" id="zAK-Y5-X7O"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <state key="normal" title="Local Game">
+                                <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="39"/>
+                                <color key="tintColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Play Local">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 </state>
@@ -463,9 +467,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQo-fr-GUI">
-                                <rect key="frame" x="177" y="274" width="246" height="76"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <state key="normal" title="Online Game">
+                                <rect key="frame" x="177" y="310" width="246" height="76"/>
+                                <rect key="contentStretch" x="1.3877787807814457e-17" y="0.0" width="1" height="1"/>
+                                <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="39"/>
+                                <inset key="contentEdgeInsets" minX="2" minY="5" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Play Online">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -473,26 +480,44 @@
                                     <action selector="StartGame:" destination="agr-Li-2DA" eventType="touchUpInside" id="U72-Wm-8yh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evr-f8-y3F">
+                                <rect key="frame" x="177" y="428" width="246" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="c02-dC-pyN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="37"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="-2" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="How to Play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="5TD-Ah-xkL" kind="show" identifier="howTo" id="JqC-EI-M9X"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <color key="backgroundColor" red="0.44313725490196076" green="0.44313725490196076" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="cln-ay-kBm" firstAttribute="height" secondItem="jQo-fr-GUI" secondAttribute="height" constant="3" id="F0A-Zl-bZl"/>
-                            <constraint firstItem="cln-ay-kBm" firstAttribute="leading" secondItem="jQo-fr-GUI" secondAttribute="trailing" constant="-246" id="Ut0-uO-Enb"/>
-                            <constraint firstItem="cln-ay-kBm" firstAttribute="centerX" secondItem="FOt-dD-AM8" secondAttribute="centerX" id="d9p-DY-aD2"/>
-                            <constraint firstItem="cln-ay-kBm" firstAttribute="width" secondItem="jQo-fr-GUI" secondAttribute="width" id="eib-VQ-0Yp"/>
-                            <constraint firstItem="Etr-RT-i8N" firstAttribute="top" secondItem="cln-ay-kBm" secondAttribute="bottom" constant="334" id="iuz-kg-GTo"/>
-                            <constraint firstItem="jQo-fr-GUI" firstAttribute="top" secondItem="cln-ay-kBm" secondAttribute="bottom" constant="8" id="tE8-Js-Wbn"/>
-                            <constraint firstItem="cln-ay-kBm" firstAttribute="top" secondItem="d8u-nC-bVl" secondAttribute="bottom" constant="123" id="yma-13-0Ay"/>
+                            <constraint firstItem="cln-ay-kBm" firstAttribute="trailing" secondItem="evr-f8-y3F" secondAttribute="trailing" id="0T0-rR-QRH"/>
+                            <constraint firstItem="Etr-RT-i8N" firstAttribute="top" secondItem="evr-f8-y3F" secondAttribute="bottom" constant="103" id="JpO-n5-4a4"/>
+                            <constraint firstItem="cln-ay-kBm" firstAttribute="top" secondItem="d8u-nC-bVl" secondAttribute="bottom" constant="123" id="MqW-1t-vrC"/>
+                            <constraint firstItem="jQo-fr-GUI" firstAttribute="top" secondItem="cln-ay-kBm" secondAttribute="bottom" constant="44" id="P8w-8d-Din"/>
+                            <constraint firstItem="cln-ay-kBm" firstAttribute="leading" secondItem="evr-f8-y3F" secondAttribute="leading" id="WJT-3I-xOB"/>
+                            <constraint firstItem="cln-ay-kBm" firstAttribute="trailing" secondItem="jQo-fr-GUI" secondAttribute="trailing" id="Z8M-vC-ghd"/>
+                            <constraint firstItem="evr-f8-y3F" firstAttribute="top" secondItem="jQo-fr-GUI" secondAttribute="bottom" constant="42" id="b8M-f2-QO9"/>
+                            <constraint firstItem="cln-ay-kBm" firstAttribute="leading" secondItem="jQo-fr-GUI" secondAttribute="leading" id="bUa-KW-wm9"/>
+                            <constraint firstItem="cln-ay-kBm" firstAttribute="centerX" secondItem="FOt-dD-AM8" secondAttribute="centerX" id="cQB-Cs-XFF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Choose a Game" id="lzc-9Z-nw6"/>
                     <connections>
-                        <segue destination="poA-cI-ffp" kind="show" identifier="StartOnlineGameSegue" id="OiI-4j-h9t"/>
-                        <segue destination="poA-cI-ffp" kind="show" identifier="ContinueGameSegue" id="z2w-qk-VAf"/>
+                        <segue destination="poA-cI-ffp" kind="presentation" identifier="StartOnlineGameSegue" modalTransitionStyle="partialCurl" id="OiI-4j-h9t"/>
+                        <segue destination="poA-cI-ffp" kind="presentation" identifier="ContinueGameSegue" modalTransitionStyle="partialCurl" id="z2w-qk-VAf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGz-bM-PAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650" y="1000"/>
+            <point key="canvasLocation" x="642" y="958"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zo9-IQ-Ce0">
@@ -510,7 +535,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VeI-rt-9sU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-144" y="980"/>
+            <point key="canvasLocation" x="-212" y="958"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EtL-NB-CbC">
@@ -802,7 +827,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="clock" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbq-Qa-deM">
-                                <rect key="frame" x="300" y="72" width="0.0" height="52"/>
+                                <rect key="frame" x="300" y="28" width="0.0" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="6kG-CL-Hym"/>
                                     <constraint firstAttribute="height" constant="52" id="qNB-EH-29g"/>
@@ -817,7 +842,7 @@
                                 </variation>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bx6-lg-yNC">
-                                <rect key="frame" x="-5" y="132" width="605" height="100"/>
+                                <rect key="frame" x="-5" y="88" width="605" height="144"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eBV-Wl-1Bk">
                                     <size key="itemSize" width="276" height="49"/>
@@ -995,7 +1020,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blq-Pf-oel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="1830"/>
+            <point key="canvasLocation" x="-144" y="1808"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hLh-kD-XIb">
@@ -1013,7 +1038,272 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3QF-b5-K4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="1986"/>
+            <point key="canvasLocation" x="698" y="2114"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iQM-df-TzZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5TD-Ah-xkL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uZN-Od-jqZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sM5-tf-aAo" kind="relationship" relationship="rootViewController" id="4j3-kj-7YT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFn-QS-9Tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="266"/>
+        </scene>
+        <!--Rules of the Game-->
+        <scene sceneID="kws-ON-MOC">
+            <objects>
+                <viewController title="Rules of the Game" id="sM5-tf-aAo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ESn-fL-XZw"/>
+                        <viewControllerLayoutGuide type="bottom" id="KFI-49-Mtz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Ck-Vt-U78">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aei-uw-p6Z">
+                                <rect key="frame" x="-2" y="64" width="602" height="536"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Each player inputs one letter on their turn                 " lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmM-Xx-2ME">
+                                        <rect key="frame" x="18" y="65" width="564" height="68"/>
+                                        <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. You can challenge the player before you if you believe the letter they added cannot spell a word" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA1-Lk-w6v">
+                                        <rect key="frame" x="18" y="174" width="566" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="WMH-ZK-X0Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="WMH-ZK-X0Q"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qaq-9j-p8c">
+                                        <rect key="frame" x="20" y="133" width="564" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="O4g-Q6-Sls"/>
+                                            <constraint firstAttribute="height" constant="41" id="jBH-lN-raF"/>
+                                        </constraints>
+                                        <string key="text">2. The letter must have potential to spell a word  after it is added to the prior letters, but does not spell one itself!                                                           </string>
+                                        <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="O4g-Q6-Sls"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" text="6. If you spell a word equal to the minimum word size then you lose the round automatically" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PT-X2-E5W">
+                                        <rect key="frame" x="18" y="376" width="561" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="8G2-wP-wVU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have Fun!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uen-zV-GSn">
+                                        <rect key="frame" x="251" y="464" width="100" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="DS9-14-QVg"/>
+                                            <constraint firstAttribute="height" constant="26" id="XeW-uU-45O"/>
+                                            <constraint firstAttribute="height" constant="26" id="vkM-hs-x96"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="vkM-hs-x96"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="5. Every round that someone loses, they get a letter added to their score above, and the word resets  " lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B06-8y-wpX">
+                                        <rect key="frame" x="18" y="307" width="513" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="SBR-pa-G3b"/>
+                                            <constraint firstAttribute="height" constant="44" id="fN0-4o-4Kq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                        <color key="textColor" red="0.97228140782828287" green="0.97228140782828287" blue="0.97228140782828287" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="SBR-pa-G3b"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="How to Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6O-eb-8nf">
+                                        <rect key="frame" x="230" y="18" width="143" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="CLx-ix-izr"/>
+                                            <constraint firstAttribute="width" constant="143" id="mcO-E8-FJS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="24"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. You have 5 lives before &quot;GHOST&quot; is spelled and you lose the game    " lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aY1-Lj-Um3">
+                                        <rect key="frame" x="18" y="244" width="566" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="483" id="avf-sz-kUz"/>
+                                            <constraint firstAttribute="height" constant="47" id="rwI-Oa-Hv5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="17"/>
+                                        <color key="textColor" red="0.99605429290000003" green="0.99605429290000003" blue="0.99605429290000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="avf-sz-kUz"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="B06-8y-wpX" firstAttribute="top" secondItem="aY1-Lj-Um3" secondAttribute="bottom" constant="10" id="203-fM-QoR"/>
+                                    <constraint firstItem="Uen-zV-GSn" firstAttribute="top" secondItem="9PT-X2-E5W" secondAttribute="bottom" constant="107" id="3Bn-Qu-wmP"/>
+                                    <constraint firstItem="Uen-zV-GSn" firstAttribute="top" secondItem="9PT-X2-E5W" secondAttribute="bottom" constant="47" id="3vj-8A-bjv"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="leading" secondItem="aY1-Lj-Um3" secondAttribute="leading" id="5EQ-BG-UQ6"/>
+                                    <constraint firstItem="BmM-Xx-2ME" firstAttribute="leading" secondItem="Qaq-9j-p8c" secondAttribute="leading" id="5xu-OH-aTr"/>
+                                    <constraint firstItem="Uen-zV-GSn" firstAttribute="centerX" secondItem="BmM-Xx-2ME" secondAttribute="centerX" constant="20.5" id="69O-dp-UL7"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="top" secondItem="BmM-Xx-2ME" secondAttribute="bottom" constant="59" id="6XC-cg-exR"/>
+                                    <constraint firstItem="B06-8y-wpX" firstAttribute="leading" secondItem="aY1-Lj-Um3" secondAttribute="leading" id="6qm-E3-dhL"/>
+                                    <constraint firstItem="Uen-zV-GSn" firstAttribute="top" secondItem="9PT-X2-E5W" secondAttribute="bottom" constant="107" id="77Y-rq-MJg"/>
+                                    <constraint firstAttribute="trailing" secondItem="B06-8y-wpX" secondAttribute="trailing" constant="71" id="7pc-Xx-G52"/>
+                                    <constraint firstItem="BmM-Xx-2ME" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="16" id="8j9-d1-ZQV"/>
+                                    <constraint firstItem="Qaq-9j-p8c" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="20" id="AHH-94-fyM"/>
+                                    <constraint firstAttribute="trailing" secondItem="aY1-Lj-Um3" secondAttribute="trailing" constant="20" id="ARB-b0-WoR"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="leading" secondItem="BmM-Xx-2ME" secondAttribute="leading" id="BFc-MY-F8d"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uen-zV-GSn" secondAttribute="bottom" constant="96" id="BPr-NH-7yx"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="leading" secondItem="Qaq-9j-p8c" secondAttribute="leading" id="BPz-Ya-7Ps"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="18" id="BwR-xi-8Qk"/>
+                                    <constraint firstItem="Z6O-eb-8nf" firstAttribute="top" secondItem="Aei-uw-p6Z" secondAttribute="top" constant="18" id="Bzo-Kj-6F2"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="top" secondItem="Qaq-9j-p8c" secondAttribute="bottom" constant="58" id="CZ4-97-5U9"/>
+                                    <constraint firstItem="9PT-X2-E5W" firstAttribute="top" secondItem="B06-8y-wpX" secondAttribute="bottom" constant="18" id="FuP-Nu-t5d"/>
+                                    <constraint firstAttribute="trailing" secondItem="nA1-Lk-w6v" secondAttribute="trailing" constant="18" id="Gin-Nz-sOs"/>
+                                    <constraint firstItem="9PT-X2-E5W" firstAttribute="top" secondItem="aY1-Lj-Um3" secondAttribute="bottom" constant="50" id="GuE-MO-c3V"/>
+                                    <constraint firstItem="Uen-zV-GSn" firstAttribute="top" secondItem="9PT-X2-E5W" secondAttribute="bottom" constant="107" id="JFS-aE-24t"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="leading" secondItem="nA1-Lk-w6v" secondAttribute="leading" id="K3p-hX-YHS"/>
+                                    <constraint firstItem="9PT-X2-E5W" firstAttribute="top" secondItem="B06-8y-wpX" secondAttribute="bottom" constant="10" id="OPT-GZ-4O7"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="top" secondItem="Qaq-9j-p8c" secondAttribute="bottom" constant="58" id="Pt1-MZ-9es"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="18" id="RIk-En-xCK"/>
+                                    <constraint firstItem="B06-8y-wpX" firstAttribute="top" secondItem="aY1-Lj-Um3" secondAttribute="bottom" constant="16" id="ROO-eF-4h0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qaq-9j-p8c" secondAttribute="trailing" constant="18" id="SRe-vS-Is8"/>
+                                    <constraint firstItem="BmM-Xx-2ME" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="16" id="TKJ-bH-CDQ"/>
+                                    <constraint firstItem="BmM-Xx-2ME" firstAttribute="top" secondItem="Z6O-eb-8nf" secondAttribute="bottom" constant="15" id="Tpp-DE-5wy"/>
+                                    <constraint firstItem="Qaq-9j-p8c" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="18" id="Ulu-0M-Muw"/>
+                                    <constraint firstItem="Qaq-9j-p8c" firstAttribute="top" secondItem="Z6O-eb-8nf" secondAttribute="bottom" constant="83" id="WzQ-P2-jVm"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="trailing" secondItem="Qaq-9j-p8c" secondAttribute="trailing" id="XQS-EE-8le"/>
+                                    <constraint firstItem="9PT-X2-E5W" firstAttribute="top" secondItem="B06-8y-wpX" secondAttribute="bottom" constant="-14" id="aIu-hD-Ath"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="centerX" secondItem="Uen-zV-GSn" secondAttribute="centerX" id="agD-UQ-BDK"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="leading" secondItem="nA1-Lk-w6v" secondAttribute="leading" id="cH7-Lj-Lhi"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="trailing" secondItem="aY1-Lj-Um3" secondAttribute="trailing" id="cai-ke-c2P"/>
+                                    <constraint firstItem="9PT-X2-E5W" firstAttribute="top" secondItem="B06-8y-wpX" secondAttribute="bottom" constant="25" id="dCS-6n-JWb"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="top" secondItem="Qaq-9j-p8c" secondAttribute="bottom" constant="-16" id="gGP-xW-htd"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uen-zV-GSn" secondAttribute="bottom" constant="46" id="iP9-N3-9gX"/>
+                                    <constraint firstItem="BmM-Xx-2ME" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="18" id="inE-17-0IE"/>
+                                    <constraint firstItem="BmM-Xx-2ME" firstAttribute="trailing" secondItem="nA1-Lk-w6v" secondAttribute="trailing" id="k9M-af-icU"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="centerX" secondItem="Z6O-eb-8nf" secondAttribute="centerX" id="kGB-id-cA1"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="top" secondItem="Qaq-9j-p8c" secondAttribute="bottom" id="kXj-XO-Stk"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="leading" secondItem="B06-8y-wpX" secondAttribute="leading" id="lD2-L6-Ok9"/>
+                                    <constraint firstItem="9PT-X2-E5W" firstAttribute="top" secondItem="B06-8y-wpX" secondAttribute="bottom" constant="3" id="mbi-zS-vVU"/>
+                                    <constraint firstAttribute="trailing" secondItem="9PT-X2-E5W" secondAttribute="trailing" constant="23" id="msA-Sw-Ebz"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nA1-Lk-w6v" secondAttribute="trailing" constant="43" id="oic-zT-mBR"/>
+                                    <constraint firstItem="Qaq-9j-p8c" firstAttribute="leading" secondItem="nA1-Lk-w6v" secondAttribute="leading" id="q9F-M9-3ZU"/>
+                                    <constraint firstItem="9PT-X2-E5W" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="18" id="q9I-aX-D0v"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="width" secondItem="B06-8y-wpX" secondAttribute="width" id="qt9-Zs-5h1"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="top" secondItem="nA1-Lk-w6v" secondAttribute="bottom" constant="26" id="rYK-7v-h2q"/>
+                                    <constraint firstItem="Qaq-9j-p8c" firstAttribute="top" secondItem="BmM-Xx-2ME" secondAttribute="bottom" id="rbf-qI-5Zd"/>
+                                    <constraint firstItem="Qaq-9j-p8c" firstAttribute="leading" secondItem="Aei-uw-p6Z" secondAttribute="leading" constant="18" id="rhf-w5-RUF"/>
+                                    <constraint firstItem="Uen-zV-GSn" firstAttribute="top" secondItem="B06-8y-wpX" secondAttribute="bottom" constant="146" id="s6X-eE-OPL"/>
+                                    <constraint firstAttribute="trailing" secondItem="BmM-Xx-2ME" secondAttribute="trailing" constant="20" id="uSJ-mI-DYI"/>
+                                    <constraint firstItem="B06-8y-wpX" firstAttribute="leading" secondItem="aY1-Lj-Um3" secondAttribute="leading" id="uSi-tl-g8B"/>
+                                    <constraint firstItem="9PT-X2-E5W" firstAttribute="top" secondItem="aY1-Lj-Um3" secondAttribute="bottom" constant="69" id="vhT-9U-cGq"/>
+                                    <constraint firstItem="Qaq-9j-p8c" firstAttribute="leading" secondItem="BmM-Xx-2ME" secondAttribute="leading" id="weK-xR-Q1b"/>
+                                    <constraint firstItem="aY1-Lj-Um3" firstAttribute="top" secondItem="nA1-Lk-w6v" secondAttribute="bottom" constant="-10" id="yFb-IP-0h3"/>
+                                    <constraint firstItem="nA1-Lk-w6v" firstAttribute="centerX" secondItem="Aei-uw-p6Z" secondAttribute="centerX" id="yqC-iP-SrT"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5xu-OH-aTr"/>
+                                        <exclude reference="8j9-d1-ZQV"/>
+                                        <exclude reference="TKJ-bH-CDQ"/>
+                                        <exclude reference="k9M-af-icU"/>
+                                        <exclude reference="Ulu-0M-Muw"/>
+                                        <exclude reference="q9F-M9-3ZU"/>
+                                        <exclude reference="rhf-w5-RUF"/>
+                                        <exclude reference="weK-xR-Q1b"/>
+                                        <exclude reference="5EQ-BG-UQ6"/>
+                                        <exclude reference="6XC-cg-exR"/>
+                                        <exclude reference="BPz-Ya-7Ps"/>
+                                        <exclude reference="BwR-xi-8Qk"/>
+                                        <exclude reference="gGP-xW-htd"/>
+                                        <exclude reference="oic-zT-mBR"/>
+                                        <exclude reference="ARB-b0-WoR"/>
+                                        <exclude reference="CZ4-97-5U9"/>
+                                        <exclude reference="Pt1-MZ-9es"/>
+                                        <exclude reference="cH7-Lj-Lhi"/>
+                                        <exclude reference="lD2-L6-Ok9"/>
+                                        <exclude reference="qt9-Zs-5h1"/>
+                                        <exclude reference="rYK-7v-h2q"/>
+                                        <exclude reference="203-fM-QoR"/>
+                                        <exclude reference="6qm-E3-dhL"/>
+                                        <exclude reference="FuP-Nu-t5d"/>
+                                        <exclude reference="GuE-MO-c3V"/>
+                                        <exclude reference="OPT-GZ-4O7"/>
+                                        <exclude reference="aIu-hD-Ath"/>
+                                        <exclude reference="mbi-zS-vVU"/>
+                                        <exclude reference="vhT-9U-cGq"/>
+                                        <exclude reference="3Bn-Qu-wmP"/>
+                                        <exclude reference="69O-dp-UL7"/>
+                                        <exclude reference="77Y-rq-MJg"/>
+                                        <exclude reference="BPr-NH-7yx"/>
+                                        <exclude reference="JFS-aE-24t"/>
+                                        <exclude reference="s6X-eE-OPL"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Aei-uw-p6Z" secondAttribute="trailing" id="0gC-8N-70K"/>
+                            <constraint firstAttribute="trailing" secondItem="Aei-uw-p6Z" secondAttribute="trailing" id="9dQ-Ka-P5h"/>
+                            <constraint firstItem="Aei-uw-p6Z" firstAttribute="top" secondItem="ESn-fL-XZw" secondAttribute="bottom" id="cNC-hH-wSs"/>
+                            <constraint firstItem="Aei-uw-p6Z" firstAttribute="leading" secondItem="0Ck-Vt-U78" secondAttribute="leadingMargin" constant="-18" id="iAu-z6-yCe"/>
+                            <constraint firstItem="Aei-uw-p6Z" firstAttribute="leading" secondItem="0Ck-Vt-U78" secondAttribute="leadingMargin" constant="-18" id="jwt-t9-vvc"/>
+                            <constraint firstItem="Aei-uw-p6Z" firstAttribute="bottom" secondItem="KFI-49-Mtz" secondAttribute="top" id="tUD-he-Osy"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9dQ-Ka-P5h"/>
+                                <exclude reference="iAu-z6-yCe"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="eVW-cO-hbK">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="N6h-bh-uEo"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cr2-Ri-PaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1368" y="266"/>
         </scene>
     </scenes>
     <resources>
@@ -1021,7 +1311,7 @@
         <image name="Plus" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="djX-Eo-qjY"/>
-        <segue reference="OiI-4j-h9t"/>
+        <segue reference="oxi-cY-0W7"/>
+        <segue reference="z2w-qk-VAf"/>
     </inferredMetricsTieBreakers>
 </document>
