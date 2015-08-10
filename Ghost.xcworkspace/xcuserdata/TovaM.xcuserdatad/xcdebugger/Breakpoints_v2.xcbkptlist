@@ -58,12 +58,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460856041.814019"
+            timestampString = "460920346.730967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
             landmarkName = "player(_:matchEnded:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ghost/GameViewControllerP.swift"
+            timestampString = "460920346.730967"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
+            landmarkName = "player(_:receivedTurnEventForMatch:didBecomeActive:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

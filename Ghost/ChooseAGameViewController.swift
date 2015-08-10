@@ -60,10 +60,10 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                     newGame.playersP.append(PlayerP(name: player.player.alias!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
                 }
                 navVC.delegate = self
+                navVC.currentMatch = self.Globalmatch
                 navVC.currentGame = newGame
                 var gameData = NSKeyedArchiver.archivedDataWithRootObject(newGame)
-                Globalmatch?.saveCurrentTurnWithMatchData(gameData, completionHandler: { (error) -> Void in
-                    navVC.currentMatch = self.Globalmatch
+                navVC.currentMatch?.saveCurrentTurnWithMatchData(gameData, completionHandler: { (error) -> Void in
 
                 })
                 }
@@ -75,7 +75,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
             navVC!.delegate = self
 
             navVC?.currentGame = self.updatedGame
-            println("game loading in match of \(self.Globalmatch?.participants.count)")
+            println("game loading for \(self.Globalmatch!.currentParticipant.player.alias)")
             navVC!.currentMatch = self.Globalmatch
 
         }
@@ -94,6 +94,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
     func acceptInviteWithCompletionHandler(completionHandler: ((GKTurnBasedMatch!,
         NSError!) -> Void)!){
             println("accepting invitation")
+            newGame = GameP()
             self.dismissViewControllerAnimated(true) {
             self.performSegueWithIdentifier(Constants.StartGameSegue, sender: self) //start game
             }
@@ -113,6 +114,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         self.presentViewController( gamecontrol, animated: true, completion: nil)
         //self.pendingInvite = nil
         //request.recipients = self.newGame.playersP
+        
     }
     
        // MARK: - functions for game
@@ -180,6 +182,11 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
     
     func turnBasedMatchmakerViewController(viewController: GKTurnBasedMatchmakerViewController!, playerQuitForMatch match: GKTurnBasedMatch!) {
         let matchData = match.matchData
+        Globalmatch = match
+        Globalmatch?.currentParticipant.matchOutcome = GKTurnBasedMatchOutcome.Quit
+        match.saveCurrentTurnWithMatchData(matchData, completionHandler: { (error) -> Void in
+            println("\(self.Globalmatch?.currentParticipant.player.alias) has quit")
+        })
         // Do something with the match data to reflect the fact that we're
         // quitting (e.g., give all of our buildings to someone else,
         
@@ -198,10 +205,17 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
             if gameData.length > 0 { //continue game setup
             self.updatedGame = NSKeyedUnarchiver.unarchiveObjectWithData(gameData) as? GameP
             println(self.updatedGame?.CurrentWord)
-            //if (self.updatedGame?.gameStarted == true)  {
+            println("last player was \(self.updatedGame!.lastPlayer?.name))")
+
+            if (self.updatedGame?.lastPlayer?.name != self.Globalmatch?.currentParticipant.player.alias)  {
                 
                 self.dismissViewControllerAnimated(true) {
                     self.performSegueWithIdentifier(Constants.ContinueGameSegue, sender: self)
+                    }
+                }
+            else {
+                println("same person is going again")
+                //self.Globalmatch?.endTurnWithNextParticipants(<#nextParticipants: [AnyObject]!#>, turnTimeout: <#NSTimeInterval#>, matchData: <#NSData!#>, completionHandler: <#((NSError!) -> Void)!##(NSError!) -> Void#>)
                 }
             }
             else {

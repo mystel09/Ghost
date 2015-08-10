@@ -141,7 +141,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
     
         override func viewDidAppear(animated: Bool) {
             super.viewDidAppear(animated)
-            stopwatch.text = "\(currentMatch?.currentParticipant.player.alias)'s Turn" //get players turn
+            stopwatch.text = "\(currentMatch!.currentParticipant.player.alias)'s Turn" //get players turn
             //println("current word is: \(currentGame?.CurrentWord)")
             startTurn()
     }
@@ -205,6 +205,9 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                 startStopwatch()
             }
         }
+        else {
+            println("not your turn")
+        }
     }
     
         func addToScore(){
@@ -226,15 +229,19 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                 //currentMatch!.currentParticipant.matchOutcome.LOST = 1 //have to set match outcome
             }
        }
-    func SortArray(var nextParticipants: [GKTurnBasedParticipant]) -> [GKTurnBasedParticipant]{ //this makes the next player, the previous
-        var temp = nextParticipants
-//        for var i = 1; i < temp.count; i++
+    func SortArray() -> [GKTurnBasedParticipant]{ //this makes the next player, the previous
+        var temp: [GKTurnBasedParticipant] = currentMatch?.participants as! [GKTurnBasedParticipant]
+        //        for var i = 1; i < temp.count; i++
 //        {
 //            nextParticipants[i] = temp[i-1] as GKTurnBasedParticipant
-//        }
-        nextParticipants[1] = temp[0] //moving first to second
-        nextParticipants[0] = temp[1] as GKTurnBasedParticipant //last moves to front
-        return nextParticipants
+////        }
+//        var tPlayer: GKTurnBasedParticipant = temp.removeLast()
+//        temp[0] = tPlayer
+//        temp.append(currentMatch!.currentParticipant)
+        println(temp[0].playerID)
+        temp = temp.reverse()
+        println(temp[0].playerID)
+        return temp
     }
 
         func getCurrentPlayer() -> PlayerP? {
@@ -406,7 +413,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         func player(player: GKPlayer!, receivedTurnEventForMatch match: GKTurnBasedMatch!, didBecomeActive: Bool) {
             currentMatch = match
             if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-
+                println("\(currentMatch?.currentParticipant.player.alias) is \(didBecomeActive)")
             // match has updated, we could be current player
             
             currentMatch?.loadMatchDataWithCompletionHandler({ (gameData, error) -> Void in
@@ -434,7 +441,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
 
             })
         }
-        func endTurn ( match : GKTurnBasedMatch , gameData : NSData , nextParticipants : [ GKTurnBasedParticipant ]) {
+       // func endTurn ( match : GKTurnBasedMatch , gameData : NSData , nextParticipants : [ GKTurnBasedParticipant ]) {
             // nextParticipants is the array of the players 
             // in the match, in order of who should go next. You can get the list 
             // of participants using match.participants. Game Center will tell the 
@@ -442,11 +449,10 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             // take it within 600 seconds (10 minutes), it will be the next player's 
             // turn, and so on. (If the last participant in the array 
             // doesn't complete his turn within 10 minutes, it remains her  turn.) 
-            match.endTurnWithNextParticipants(nextParticipants, turnTimeout: 30.0 ,matchData: gameData) { ( error ) in // We're done telling Game Center about the state of the game
-                
-       }
-            self.dismissViewControllerAnimated(true, completion: nil)
-    }
+        
+       //}
+            //self.dismissViewControllerAnimated(true, completion: nil)
+   // }
         
         
 }// end of class
@@ -481,14 +487,16 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         func isMatchActive() {
             var localPlayer = GKLocalPlayer.localPlayer()
             if localPlayer.playerID == currentMatch?.currentParticipant.player.playerID {
-                self.player(localPlayer, receivedTurnEventForMatch: currentMatch, didBecomeActive: false)
+                self.player(localPlayer, receivedTurnEventForMatch: currentMatch, didBecomeActive: true)
             }
             else {
                   NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(5), target: self, selector: "isMatchActive", userInfo: nil, repeats: false)
             }
         }
                 func gameCenter() {
-            delegate!.handleExit()
+            //delegate!.handleExit()
+            self.dismissViewControllerAnimated(true, completion: nil)
+
 
         }
         func cleanupTurn() {
@@ -497,16 +505,30 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
 
 //            if currentGame?.lastPlayer?.wasChallenged == true { //if the last player was challenged
 //                stopwatch.text =  "\(currentGame!.lastPlayer!.name)'s Turn"
-            endTurn(currentMatch!, gameData: gameData, nextParticipants: SortArray(currentMatch!.participants as! [GKTurnBasedParticipant])) //ends the turn and goes to next player
-            
-            stopwatch.text = "\(currentMatch!.currentParticipant.player.alias)'s Turn" //get players turn
-            
-            println("turn ended successfully")
-            println("current word should be: \(currentGame?.CurrentWord)")
-            NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10), target: self, selector: "isMatchActive", userInfo: nil, repeats: false)
-            
+            println("old participant \(currentMatch!.currentParticipant.player.alias)")
+           // endTurn(currentMatch!, gameData: gameData, nextParticipants: currentMatch!.participants as! [GKTurnBasedParticipant]) //ends the turn and goes to next player
+            currentMatch!.endTurnWithNextParticipants(SortArray() , turnTimeout: GKTurnTimeoutDefault ,matchData: gameData) { ( error ) in // We're done telling Game Center about the state of the game
 
+            println("current participant \(self.currentMatch!.currentParticipant.player.alias)")
+                if self.currentGame?.lastPlayer?.name == self.currentMatch?.currentParticipant.player.alias {
+                    self.currentMatch!.endTurnWithNextParticipants(self.currentMatch?.participants , turnTimeout: GKTurnTimeoutDefault ,matchData: gameData) { ( error ) in // We're done telling Game Center about the state of the game
+                        self.stopwatch.text = "\(self.currentMatch!.currentParticipant.player.alias)'s Turn" //get players turn
+                        println("turn ended successfully")
+                        println("current word should be: \(self.currentGame!.CurrentWord)")
+                        println("last player was \(self.currentGame!.lastPlayer!.name))")
+                        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10), target: self, selector: "gameCenter", userInfo: nil, repeats: false)
+                    }
+                }
+                else {
+                    println("turn ended successfully")
+                    println("current word should be: \(self.currentGame!.CurrentWord)")
+                    println("last player was \(self.currentGame!.lastPlayer!.name))")
+                    NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10), target: self, selector: "gameCenter", userInfo: nil, repeats: false)
+                }
+                
 
+            
+            
 //            }
 
 //            else {
@@ -514,6 +536,8 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             //endTurn(currentMatch!, gameData: gameData, nextParticipants:currentMatch!.participants as! [GKTurnBasedParticipant]) //ends the turn and goes to next player
 //            endTurn(currentMatch!, gameData: gameData, nextParticipants: participant!) //ends the turn and goes to next player
             //}
+
+            }
         }
        
         

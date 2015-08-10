@@ -511,8 +511,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Choose a Game" id="lzc-9Z-nw6"/>
                     <connections>
-                        <segue destination="poA-cI-ffp" kind="presentation" identifier="StartOnlineGameSegue" modalTransitionStyle="partialCurl" id="OiI-4j-h9t"/>
-                        <segue destination="poA-cI-ffp" kind="presentation" identifier="ContinueGameSegue" modalTransitionStyle="partialCurl" id="z2w-qk-VAf"/>
+                        <segue destination="poA-cI-ffp" kind="presentation" identifier="StartOnlineGameSegue" modalTransitionStyle="flipHorizontal" id="OiI-4j-h9t"/>
+                        <segue destination="poA-cI-ffp" kind="presentation" identifier="ContinueGameSegue" modalTransitionStyle="flipHorizontal" id="z2w-qk-VAf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGz-bM-PAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1311,7 +1311,7 @@
         <image name="Plus" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oxi-cY-0W7"/>
+        <segue reference="djX-Eo-qjY"/>
         <segue reference="z2w-qk-VAf"/>
     </inferredMetricsTieBreakers>
 </document>

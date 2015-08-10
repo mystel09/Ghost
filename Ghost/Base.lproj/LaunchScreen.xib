@@ -21,10 +21,6 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GhostIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="JEV-ER-U3s">
-                    <rect key="frame" x="0.0" y="-12" width="320" height="587"/>
-                    <color key="backgroundColor" red="0.36413317766963438" green="0.36386135752305493" blue="0.37508355614973266" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 TovaProductions. All rights reserved." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYs-2e-ObU">
                     <rect key="frame" x="8" y="547" width="416" height="21"/>
                     <constraints>
@@ -35,6 +31,10 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchG.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JEV-ER-U3s">
+                    <rect key="frame" x="0.0" y="-12" width="320" height="587"/>
+                    <color key="backgroundColor" red="0.36413317766963438" green="0.36386135752305493" blue="0.37508355614973266" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <accessibility key="accessibilityConfiguration">
@@ -56,6 +56,6 @@
         </view>
     </objects>
     <resources>
-        <image name="GhostIcon.png" width="1024" height="1024"/>
+        <image name="launchG.jpg" width="1116" height="1218"/>
     </resources>
 </document>
