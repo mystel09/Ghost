@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460920346.730967"
+            timestampString = "460942565.077059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
             landmarkName = "player(_:matchEnded:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,13 +74,125 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ghost/GameViewControllerP.swift"
-            timestampString = "460920346.730967"
+            timestampString = "460942565.077059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "player(_:receivedTurnEventForMatch:didBecomeActive:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ghost/GameViewControllerP.swift"
+            timestampString = "460942565.077059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "endMatch(_:finalGameData:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ghost.GameViewControllerP.endMatch (Ghost.GameViewControllerP)(ObjectiveC.GKTurnBasedMatch, finalGameData : ObjectiveC.NSData) -&gt; ()"
+                  moduleName = "Ghost"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/GameViewControllerP.swift"
+                  timestampString = "460944933.499071"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "399"
+                  endingLineNumber = "399"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ghost.GameViewControllerP.(endMatch (Ghost.GameViewControllerP) -&gt; (ObjectiveC.GKTurnBasedMatch, finalGameData : ObjectiveC.NSData) -&gt; ()).(closure #1)"
+                  moduleName = "Ghost"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/GameViewControllerP.swift"
+                  timestampString = "460944933.499211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "401"
+                  endingLineNumber = "401"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ghost/ChooseAGameViewController.swift"
+            timestampString = "460938461.003359"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "turnBasedMatchmakerViewController(_:playerQuitForMatch:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Ghost/GameViewControllerP.swift"
+            timestampString = "460942565.077059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "addToScore()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ghost.GameViewControllerP.addToScore (Ghost.GameViewControllerP)() -&gt; ()"
+                  moduleName = "Ghost"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/GameViewControllerP.swift"
+                  timestampString = "460944933.526191"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "4139">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Ghost.GameViewControllerP.(addToScore (Ghost.GameViewControllerP) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "Ghost"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/GameViewControllerP.swift"
+                  timestampString = "460944933.526359"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

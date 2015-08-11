@@ -47,28 +47,19 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
     }
     // MARK: Internal functions
     
-        func authenticationChanged() {
-            if GKLocalPlayer.localPlayer().authenticated && !authenticated {
-                println("Authentication changed: player authenticated")
-                authenticated = true
-            } else {
-                println("Authentication changed: player not authenticated")
-                authenticated = false
-            }
-        }
-
-    @IBOutlet weak var challengeButton: UIBarButtonItem!
-        
+    @IBOutlet weak var challengeButton: UIBarButtonItem! 
+    
         @IBAction func didChallenge(sender: UIBarButtonItem) {
-            if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID {
-                //if currentGame?.lastPlayer != getCurrentPlayer(){
+        if currentMatch?.currentParticipant.player.playerID == GKLocalPlayer.localPlayer().playerID  {
+            if currentGame?.CurrentWord.count != 0 {
+            
             stopStopwatch()
           //challenges the player before him
             showMessage("Attention Players:", message:"You CHALLENGED \(currentGame!.lastPlayer!.name)")
 
             currentGame?.lastPlayer?.wasChallenged = true //setting the challenge to true
             cleanupTurn()
-            //}
+            }
         }
     }
    
@@ -87,23 +78,11 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             var gameWord = "".join(self.currentGame!.CurrentWord)
             
             //check with dictionary
-            if self.challenge(self.tField!.text) && subWord == gameWord.lowercaseString { //if word exists then next player loses round
-                //if word supplied is made of the games word
-//                if self.currentPlayerIndex+1 == self.currentGame?.playersP.count {
-//                    self.currentGame?.playersP[0].points++
-//                     self.getCurrentPlayer()?.wasChallenged = false
-//                    self.cleanupTurn()
-//                }
-//                else {
-//                    self.currentGame?.playersP[self.currentPlayerIndex+1].points++
-//                    self.getCurrentPlayer()?.wasChallenged = false
-//                    self.cleanupTurn()
-//                }
-                self.currentGame?.gameStarted = true //player challenged won challenge
+            if self.challenge(self.tField!.text) && subWord == gameWord.lowercaseString { //if word exists
+                self.currentGame?.gameStarted = true //player that was challenged won challenge
                 self.cleanupTurn()
             }
             else {//if NOT then current player loses round
-                
                 // add point to challengee, already called previous player
                 self.addToScore()
             }
@@ -207,40 +186,45 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         }
         else {
             println("not your turn")
+            NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10), target: self, selector: "gameCenter", userInfo: nil, repeats: false)
         }
     }
     
         func addToScore(){
             getCurrentPlayer()!.points++
             if !checkForLossforGame() { //if current player lost this round but NOT the whole game
-                  showMessage("Attention Players", message: "\(currentMatch!.currentParticipant.player.alias) has lost this round")
+                  showMessage("Attention Players", message: "\(currentMatch!.currentParticipant.player.alias), you have lost this round")
                 currentGame?.CurrentWord = []
                 self.wordCollectionView.reloadData()
                 self.scoreCollectionView.reloadData()
-                println("current player index \(currentPlayerIndex)")
                 cleanupTurn()
             }
-           else{
+           else {
                 self.scoreCollectionView.reloadData()
                 stopwatch.text = "GAME OVER"
-                var gameData = NSKeyedArchiver.archivedDataWithRootObject(currentGame!)
-                endMatch(currentMatch!, finalGameData: gameData)
-                showMessage("GAME OVER", message: "\(currentMatch!.currentParticipant.player.alias) lost this game")
-                //currentMatch!.currentParticipant.matchOutcome.LOST = 1 //have to set match outcome
+                setOutcomes()
+                showMessage("GAME OVER", message: "\(currentMatch!.currentParticipant.player.alias), you lost this game)")
+                    var gameData = NSKeyedArchiver.archivedDataWithRootObject(self.currentGame!)
+                    self.currentMatch?.endMatchInTurnWithMatchData(gameData, completionHandler: { (error) -> Void in
+                        //self.dismissViewControllerAnimated(true, completion: nil) // help segue look better
+                        println("restart")
+                    })
+             
+            //currentMatch!.currentParticipant.matchOutcome = GKTurnBasedMatchOutcome.Lost
             }
        }
+    func setOutcomes() {
+//            if currentMatch?.participants[0] as? GKTurnBasedParticipant != currentMatch?.currentParticipant {
+//                currentMatch?.participants[0].matchOutcome = GKTurnBasedMatchOutcome.Won
+//            }
+//            else {
+//                currentMatch?.participants[1].matchOutcome = GKTurnBasedMatchOutcome.Won
+//            }
+        currentMatch?.currentParticipant.matchOutcome = GKTurnBasedMatchOutcome.Lost
+    }
     func SortArray() -> [GKTurnBasedParticipant]{ //this makes the next player, the previous
         var temp: [GKTurnBasedParticipant] = currentMatch?.participants as! [GKTurnBasedParticipant]
-        //        for var i = 1; i < temp.count; i++
-//        {
-//            nextParticipants[i] = temp[i-1] as GKTurnBasedParticipant
-////        }
-//        var tPlayer: GKTurnBasedParticipant = temp.removeLast()
-//        temp[0] = tPlayer
-//        temp.append(currentMatch!.currentParticipant)
-        println(temp[0].playerID)
         temp = temp.reverse()
-        println(temp[0].playerID)
         return temp
     }
 
@@ -259,19 +243,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         }
         return nil
     }
-    enum GKTurnBasedMatchOutcome : Int {
-        case None
-        case Quit
-        case Won
-        case Lost
-        case Tied
-        case TimeExpired
-        case First
-        case Second
-        case Third
-        case Fourth
-    }
-
 
 }
     extension GameViewControllerP: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -390,16 +361,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                 return CGFloat(Constants.NumberOfPointsInBetween)
             }
         }
-        //     @IBAction func restartGame(sender: AnyObject) {
-        //        let alert: UIAlertView = UIAlertView()
-        //        //alert.title = "Exit"
-        //        alert.message = "Want to Play Again?"
-        //        let yes = alert.addButtonWithTitle("Yes")
-        //        let no = alert.addButtonWithTitle("No")
-        //        alert.delegate = self  // set the delegate here
-        //        alert.show()
-        //        println("This line doesn't wait for the alert to be responded to.")
-        //    }
         
         func showMessage(title: String, message: String) {
             let alertView = UIAlertView()
@@ -484,29 +445,15 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             }
 
     }
-        func isMatchActive() {
-            var localPlayer = GKLocalPlayer.localPlayer()
-            if localPlayer.playerID == currentMatch?.currentParticipant.player.playerID {
-                self.player(localPlayer, receivedTurnEventForMatch: currentMatch, didBecomeActive: true)
-            }
-            else {
-                  NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(5), target: self, selector: "isMatchActive", userInfo: nil, repeats: false)
-            }
-        }
-                func gameCenter() {
-            //delegate!.handleExit()
+      
+        func gameCenter() {
             self.dismissViewControllerAnimated(true, completion: nil)
-
-
         }
         func cleanupTurn() {
             currentGame?.lastPlayer = getCurrentPlayer()
             var gameData = NSKeyedArchiver.archivedDataWithRootObject(currentGame!)
-
-//            if currentGame?.lastPlayer?.wasChallenged == true { //if the last player was challenged
-//                stopwatch.text =  "\(currentGame!.lastPlayer!.name)'s Turn"
             println("old participant \(currentMatch!.currentParticipant.player.alias)")
-           // endTurn(currentMatch!, gameData: gameData, nextParticipants: currentMatch!.participants as! [GKTurnBasedParticipant]) //ends the turn and goes to next player
+            
             currentMatch!.endTurnWithNextParticipants(SortArray() , turnTimeout: GKTurnTimeoutDefault ,matchData: gameData) { ( error ) in // We're done telling Game Center about the state of the game
 
             println("current participant \(self.currentMatch!.currentParticipant.player.alias)")
@@ -515,34 +462,24 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                         self.stopwatch.text = "\(self.currentMatch!.currentParticipant.player.alias)'s Turn" //get players turn
                         println("turn ended successfully")
                         println("current word should be: \(self.currentGame!.CurrentWord)")
-                        println("last player was \(self.currentGame!.lastPlayer!.name))")
+                        println("last player was \(self.currentGame!.lastPlayer!.name)")
                         NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10), target: self, selector: "gameCenter", userInfo: nil, repeats: false)
                     }
                 }
                 else {
+                    self.stopwatch.text = "\(self.currentMatch!.currentParticipant.player.alias)'s Turn" //get players turn
                     println("turn ended successfully")
                     println("current word should be: \(self.currentGame!.CurrentWord)")
                     println("last player was \(self.currentGame!.lastPlayer!.name))")
                     NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10), target: self, selector: "gameCenter", userInfo: nil, repeats: false)
                 }
                 
-
-            
-            
-//            }
-
-//            else {
-       
-            //endTurn(currentMatch!, gameData: gameData, nextParticipants:currentMatch!.participants as! [GKTurnBasedParticipant]) //ends the turn and goes to next player
-//            endTurn(currentMatch!, gameData: gameData, nextParticipants: participant!) //ends the turn and goes to next player
-            //}
-
             }
         }
        
         
         @IBAction func goToGameCenter(sender: AnyObject) {
-        delegate!.handleExit()
+        delegate?.handleExit()
         }
         
 }

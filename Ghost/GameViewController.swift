@@ -158,7 +158,7 @@ class GameViewController: UIViewController  {
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int){
         if buttonIndex == 0 {
             self.performSegueWithIdentifier("RestartGame", sender: self) // help segue look better
-            println("restrt")
+            println("restart")
         }
 
     }

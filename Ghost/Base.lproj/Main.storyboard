@@ -192,10 +192,10 @@
             </objects>
             <point key="canvasLocation" x="2327" y="1030"/>
         </scene>
-        <!--GameView-->
+        <!--LocalGame-->
         <scene sceneID="bOe-uJ-HpK">
             <objects>
-                <viewController title="GameView" id="u81-El-dj2" customClass="GameViewController" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="GameView" id="u81-El-dj2" userLabel="LocalGame" customClass="GameViewController" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Ak-t3-Fx1"/>
                         <viewControllerLayoutGuide type="bottom" id="nNZ-AN-tuP"/>
@@ -419,6 +419,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Challenge!" id="DrN-Xd-tlu">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="didChallenge:" destination="u81-El-dj2" id="YsW-Zi-aTg"/>
                             </connections>
@@ -511,13 +512,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Choose a Game" id="lzc-9Z-nw6"/>
                     <connections>
-                        <segue destination="poA-cI-ffp" kind="presentation" identifier="StartOnlineGameSegue" modalTransitionStyle="flipHorizontal" id="OiI-4j-h9t"/>
-                        <segue destination="poA-cI-ffp" kind="presentation" identifier="ContinueGameSegue" modalTransitionStyle="flipHorizontal" id="z2w-qk-VAf"/>
+                        <segue destination="eLE-m8-Xdy" kind="presentation" identifier="StartOnlineGameSegue" modalTransitionStyle="partialCurl" id="ex7-Ih-uCw"/>
+                        <segue destination="eLE-m8-Xdy" kind="presentation" identifier="ContinueGameSegue" modalTransitionStyle="partialCurl" id="Tms-0E-7BK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGz-bM-PAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="642" y="958"/>
+            <point key="canvasLocation" x="638" y="980"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zo9-IQ-Ce0">
@@ -573,166 +574,10 @@
             </objects>
             <point key="canvasLocation" x="3136" y="900"/>
         </scene>
-        <!--Menu-->
-        <scene sceneID="soV-By-zDo">
-            <objects>
-                <tableViewController title="Menu" id="JiQ-4b-aKl" customClass="CreateGameViewControllerP" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rNY-jt-fXN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayersHeader" rowHeight="64" id="8iH-TB-pK2">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8iH-TB-pK2" id="UPL-Nt-CIZ">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games in Progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgy-k9-hj5">
-                                            <rect key="frame" x="19" y="0.0" width="268" height="64"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="268" id="q8a-by-tYd"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="kgy-k9-hj5" secondAttribute="bottom" constant="-8.5" id="1fM-nv-MDk"/>
-                                        <constraint firstItem="kgy-k9-hj5" firstAttribute="top" secondItem="UPL-Nt-CIZ" secondAttribute="topMargin" constant="-8" id="PiI-0Z-Xjt"/>
-                                        <constraint firstItem="kgy-k9-hj5" firstAttribute="leading" secondItem="UPL-Nt-CIZ" secondAttribute="leadingMargin" constant="11" id="gQA-4T-811"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GamesCell" textLabel="goh-eL-ryw" detailTextLabel="VhP-ej-5Ab" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="0vc-RQ-mHd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0vc-RQ-mHd" id="2mK-HF-J38">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="goh-eL-ryw">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VhP-ej-5Ab">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WordSize" rowHeight="43" id="C09-GR-xJ1" customClass="WordSizeCellTableViewCell" customModule="Ghost" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C09-GR-xJ1" id="DH2-l6-Bna">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StartButton" rowHeight="80" id="wk4-I1-8Wa">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wk4-I1-8Wa" id="UaG-Pe-qcL">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start New Game" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZM-Nx-Qq0">
-                                            <rect key="frame" x="157" y="29" width="127" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxg-B2-4vL">
-                                            <rect key="frame" x="10" y="14.5" width="50" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="Wpp-VM-aZB"/>
-                                                <constraint firstAttribute="width" constant="50" id="nCp-AP-nyg"/>
-                                            </constraints>
-                                            <state key="normal" image="Plus">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="AddPlayer:" destination="JiQ-4b-aKl" eventType="touchUpInside" id="8O7-NM-bn8"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="dxg-B2-4vL" secondAttribute="centerY" constant="0.5" id="3OP-cp-NSh"/>
-                                        <constraint firstItem="dxg-B2-4vL" firstAttribute="leading" secondItem="UaG-Pe-qcL" secondAttribute="leadingMargin" constant="2" id="Bkj-5f-fkc"/>
-                                        <constraint firstAttribute="centerX" secondItem="dxg-B2-4vL" secondAttribute="centerX" constant="265" id="OKz-LJ-Xwb"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="dxg-B2-4vL" secondAttribute="bottom" constant="7" id="Pij-eu-UxN"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="Pij-eu-UxN"/>
-                                        </mask>
-                                    </variation>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Settings" rowHeight="59" id="M8p-oj-VGO">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8p-oj-VGO" id="exc-XD-S4e">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCM-4o-rB9">
-                                            <rect key="frame" x="157" y="19" width="63" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFI-cq-uvn">
-                                            <rect key="frame" x="8" y="5" width="67" height="50"/>
-                                            <state key="normal" image="Menu-50.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsHeader" rowHeight="64" id="1nj-9V-nUn">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1nj-9V-nUn" id="oAV-aW-AWT">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usm-d1-UJ9">
-                                            <rect key="frame" x="29" y="17" width="46" height="30"/>
-                                            <state key="normal" title="Button">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="JiQ-4b-aKl" id="OiN-AJ-myt"/>
-                            <outlet property="delegate" destination="JiQ-4b-aKl" id="UxU-vE-W3w"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="WKo-wK-a3c"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ALg-rA-CLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1416" y="2071"/>
-        </scene>
-        <!--GameView-->
+        <!--OnlineGame-->
         <scene sceneID="uFN-rI-uCu">
             <objects>
-                <viewController title="GameView" id="poA-cI-ffp" customClass="GameViewControllerP" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="GameView" id="poA-cI-ffp" userLabel="OnlineGame" customClass="GameViewControllerP" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kU9-Mb-doh"/>
                         <viewControllerLayoutGuide type="bottom" id="paf-Mv-qk0"/>
@@ -827,7 +672,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="clock" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbq-Qa-deM">
-                                <rect key="frame" x="300" y="28" width="0.0" height="52"/>
+                                <rect key="frame" x="300" y="72" width="0.0" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="6kG-CL-Hym"/>
                                     <constraint firstAttribute="height" constant="52" id="qNB-EH-29g"/>
@@ -842,7 +687,7 @@
                                 </variation>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bx6-lg-yNC">
-                                <rect key="frame" x="-5" y="88" width="605" height="144"/>
+                                <rect key="frame" x="-5" y="132" width="605" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eBV-Wl-1Bk">
                                     <size key="itemSize" width="276" height="49"/>
@@ -1000,18 +845,19 @@
                     <navigationItem key="navigationItem" id="X9B-RU-qKy">
                         <barButtonItem key="leftBarButtonItem" title="Back to Games" id="8hd-Gu-kiK">
                             <connections>
-                                <action selector="goToGameCenter:" destination="poA-cI-ffp" id="Yw2-gw-UAC"/>
+                                <action selector="goToGameCenter:" destination="poA-cI-ffp" id="7Qr-3q-irX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Challenge!" id="RNq-sN-FXk">
                             <connections>
-                                <action selector="didChallenge:" destination="poA-cI-ffp" id="Nt6-YG-oZb"/>
+                                <action selector="didChallenge:" destination="poA-cI-ffp" id="l2i-VM-Yj6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="challengeButton" destination="RNq-sN-FXk" id="uhZ-pP-qff"/>
+                        <outlet property="challengeButton" destination="RNq-sN-FXk" id="bbp-7L-uRx"/>
                         <outlet property="keyboardCollectionView" destination="1el-AB-Hah" id="C6a-Vp-jZF"/>
                         <outlet property="scoreCollectionView" destination="bx6-lg-yNC" id="4Zp-lL-Djf"/>
                         <outlet property="stopwatch" destination="hbq-Qa-deM" id="lmr-ig-8x6"/>
@@ -1020,7 +866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blq-Pf-oel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-144" y="1808"/>
+            <point key="canvasLocation" x="724" y="2140"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hLh-kD-XIb">
@@ -1033,12 +879,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="JiQ-4b-aKl" kind="relationship" relationship="rootViewController" id="ilL-mm-p02"/>
+                        <segue destination="poA-cI-ffp" kind="relationship" relationship="rootViewController" id="Mwu-RN-XR6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3QF-b5-K4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="698" y="2114"/>
+            <point key="canvasLocation" x="-176" y="1826"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iQM-df-TzZ">
@@ -1306,12 +1152,8 @@
             <point key="canvasLocation" x="1368" y="266"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Menu-50.png" width="50" height="50"/>
-        <image name="Plus" width="50" height="50"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="djX-Eo-qjY"/>
-        <segue reference="z2w-qk-VAf"/>
+        <segue reference="oxi-cY-0W7"/>
+        <segue reference="Tms-0E-7BK"/>
     </inferredMetricsTieBreakers>
 </document>
