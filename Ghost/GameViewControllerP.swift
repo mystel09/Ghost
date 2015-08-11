@@ -203,23 +203,24 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                 self.scoreCollectionView.reloadData()
                 stopwatch.text = "GAME OVER"
                 setOutcomes()
-                showMessage("GAME OVER", message: "\(currentMatch!.currentParticipant.player.alias), you lost this game)")
+                showMessage("GAME OVER", message: "\(currentMatch!.currentParticipant.player.alias), you lost this game!")
                     var gameData = NSKeyedArchiver.archivedDataWithRootObject(self.currentGame!)
                     self.currentMatch?.endMatchInTurnWithMatchData(gameData, completionHandler: { (error) -> Void in
-                        //self.dismissViewControllerAnimated(true, completion: nil) // help segue look better
+                       // self.dismissViewControllerAnimated(true, completion: nil) // help segue look better
+                        NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10), target: self, selector: "gameCenter", userInfo: nil, repeats: false)
                         println("restart")
                     })
-             
-            //currentMatch!.currentParticipant.matchOutcome = GKTurnBasedMatchOutcome.Lost
             }
        }
     func setOutcomes() {
-//            if currentMatch?.participants[0] as? GKTurnBasedParticipant != currentMatch?.currentParticipant {
-//                currentMatch?.participants[0].matchOutcome = GKTurnBasedMatchOutcome.Won
-//            }
-//            else {
-//                currentMatch?.participants[1].matchOutcome = GKTurnBasedMatchOutcome.Won
-//            }
+        var players = currentMatch?.participants as! [GKTurnBasedParticipant]
+
+            if players[0] != currentMatch?.currentParticipant {
+                players[0].matchOutcome = GKTurnBasedMatchOutcome.Won
+            }
+            else {
+                players[1].matchOutcome = GKTurnBasedMatchOutcome.Won
+            }
         currentMatch?.currentParticipant.matchOutcome = GKTurnBasedMatchOutcome.Lost
     }
     func SortArray() -> [GKTurnBasedParticipant]{ //this makes the next player, the previous
@@ -402,19 +403,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
 
             })
         }
-       // func endTurn ( match : GKTurnBasedMatch , gameData : NSData , nextParticipants : [ GKTurnBasedParticipant ]) {
-            // nextParticipants is the array of the players 
-            // in the match, in order of who should go next. You can get the list 
-            // of participants using match.participants. Game Center will tell the 
-            // first participant in the array that it's his turn; if he doesn't 
-            // take it within 600 seconds (10 minutes), it will be the next player's 
-            // turn, and so on. (If the last participant in the array 
-            // doesn't complete his turn within 10 minutes, it remains her  turn.) 
-        
-       //}
-            //self.dismissViewControllerAnimated(true, completion: nil)
-   // }
-        
         
 }// end of class
     
@@ -477,7 +465,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             }
         }
        
-        
         @IBAction func goToGameCenter(sender: AnyObject) {
         delegate?.handleExit()
         }

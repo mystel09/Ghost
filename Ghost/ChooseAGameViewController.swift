@@ -60,8 +60,12 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                 if Globalmatch?.participants.count != newGame.playersP.count{
                 
                 for player in Globalmatch!.participants! as! [GKTurnBasedParticipant] {
-                    
-                    newGame.playersP.append(PlayerP(name: player.player.alias!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
+                    if player.status == GKTurnBasedParticipantStatus.Matching {
+                    newGame.playersP.append(PlayerP(name:"Matching", playerColor: self.colors.removeLast(), playerID: ""))
+                    }
+                    else{
+                        newGame.playersP.append(PlayerP(name: player.player.alias!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
+                    }
                 }
                 GameViewController.delegate = self
                 GameViewController.currentMatch = self.Globalmatch
@@ -115,9 +119,15 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         var gamecontrol: GKTurnBasedMatchmakerViewController = GKTurnBasedMatchmakerViewController(matchRequest: request)
         gamecontrol.turnBasedMatchmakerDelegate = self
         self.presentViewController( gamecontrol, animated: true, completion: nil)
-        //self.pendingInvite = nil
-        //request.recipients = self.newGame.playersP
         
+        GKTurnBasedMatch.findMatchForRequest(request, withCompletionHandler: {(match: GKTurnBasedMatch, error: NSError) in
+            if error {
+            NSLog("%@", error.localizedDescription)
+            return
+            }
+            self.delegate.startGameForMatch(match)
+            
+        })
     }
     
        // MARK: - functions for game
