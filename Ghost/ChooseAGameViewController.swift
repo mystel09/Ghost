@@ -61,7 +61,8 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                 
                 for player in Globalmatch!.participants! as! [GKTurnBasedParticipant] {
                     if player.status == GKTurnBasedParticipantStatus.Matching {
-                    newGame.playersP.append(PlayerP(name:"Matching", playerColor: self.colors.removeLast(), playerID: ""))
+                    
+                        println("Error finding match: ")
                     }
                     else{
                         newGame.playersP.append(PlayerP(name: player.player.alias!, playerColor: self.colors.removeLast(), playerID: player.player.playerID))
@@ -115,19 +116,13 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
         request.minPlayers = Constants.minNumberOfPlayers
         request.maxPlayers = Constants.minNumberOfPlayers
         request.defaultNumberOfPlayers = 2
+        request.recipients = nil
         
         var gamecontrol: GKTurnBasedMatchmakerViewController = GKTurnBasedMatchmakerViewController(matchRequest: request)
         gamecontrol.turnBasedMatchmakerDelegate = self
         self.presentViewController( gamecontrol, animated: true, completion: nil)
         
-        GKTurnBasedMatch.findMatchForRequest(request, withCompletionHandler: {(match: GKTurnBasedMatch, error: NSError) in
-            if error {
-            NSLog("%@", error.localizedDescription)
-            return
-            }
-            self.delegate.startGameForMatch(match)
-            
-        })
+       
     }
     
        // MARK: - functions for game
@@ -235,9 +230,18 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
             }
             else {
                 //go to game
-                
+                var p = self.Globalmatch!.participants[1] as! GKTurnBasedParticipant
+                if p.status == GKTurnBasedParticipantStatus.Matching {
+                   self.showMessage("Problem:", message: "Game Center cannot find players for you at this time. Try starting a match by inviting friends:")
+                    match.removeWithCompletionHandler({ ( error) -> Void in
+                        self.dismissViewControllerAnimated(true, completion: nil)
+
+                    })
+                }
+                else {
                 self.acceptInviteWithCompletionHandler { (match, error) -> Void in
                     }
+                }
                 }
             
         

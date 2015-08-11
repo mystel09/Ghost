@@ -19,7 +19,7 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
         var tField = UITextField?() //for challenge
         //stopwatch variables
         @IBOutlet weak var stopwatch: UILabel!
-        private var secondsLeft: Int = 3 //time in clock left
+        private var secondsLeft: Int = 15 //time in clock left
         private var timer: NSTimer?
         var currentGame: GameP?
         var authenticated = false
@@ -126,7 +126,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
     }
         func startStopwatch() {
             //initialize the timer HUD
-            secondsLeft = timeToSolve
             stopwatch.text = "\(currentMatch!.currentParticipant.player.alias) Start!"
             println("\(getCurrentPlayer()!.name) Start!") //get players turn
             //schedule a new timer
@@ -146,7 +145,8 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             }
             else {
                 //stopwatch.text = "\(getCurrentPlayer()!.name) has \(secondsLeft) sec(s) left"
-                stopwatch.text = "\(currentMatch!.currentParticipant.player.alias) has \(secondsLeft) sec(s) left"
+                stopwatch.text = "Time left:\(secondsLeft) secs"
+
 
             }
         }

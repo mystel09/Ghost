@@ -11,51 +11,51 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtB-HN-Rqu">
-                    <rect key="frame" x="101" y="103" width="162" height="103"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="103" id="7t2-M5-5ph"/>
-                        <constraint firstAttribute="width" constant="162" id="jNc-jd-X5w"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="PartyLetPlain" family="Party LET" pointSize="72"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 TovaProductions. All rights reserved." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYs-2e-ObU">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 TovaProductions. All rights reserved." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBB-eS-cVd">
                     <rect key="frame" x="8" y="547" width="416" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="416" id="FMP-fI-wai"/>
-                        <constraint firstAttribute="height" constant="21" id="FYP-aO-Mrf"/>
+                        <constraint firstAttribute="width" constant="416" id="RuP-Tb-ZYO"/>
+                        <constraint firstAttribute="height" constant="21" id="m5N-5s-Oh4"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchG.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JEV-ER-U3s">
+                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JEV-ER-U3s">
                     <rect key="frame" x="0.0" y="-12" width="320" height="587"/>
                     <color key="backgroundColor" red="0.36413317766963438" green="0.36386135752305493" blue="0.37508355614973266" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 TovaProductions. All rights reserved." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dME-u5-7mT">
+                    <rect key="frame" x="10" y="-31" width="416" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="416" id="S3N-G8-waZ"/>
+                        <constraint firstAttribute="height" constant="21" id="sti-xM-bOa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="12"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <accessibility key="accessibilityConfiguration">
                 <accessibilityTraits key="traits" none="YES" image="YES"/>
             </accessibility>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="MtB-HN-Rqu" secondAttribute="trailing" constant="57" id="0tZ-KT-MZg"/>
+                <constraint firstItem="UBB-eS-cVd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="14R-lM-C4e"/>
                 <constraint firstItem="JEV-ER-U3s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CJi-JN-4rd"/>
-                <constraint firstAttribute="bottom" secondItem="uYs-2e-ObU" secondAttribute="bottom" id="LiW-9J-tYs"/>
-                <constraint firstItem="uYs-2e-ObU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="MPt-Ki-tPZ"/>
-                <constraint firstItem="MtB-HN-Rqu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="103" id="Qgq-vj-YjI"/>
+                <constraint firstItem="dME-u5-7mT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-31" id="Ot4-QR-ACz"/>
+                <constraint firstAttribute="bottom" secondItem="UBB-eS-cVd" secondAttribute="bottom" id="dft-1p-T4z"/>
                 <constraint firstAttribute="bottom" secondItem="JEV-ER-U3s" secondAttribute="bottom" constant="-7" id="dgp-mZ-TFF"/>
+                <constraint firstItem="dME-u5-7mT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="lQh-2c-IMs"/>
                 <constraint firstAttribute="trailing" secondItem="JEV-ER-U3s" secondAttribute="trailing" id="xDf-Lh-9sn"/>
                 <constraint firstItem="JEV-ER-U3s" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-12" id="xSe-fm-tsZ"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="563" y="453"/>
+            <point key="canvasLocation" x="557" y="441"/>
         </view>
     </objects>
     <resources>
-        <image name="launchG.jpg" width="1116" height="1218"/>
+        <image name="launch.jpg" width="2048" height="2048"/>
     </resources>
 </document>

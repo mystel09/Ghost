@@ -18,7 +18,7 @@ class GameViewController: UIViewController  {
     var tField = UITextField?()
     //stopwatch variables
     @IBOutlet weak var stopwatch: UILabel!
-    private var secondsLeft: Int = 3 //time in clock left
+    private var secondsLeft: Int = 15 //time in clock left
     private var timer: NSTimer?
     var currentGame: Game?
     @IBOutlet weak var challengeButton: UIBarButtonItem!
@@ -100,7 +100,6 @@ class GameViewController: UIViewController  {
     }
     func startStopwatch() {
         //initialize the timer HUD
-        secondsLeft = 3
         stopwatch.text = "\(currentGame!.getCurrentPlayer().name) Start!" //get players turn
         
         //schedule a new timer
@@ -120,6 +119,7 @@ class GameViewController: UIViewController  {
         }
         else {
         stopwatch.text = "Time left:\(secondsLeft) secs"
+
         }
     }
     

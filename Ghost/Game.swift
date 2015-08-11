@@ -41,13 +41,5 @@ class Game: NSObject {
          currentWord = [String]()
          colorOfLetters = [UIColor]()
     }
-    
-//    func resetGame() {
-//        self.players = []
-//        self.minWordSize = 4
-//        self.indexOfCurrentPlayer = 0
-//        self.currentWord = []
-//        self.colorOfLetters = []
-//    }
 }
 
