@@ -133,6 +133,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="KvY-6W-gnZ" kind="presentation" identifier="StartGameSegue" modalTransitionStyle="partialCurl" id="qn5-Wr-gry"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WordSize" rowHeight="47" id="3fi-tp-XVQ" customClass="WordSizeCellTableViewCell" customModule="Ghost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -183,14 +186,14 @@
                         <barButtonItem key="rightBarButtonItem" title="Start Game!" id="gx9-9e-mWB">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="KvY-6W-gnZ" kind="presentation" identifier="StartGameSegue" modalTransitionStyle="partialCurl" id="exo-Av-lVu"/>
+                                <action selector="StartGame:" destination="f6f-43-o2k" id="Jf5-u3-YaA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJh-Mf-nYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2327" y="1030"/>
+            <point key="canvasLocation" x="2347" y="1016"/>
         </scene>
         <!--LocalGame-->
         <scene sceneID="bOe-uJ-HpK">
@@ -325,10 +328,10 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KkV-YA-6P0">
-                                <rect key="frame" x="0.0" y="230" width="600" height="70"/>
+                                <rect key="frame" x="0.0" y="179" width="600" height="121"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="ZYK-kP-7WI"/>
+                                    <constraint firstAttribute="height" constant="121" id="ZYK-kP-7WI"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cag-kK-Eiu">
                                     <size key="itemSize" width="64" height="47"/>
@@ -385,7 +388,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="KkV-YA-6P0" secondAttribute="trailing" constant="-16" id="XjC-v8-d5Z"/>
                             <constraint firstAttribute="trailing" secondItem="UNx-Qh-S8F" secondAttribute="trailing" id="adl-m1-GSq"/>
                             <constraint firstItem="hCc-lO-aQ4" firstAttribute="top" secondItem="i8E-PL-XvM" secondAttribute="bottom" constant="8" id="bEX-nC-26a"/>
-                            <constraint firstItem="KkV-YA-6P0" firstAttribute="top" secondItem="hCc-lO-aQ4" secondAttribute="bottom" constant="-2" id="flD-QE-G4J"/>
+                            <constraint firstItem="KkV-YA-6P0" firstAttribute="top" secondItem="hCc-lO-aQ4" secondAttribute="bottom" constant="-53" id="flD-QE-G4J"/>
                             <constraint firstItem="i8E-PL-XvM" firstAttribute="top" secondItem="6Ak-t3-Fx1" secondAttribute="bottom" constant="8" id="iHK-Dm-kI0"/>
                             <constraint firstAttribute="centerX" secondItem="i8E-PL-XvM" secondAttribute="centerX" id="m1r-jK-Ygg"/>
                             <constraint firstAttribute="centerX" secondItem="i8E-PL-XvM" secondAttribute="centerX" id="nmQ-el-Vqo"/>

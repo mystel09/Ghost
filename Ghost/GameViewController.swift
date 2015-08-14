@@ -311,7 +311,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension GameViewController: TileViewCellDelegate {
     func didTapOnTile(tile: TileViewCell) {
-        //if currentGame?.currentWord.count < 13 { //test if other method of stopping tiles works
+        if currentGame?.currentWord.count < 24 { //test if other method of stopping tiles works
         println(tile.letterLabel.text)
         println(self.currentGame?.indexOfCurrentPlayer)
         self.currentGame!.currentWord.append(tile.letterLabel.text!) // appends letter to current word
@@ -328,6 +328,10 @@ extension GameViewController: TileViewCellDelegate {
         // write on top whos turn it is
         currentGame?.goToNextPlayer()
         startStopwatch()
+        }
+        else {
+            addToScore()
+        }
     }
 }
 

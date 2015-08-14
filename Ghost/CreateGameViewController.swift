@@ -64,7 +64,7 @@ class CreateGameViewController: UITableViewController, UITextFieldDelegate {
     }
     // saving an instance of the game to use in the next controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "StartGameSegue") {
+        if (segue.identifier == Constants.StartGameSegue) {
             //game
             if let navVC = segue.destinationViewController as? UINavigationController {
                 let CreateGameViewController = navVC.topViewController as! GameViewController
