@@ -12,6 +12,10 @@ import GameKit
 protocol gameViewDelegate {
     func handleExit()
 }
+
+ let userDefaults = NSUserDefaults.standardUserDefaults() //saving user defaults
+var playedOnlineGame: Int = userDefaults.integerForKey("playedOnlineGame")
+
 class GameViewControllerP: UIViewController, GKLocalPlayerListener {
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var selectedTile = ""
@@ -125,7 +129,8 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             startTurn()
     }
         func startStopwatch() {
-            //initialize the timer HUD
+            //initialize the timer
+            secondsLeft = 15
             stopwatch.text = "\(currentMatch!.currentParticipant.player.alias) Start!"
             println("\(getCurrentPlayer()!.name) Start!") //get players turn
             //schedule a new timer
@@ -273,7 +278,6 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
             }
         }
         
-        
         func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             
             
@@ -301,7 +305,8 @@ class GameViewControllerP: UIViewController, GKLocalPlayerListener {
                 cell.layer.borderColor = UIColor.clearColor().CGColor
                 
                 return cell
-            }
+                }
+            
             else { //scores
                 let cell = collectionView.dequeueReusableCellWithReuseIdentifier("score", forIndexPath: indexPath) as! PlayerStatusCell
                 cell.layer.borderWidth = 5.0

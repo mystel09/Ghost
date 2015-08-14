@@ -99,7 +99,8 @@ class GameViewController: UIViewController  {
         //startStopwatch()
     }
     func startStopwatch() {
-        //initialize the timer HUD
+        secondsLeft = 15
+        //initialize the timer
         stopwatch.text = "\(currentGame!.getCurrentPlayer().name) Start!" //get players turn
         
         //schedule a new timer
@@ -219,6 +220,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         else if collectionView == self.wordCollectionView {
             //Current word collection view
+
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Tile", forIndexPath: indexPath) as! TileViewCell
             cell.layer.cornerRadius = 19.0
             cell.backgroundColor = self.currentGame?.colorOfLetters[indexPath.row]
@@ -227,8 +229,9 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.letterLabel.text = self.currentGame!.currentWord[indexPath.row]
             cell.layer.borderColor = UIColor.clearColor().CGColor
 
-            return cell
-        }
+                return cell
+            }
+            
         else { //scores
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("score", forIndexPath: indexPath) as! PlayerStatusCell
             cell.layer.borderWidth = 5.0
@@ -245,10 +248,8 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
           
             //cell.PlayerInfoLabel.textColor = self.currentGame?.players[indexPath.row].playerColor
             cell.layer.backgroundColor = self.currentGame?.players[indexPath.row % currentGame!.players.count].playerColor.CGColor
-            
-            
+    
             return cell
-            
         }
     }
     
@@ -310,6 +311,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension GameViewController: TileViewCellDelegate {
     func didTapOnTile(tile: TileViewCell) {
+        //if currentGame?.currentWord.count < 13 { //test if other method of stopping tiles works
         println(tile.letterLabel.text)
         println(self.currentGame?.indexOfCurrentPlayer)
         self.currentGame!.currentWord.append(tile.letterLabel.text!) // appends letter to current word

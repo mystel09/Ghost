@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		461155D61B6696CA000B3829 /* Enter 2-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 461155D51B6696CA000B3829 /* Enter 2-50.png */; };
-		461155D81B6696D0000B3829 /* Menu-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 461155D71B6696D0000B3829 /* Menu-50.png */; };
-		461155DA1B6696D5000B3829 /* Settings-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 461155D91B6696D5000B3829 /* Settings-50.png */; };
 		461A03461B5454C2005B6B6F /* LexicontextAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 461A03441B5454C2005B6B6F /* LexicontextAssets.bundle */; };
 		461A03471B5454C2005B6B6F /* libLexicontext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 461A03451B5454C2005B6B6F /* libLexicontext.a */; };
 		461F36031B4C469600075ED4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461F36021B4C469600075ED4 /* GameViewController.swift */; };
@@ -31,15 +28,12 @@
 		469D70571B5D38C100A77224 /* WordSizeCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D70561B5D38C100A77224 /* WordSizeCellTableViewCell.swift */; };
 		469D70591B5D391F00A77224 /* GameViewControllerP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D70581B5D391F00A77224 /* GameViewControllerP.swift */; };
 		46C722121B4D8DA900732A1C /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C722111B4D8DA900732A1C /* tile.png */; };
-		46C722151B4D8DBE00732A1C /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C722141B4D8DBE00732A1C /* particle.png */; };
 		46C722191B4D929D00732A1C /* TileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C722181B4D929D00732A1C /* TileViewCell.swift */; };
 		46C7221E1B4EAB7F00732A1C /* purplepixel.gif in Resources */ = {isa = PBXBuildFile; fileRef = 46C7221D1B4EAB7F00732A1C /* purplepixel.gif */; };
 		46C722201B4EAB8700732A1C /* brownboard.gif in Resources */ = {isa = PBXBuildFile; fileRef = 46C7221F1B4EAB8700732A1C /* brownboard.gif */; };
 		46C722221B4EAB8F00732A1C /* greybrick.gif in Resources */ = {isa = PBXBuildFile; fileRef = 46C722211B4EAB8F00732A1C /* greybrick.gif */; };
 		46C722261B4EB7DF00732A1C /* ghost.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46C722251B4EB7DF00732A1C /* ghost.jpg */; };
 		46EA27AE1B5FF94C00A4DBBE /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EA27AD1B5FF94C00A4DBBE /* AddFriendTableViewCell.swift */; };
-		46EA27B11B61406F00A4DBBE /* Checked-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EA27AF1B61406F00A4DBBE /* Checked-50.png */; };
-		46EA27B21B61406F00A4DBBE /* Plus-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EA27B01B61406F00A4DBBE /* Plus-50.png */; };
 		46EA27B71B62C61A00A4DBBE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EA27B51B62C4E400A4DBBE /* GameKit.framework */; };
 		46F3DEFA1B7A6E5400F1648C /* launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46F3DEF91B7A6E5400F1648C /* launch.jpg */; };
 		C8F4D02567966244B03952AB /* libPods-Ghost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83402AEEB2C65906BDD3619E /* libPods-Ghost.a */; };
@@ -56,9 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		461155D51B6696CA000B3829 /* Enter 2-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Enter 2-50.png"; path = "../../../../Downloads/Enter 2-50.png"; sourceTree = "<group>"; };
-		461155D71B6696D0000B3829 /* Menu-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-50.png"; path = "../../../../Downloads/Menu-50.png"; sourceTree = "<group>"; };
-		461155D91B6696D5000B3829 /* Settings-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings-50.png"; path = "../../../../Downloads/Settings-50.png"; sourceTree = "<group>"; };
 		461A03431B5454C2005B6B6F /* Lexicontext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexicontext.h; sourceTree = "<group>"; };
 		461A03441B5454C2005B6B6F /* LexicontextAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LexicontextAssets.bundle; sourceTree = "<group>"; };
 		461A03451B5454C2005B6B6F /* libLexicontext.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLexicontext.a; sourceTree = "<group>"; };
@@ -87,15 +78,12 @@
 		469D70581B5D391F00A77224 /* GameViewControllerP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewControllerP.swift; sourceTree = "<group>"; };
 		46C722111B4D8DA900732A1C /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile.png; path = "../../../../Downloads/Anagrams-Part-1-Starter/Anagrams/tile.png"; sourceTree = "<group>"; };
 		46C722131B4D8DB700732A1C /* wrong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = wrong.m4a; path = "../../../../Downloads/Anagrams-Part-1-Starter/Anagrams/wrong.m4a"; sourceTree = "<group>"; };
-		46C722141B4D8DBE00732A1C /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particle.png; path = "../../../../Downloads/Anagrams-Part-1-Starter/Anagrams/particle.png"; sourceTree = "<group>"; };
 		46C722181B4D929D00732A1C /* TileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileViewCell.swift; sourceTree = "<group>"; };
 		46C7221D1B4EAB7F00732A1C /* purplepixel.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = purplepixel.gif; path = ../../../../Downloads/purplepixel.gif; sourceTree = "<group>"; };
 		46C7221F1B4EAB8700732A1C /* brownboard.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = brownboard.gif; path = ../../../../Downloads/brownboard.gif; sourceTree = "<group>"; };
 		46C722211B4EAB8F00732A1C /* greybrick.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = greybrick.gif; path = ../../../../Downloads/greybrick.gif; sourceTree = "<group>"; };
 		46C722251B4EB7DF00732A1C /* ghost.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ghost.jpg; path = ../../../../Downloads/ghost.jpg; sourceTree = "<group>"; };
 		46EA27AD1B5FF94C00A4DBBE /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
-		46EA27AF1B61406F00A4DBBE /* Checked-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checked-50.png"; sourceTree = "<group>"; };
-		46EA27B01B61406F00A4DBBE /* Plus-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-50.png"; sourceTree = "<group>"; };
 		46EA27B51B62C4E400A4DBBE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		46F3DEF91B7A6E5400F1648C /* launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = launch.jpg; path = ../../../ghostIcons/launch.jpg; sourceTree = "<group>"; };
 		4B3161367677E52022855E8B /* Pods-Ghost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ghost.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ghost/Pods-Ghost.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,13 +185,7 @@
 				461F36011B4C463000075ED4 /* GameComponents */,
 				461F35F31B4C441800075ED4 /* Controllers */,
 				46C722101B4D8D8A00732A1C /* Assets */,
-				46C722141B4D8DBE00732A1C /* particle.png */,
-				46EA27AF1B61406F00A4DBBE /* Checked-50.png */,
-				461155D51B6696CA000B3829 /* Enter 2-50.png */,
-				461155D71B6696D0000B3829 /* Menu-50.png */,
 				46F3DEF91B7A6E5400F1648C /* launch.jpg */,
-				46EA27B01B61406F00A4DBBE /* Plus-50.png */,
-				461155D91B6696D5000B3829 /* Settings-50.png */,
 				461F35F41B4C445600075ED4 /* login */,
 				464929AF1B4315D4003C4661 /* Main.storyboard */,
 				464929B21B4315D4003C4661 /* Images.xcassets */,
@@ -372,20 +354,14 @@
 			files = (
 				46C722221B4EAB8F00732A1C /* greybrick.gif in Resources */,
 				46C722261B4EB7DF00732A1C /* ghost.jpg in Resources */,
-				46C722151B4D8DBE00732A1C /* particle.png in Resources */,
 				464929B11B4315D4003C4661 /* Main.storyboard in Resources */,
 				46F3DEFA1B7A6E5400F1648C /* launch.jpg in Resources */,
 				46C722121B4D8DA900732A1C /* tile.png in Resources */,
 				46C7221E1B4EAB7F00732A1C /* purplepixel.gif in Resources */,
 				46C722201B4EAB8700732A1C /* brownboard.gif in Resources */,
-				461155D81B6696D0000B3829 /* Menu-50.png in Resources */,
 				464929B61B4315D4003C4661 /* LaunchScreen.xib in Resources */,
-				46EA27B21B61406F00A4DBBE /* Plus-50.png in Resources */,
 				461A03461B5454C2005B6B6F /* LexicontextAssets.bundle in Resources */,
-				461155D61B6696CA000B3829 /* Enter 2-50.png in Resources */,
 				464929B31B4315D4003C4661 /* Images.xcassets in Resources */,
-				461155DA1B6696D5000B3829 /* Settings-50.png in Resources */,
-				46EA27B11B61406F00A4DBBE /* Checked-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +559,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tova Meystel (PJBBR93267)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Ghost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -592,7 +568,7 @@
 					"$(PROJECT_DIR)/Ghost",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5dd666c9-1ea1-41c4-96c9-af65aff7b6e7";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ghost/Ghost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -605,8 +581,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Ghost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -615,7 +591,7 @@
 					"$(PROJECT_DIR)/Ghost",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5dd666c9-1ea1-41c4-96c9-af65aff7b6e7";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ghost/Ghost-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -73,7 +73,7 @@ class ChooseAGameViewController: UIViewController, GKGameCenterControllerDelegat
                 GameViewController.currentGame = newGame
                 var gameData = NSKeyedArchiver.archivedDataWithRootObject(newGame)
                 GameViewController.currentMatch?.saveCurrentTurnWithMatchData(gameData, completionHandler: { (error) -> Void in
-
+                    userDefaults.setInteger(playedOnlineGame++, forKey: "playedOnlineGame")
                 })
                 }
             }
@@ -239,11 +239,15 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
                     })
                 }
                 else {
-                self.acceptInviteWithCompletionHandler { (match, error) -> Void in
+                    if playedOnlineGame > 3 {
+                        self.showMessage("Game can't start!", message: "You must upgrade to premium for unlimited online play ")
+                    }
+                    else {
+                        self.acceptInviteWithCompletionHandler { (match, error) -> Void in
+                        }
                     }
                 }
-                }
-            
+            }
         
         }) //updating game variables
         
