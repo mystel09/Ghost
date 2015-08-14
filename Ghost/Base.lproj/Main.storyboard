@@ -285,11 +285,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="817-tj-hw0">
-                                                    <rect key="frame" x="8" y="8" width="47" height="29"/>
+                                                    <rect key="frame" x="8" y="4" width="81" height="29"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="91" id="7vV-3X-H8A"/>
-                                                        <constraint firstAttribute="width" constant="47" id="TSD-3b-mAz"/>
+                                                        <constraint firstAttribute="width" constant="81" id="ELL-CG-4Db"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -301,7 +301,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RJ-se-9s3">
-                                                    <rect key="frame" x="69" y="11" width="120" height="26"/>
+                                                    <rect key="frame" x="86" y="6" width="101" height="26"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -312,13 +312,13 @@
                                         </view>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="3RJ-se-9s3" firstAttribute="top" secondItem="QwB-C9-Jor" secondAttribute="topMargin" constant="3" id="05C-ai-UHZ"/>
-                                            <constraint firstItem="817-tj-hw0" firstAttribute="leading" secondItem="QwB-C9-Jor" secondAttribute="leadingMargin" id="AQL-cz-t5U"/>
-                                            <constraint firstAttribute="bottom" secondItem="817-tj-hw0" secondAttribute="bottom" id="EfA-15-r16"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="3RJ-se-9s3" secondAttribute="trailing" constant="15" id="QXA-cc-AvP"/>
-                                            <constraint firstItem="817-tj-hw0" firstAttribute="top" secondItem="QwB-C9-Jor" secondAttribute="topMargin" id="Rmq-aE-Qj2"/>
-                                            <constraint firstItem="3RJ-se-9s3" firstAttribute="leading" secondItem="817-tj-hw0" secondAttribute="trailing" constant="14" id="Z2I-ua-pIp"/>
-                                            <constraint firstItem="3RJ-se-9s3" firstAttribute="baseline" secondItem="817-tj-hw0" secondAttribute="baseline" id="s8T-Bi-0um"/>
+                                            <constraint firstItem="817-tj-hw0" firstAttribute="leading" secondItem="QwB-C9-Jor" secondAttribute="leadingMargin" id="65X-90-Y1u"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="3RJ-se-9s3" secondAttribute="trailing" constant="17" id="OrP-4d-R9p"/>
+                                            <constraint firstItem="3RJ-se-9s3" firstAttribute="top" secondItem="QwB-C9-Jor" secondAttribute="topMargin" constant="-2" id="S7P-wR-oSu"/>
+                                            <constraint firstItem="817-tj-hw0" firstAttribute="top" secondItem="QwB-C9-Jor" secondAttribute="topMargin" constant="-4" id="XI3-Aq-ljg"/>
+                                            <constraint firstItem="3RJ-se-9s3" firstAttribute="leading" secondItem="QwB-C9-Jor" secondAttribute="leadingMargin" constant="78" id="dfQ-iK-J3U"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="3RJ-se-9s3" secondAttribute="bottom" constant="-3" id="kHA-Hq-kRq"/>
+                                            <constraint firstItem="817-tj-hw0" firstAttribute="centerY" secondItem="QwB-C9-Jor" secondAttribute="centerY" id="mCR-SL-Igu"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="GhostLabel" destination="3RJ-se-9s3" id="630-85-VA1"/>

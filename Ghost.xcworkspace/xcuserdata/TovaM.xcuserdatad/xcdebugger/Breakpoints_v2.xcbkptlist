@@ -106,12 +106,12 @@
                   moduleName = "Ghost"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/GameViewControllerP.swift"
-                  timestampString = "461238423.23491"
+                  timestampString = "461239388.699711"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "405"
                   endingLineNumber = "405"
-                  offsetFromSymbolStart = "23">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,12 +121,12 @@
                   moduleName = "Ghost"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/GameViewControllerP.swift"
-                  timestampString = "461238423.235123"
+                  timestampString = "461239388.69984"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "407"
                   endingLineNumber = "407"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
