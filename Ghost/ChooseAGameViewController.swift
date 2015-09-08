@@ -239,12 +239,12 @@ extension ChooseAGameViewController: GKTurnBasedMatchmakerViewControllerDelegate
                     })
                 }
                 else {
-                    if playedOnlineGame > 3 {
-                        self.showMessage("Game can't start!", message: "You must upgrade to premium for unlimited online play ")
-                    }
-                    else {
+                   // if playedOnlineGame > 3 {
+                        //self.showMessage("Game can't start!", message: "You must upgrade to premium for unlimited online play ")
+                   // }
+                   // else {
                         self.acceptInviteWithCompletionHandler { (match, error) -> Void in
-                        }
+                       // }
                     }
                 }
             }

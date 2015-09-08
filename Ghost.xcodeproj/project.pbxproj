@@ -12,7 +12,6 @@
 		461F36031B4C469600075ED4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461F36021B4C469600075ED4 /* GameViewController.swift */; };
 		464929AC1B4315D4003C4661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464929AB1B4315D4003C4661 /* AppDelegate.swift */; };
 		464929AE1B4315D4003C4661 /* ChooseAGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464929AD1B4315D4003C4661 /* ChooseAGameViewController.swift */; };
-		464929B11B4315D4003C4661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464929AF1B4315D4003C4661 /* Main.storyboard */; };
 		464929B31B4315D4003C4661 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464929B21B4315D4003C4661 /* Images.xcassets */; };
 		464929B61B4315D4003C4661 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 464929B41B4315D4003C4661 /* LaunchScreen.xib */; };
 		464929C21B4315D4003C4661 /* GhostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464929C11B4315D4003C4661 /* GhostTests.swift */; };
@@ -27,6 +26,8 @@
 		4668D27B1B4EDBB0004E155B /* PlayerStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4668D27A1B4EDBB0004E155B /* PlayerStatusCell.swift */; };
 		469D70571B5D38C100A77224 /* WordSizeCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D70561B5D38C100A77224 /* WordSizeCellTableViewCell.swift */; };
 		469D70591B5D391F00A77224 /* GameViewControllerP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D70581B5D391F00A77224 /* GameViewControllerP.swift */; };
+		46C389BB1B97947300C64626 /* RuleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C389BA1B97947300C64626 /* RuleViewCell.swift */; };
+		46C389BD1B9F1DDE00C64626 /* RuleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C389BC1B9F1DDE00C64626 /* RuleTableViewController.swift */; };
 		46C722121B4D8DA900732A1C /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C722111B4D8DA900732A1C /* tile.png */; };
 		46C722191B4D929D00732A1C /* TileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C722181B4D929D00732A1C /* TileViewCell.swift */; };
 		46C7221E1B4EAB7F00732A1C /* purplepixel.gif in Resources */ = {isa = PBXBuildFile; fileRef = 46C7221D1B4EAB7F00732A1C /* purplepixel.gif */; };
@@ -58,7 +59,6 @@
 		464929AA1B4315D4003C4661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		464929AB1B4315D4003C4661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		464929AD1B4315D4003C4661 /* ChooseAGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAGameViewController.swift; sourceTree = "<group>"; };
-		464929B01B4315D4003C4661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		464929B21B4315D4003C4661 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		464929B51B4315D4003C4661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		464929BB1B4315D4003C4661 /* GhostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhostTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +76,8 @@
 		4668D27A1B4EDBB0004E155B /* PlayerStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStatusCell.swift; sourceTree = "<group>"; };
 		469D70561B5D38C100A77224 /* WordSizeCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSizeCellTableViewCell.swift; sourceTree = "<group>"; };
 		469D70581B5D391F00A77224 /* GameViewControllerP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewControllerP.swift; sourceTree = "<group>"; };
+		46C389BA1B97947300C64626 /* RuleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleViewCell.swift; sourceTree = "<group>"; };
+		46C389BC1B9F1DDE00C64626 /* RuleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleTableViewController.swift; sourceTree = "<group>"; };
 		46C722111B4D8DA900732A1C /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile.png; path = "../../../../Downloads/Anagrams-Part-1-Starter/Anagrams/tile.png"; sourceTree = "<group>"; };
 		46C722131B4D8DB700732A1C /* wrong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = wrong.m4a; path = "../../../../Downloads/Anagrams-Part-1-Starter/Anagrams/wrong.m4a"; sourceTree = "<group>"; };
 		46C722181B4D929D00732A1C /* TileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileViewCell.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				469D70561B5D38C100A77224 /* WordSizeCellTableViewCell.swift */,
+				46C389BA1B97947300C64626 /* RuleViewCell.swift */,
 				46C722181B4D929D00732A1C /* TileViewCell.swift */,
 				4668D27A1B4EDBB0004E155B /* PlayerStatusCell.swift */,
 				464929DD1B45AFDB003C4661 /* PlayerViewCell.swift */,
@@ -130,6 +133,7 @@
 				469D70531B5D310300A77224 /* ControllersP */,
 				464929D71B4575AE003C4661 /* CreateGameViewController.swift */,
 				461F36021B4C469600075ED4 /* GameViewController.swift */,
+				46C389BC1B9F1DDE00C64626 /* RuleTableViewController.swift */,
 				464929AD1B4315D4003C4661 /* ChooseAGameViewController.swift */,
 			);
 			name = Controllers;
@@ -187,7 +191,6 @@
 				46C722101B4D8D8A00732A1C /* Assets */,
 				46F3DEF91B7A6E5400F1648C /* launch.jpg */,
 				461F35F41B4C445600075ED4 /* login */,
-				464929AF1B4315D4003C4661 /* Main.storyboard */,
 				464929B21B4315D4003C4661 /* Images.xcassets */,
 				464929B41B4315D4003C4661 /* LaunchScreen.xib */,
 				464929A91B4315D4003C4661 /* Supporting Files */,
@@ -354,7 +357,6 @@
 			files = (
 				46C722221B4EAB8F00732A1C /* greybrick.gif in Resources */,
 				46C722261B4EB7DF00732A1C /* ghost.jpg in Resources */,
-				464929B11B4315D4003C4661 /* Main.storyboard in Resources */,
 				46F3DEFA1B7A6E5400F1648C /* launch.jpg in Resources */,
 				46C722121B4D8DA900732A1C /* tile.png in Resources */,
 				46C7221E1B4EAB7F00732A1C /* purplepixel.gif in Resources */,
@@ -419,6 +421,8 @@
 				464929E11B45C63A003C4661 /* Colors.swift in Sources */,
 				464929DC1B45AB51003C4661 /* Game.swift in Sources */,
 				4668D27B1B4EDBB0004E155B /* PlayerStatusCell.swift in Sources */,
+				46C389BD1B9F1DDE00C64626 /* RuleTableViewController.swift in Sources */,
+				46C389BB1B97947300C64626 /* RuleViewCell.swift in Sources */,
 				464929D21B44514F003C4661 /* ParseLoginHelper.swift in Sources */,
 				469D70571B5D38C100A77224 /* WordSizeCellTableViewCell.swift in Sources */,
 				464929AC1B4315D4003C4661 /* AppDelegate.swift in Sources */,
@@ -450,14 +454,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		464929AF1B4315D4003C4661 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				464929B01B4315D4003C4661 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		464929B41B4315D4003C4661 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -505,12 +501,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -544,10 +540,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
