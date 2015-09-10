@@ -45,15 +45,18 @@ class RuleTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("rule", forIndexPath: indexPath) as! RuleViewCell
 
-        cell.RuleLabel.text = self.rules[indexPath.row]
+        cell.RuleLabel.text = rules[indexPath.row]
         //println(self.currentGame?.players[indexPath.row].name)
         cell.RuleLabel.textColor = UIColor.whiteColor()
+        cell.RuleLabel.numberOfLines = 0
+        cell.RuleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         cell.layer.borderColor = UIColor.clearColor().CGColor
         cell.backgroundColor = UIColor.grayColor()
+        tableView.separatorColor = UIColor.clearColor()
         return cell
     }
     
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

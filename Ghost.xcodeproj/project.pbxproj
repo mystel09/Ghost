@@ -28,6 +28,7 @@
 		469D70591B5D391F00A77224 /* GameViewControllerP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469D70581B5D391F00A77224 /* GameViewControllerP.swift */; };
 		46C389BB1B97947300C64626 /* RuleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C389BA1B97947300C64626 /* RuleViewCell.swift */; };
 		46C389BD1B9F1DDE00C64626 /* RuleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C389BC1B9F1DDE00C64626 /* RuleTableViewController.swift */; };
+		46C389C31B9F309100C64626 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46C389C11B9F309100C64626 /* Main.storyboard */; };
 		46C722121B4D8DA900732A1C /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 46C722111B4D8DA900732A1C /* tile.png */; };
 		46C722191B4D929D00732A1C /* TileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C722181B4D929D00732A1C /* TileViewCell.swift */; };
 		46C7221E1B4EAB7F00732A1C /* purplepixel.gif in Resources */ = {isa = PBXBuildFile; fileRef = 46C7221D1B4EAB7F00732A1C /* purplepixel.gif */; };
@@ -78,6 +79,7 @@
 		469D70581B5D391F00A77224 /* GameViewControllerP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewControllerP.swift; sourceTree = "<group>"; };
 		46C389BA1B97947300C64626 /* RuleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleViewCell.swift; sourceTree = "<group>"; };
 		46C389BC1B9F1DDE00C64626 /* RuleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleTableViewController.swift; sourceTree = "<group>"; };
+		46C389C21B9F309100C64626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		46C722111B4D8DA900732A1C /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tile.png; path = "../../../../Downloads/Anagrams-Part-1-Starter/Anagrams/tile.png"; sourceTree = "<group>"; };
 		46C722131B4D8DB700732A1C /* wrong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = wrong.m4a; path = "../../../../Downloads/Anagrams-Part-1-Starter/Anagrams/wrong.m4a"; sourceTree = "<group>"; };
 		46C722181B4D929D00732A1C /* TileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileViewCell.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				46F3DEF91B7A6E5400F1648C /* launch.jpg */,
 				461F35F41B4C445600075ED4 /* login */,
 				464929B21B4315D4003C4661 /* Images.xcassets */,
+				46C389C11B9F309100C64626 /* Main.storyboard */,
 				464929B41B4315D4003C4661 /* LaunchScreen.xib */,
 				464929A91B4315D4003C4661 /* Supporting Files */,
 				464929CB1B431621003C4661 /* Ghost-Bridging-Header.h */,
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C722221B4EAB8F00732A1C /* greybrick.gif in Resources */,
+				46C389C31B9F309100C64626 /* Main.storyboard in Resources */,
 				46C722261B4EB7DF00732A1C /* ghost.jpg in Resources */,
 				46F3DEFA1B7A6E5400F1648C /* launch.jpg in Resources */,
 				46C722121B4D8DA900732A1C /* tile.png in Resources */,
@@ -460,6 +464,14 @@
 				464929B51B4315D4003C4661 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		46C389C11B9F309100C64626 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46C389C21B9F309100C64626 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
