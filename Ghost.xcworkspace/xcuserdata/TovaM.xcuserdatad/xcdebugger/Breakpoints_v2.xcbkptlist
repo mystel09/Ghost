@@ -106,7 +106,7 @@
                   moduleName = "Ghost"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/GameViewControllerP.swift"
-                  timestampString = "463600307.491307"
+                  timestampString = "463677805.126689"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "405"
@@ -121,7 +121,7 @@
                   moduleName = "Ghost"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/GameViewControllerP.swift"
-                  timestampString = "463600307.491467"
+                  timestampString = "463677805.126867"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "407"
@@ -193,99 +193,6 @@
             endingLineNumber = "283"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Ghost/RuleViewCell.swift"
-            timestampString = "463600090.503207"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "RuleViewCell"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ghost.RuleViewCell.RuleLabel.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UILabel&gt;"
-                  moduleName = "Ghost"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/RuleViewCell.swift"
-                  timestampString = "463600307.498343"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ghost.RuleViewCell.RuleLabel.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UILabel&gt;"
-                  moduleName = "Ghost"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/RuleViewCell.swift"
-                  timestampString = "463600307.498498"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ghost.RuleViewCell.RuleLabel.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UILabel&gt;"
-                  moduleName = "Ghost"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/RuleViewCell.swift"
-                  timestampString = "463600307.498631"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ghost.RuleViewCell.init (Ghost.RuleViewCell.Type)(style : C.UITableViewCellStyle, reuseIdentifier : Swift.Optional&lt;Swift.String&gt;) -&gt; Ghost.RuleViewCell"
-                  moduleName = "Ghost"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/RuleViewCell.swift"
-                  timestampString = "463600307.498761"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "54">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ghost.RuleViewCell.init (Ghost.RuleViewCell.Type)(coder : ObjectiveC.NSCoder) -&gt; Ghost.RuleViewCell"
-                  moduleName = "Ghost"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TovaM/Desktop/makeschool%20projects/Ghost/Ghost/RuleViewCell.swift"
-                  timestampString = "463600307.49889"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

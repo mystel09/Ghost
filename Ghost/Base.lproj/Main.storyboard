@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tai-DS-vkC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -252,7 +253,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="clock" text="Time Left:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8E-PL-XvM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="clock" text="Time Left:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8E-PL-XvM">
                                 <rect key="frame" x="226" y="28" width="147.5" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="ZzE-J3-8b6"/>
@@ -267,7 +268,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hCc-lO-aQ4">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hCc-lO-aQ4">
                                 <rect key="frame" x="-5" y="88" width="605" height="144"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sOF-SU-9uM">
@@ -500,7 +501,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5TD-Ah-xkL" kind="show" identifier="howTo" id="JqC-EI-M9X"/>
+                                    <segue destination="5TD-Ah-xkL" kind="show" id="zEg-jl-7vZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -563,10 +564,10 @@
             </objects>
             <point key="canvasLocation" x="1540" y="980"/>
         </scene>
-        <!--View Controller-->
+        <!--Rule Table View Controller-->
         <scene sceneID="OdM-eq-Vde">
             <objects>
-                <viewController id="Drp-J8-VhL" sceneMemberID="viewController">
+                <viewController id="Drp-J8-VhL" customClass="RuleTableViewController" customModule="Ghost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5ha-BQ-nsC"/>
                         <viewControllerLayoutGuide type="bottom" id="4tF-Ye-UTt"/>
@@ -575,18 +576,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Ko-EC-OCe">
-                                <rect key="frame" x="0.0" y="66" width="600" height="468"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have Fun!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRN-xT-ry6">
+                                <rect key="frame" x="116" y="553" width="97.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.99605429290000003" green="0.99605429290000003" blue="0.99605429290000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZm-Y3-3lI">
+                                <rect key="frame" x="106" y="84" width="121.5" height="28.5"/>
+                                <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="24"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="41" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6Ko-EC-OCe">
+                                <rect key="frame" x="0.0" y="120" width="600" height="384.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="rule" id="atV-4R-cUt" customClass="RuleViewCell" customModule="Ghost" customModuleProvider="target">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="rule" rowHeight="41" id="atV-4R-cUt" customClass="RuleViewCell" customModule="Ghost" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="atV-4R-cUt" id="5PR-KB-gNr">
+                                        <tableViewCellContentView key="contentView" opaque="NO" userInteractionEnabled="NO" contentMode="center" tableViewCell="atV-4R-cUt" id="5PR-KB-gNr">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Hb-ci-T5j">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Hb-ci-T5j">
                                                     <rect key="frame" x="8" y="11" width="566" height="24.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -599,22 +612,32 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Drp-J8-VhL" id="SyC-n1-W9B"/>
+                                    <outlet property="delegate" destination="Drp-J8-VhL" id="gyd-nZ-sK9"/>
+                                </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Have Fun!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRN-xT-ry6">
-                                <rect key="frame" x="254" y="552" width="92" height="28"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.99605429290000003" green="0.99605429290000003" blue="0.99605429290000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZm-Y3-3lI">
-                                <rect key="frame" x="254" y="28" width="141" height="25"/>
-                                <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="24"/>
-                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="iRN-xT-ry6" secondAttribute="centerY" constant="-266" id="2hh-ys-Wut"/>
+                            <constraint firstItem="zZm-Y3-3lI" firstAttribute="leading" secondItem="eAh-ft-LMG" secondAttribute="leadingMargin" constant="90" id="KyQ-o7-5V5"/>
+                            <constraint firstItem="iRN-xT-ry6" firstAttribute="width" secondItem="eAh-ft-LMG" secondAttribute="height" multiplier="77:600" id="j5B-on-bn3"/>
+                            <constraint firstItem="zZm-Y3-3lI" firstAttribute="width" secondItem="eAh-ft-LMG" secondAttribute="height" multiplier="121:600" id="lAp-OD-06D"/>
+                            <constraint firstItem="iRN-xT-ry6" firstAttribute="leading" secondItem="eAh-ft-LMG" secondAttribute="leadingMargin" constant="100" id="sZH-NK-HrJ"/>
+                            <constraint firstItem="zZm-Y3-3lI" firstAttribute="top" secondItem="5ha-BQ-nsC" secondAttribute="bottom" constant="20" id="u0d-Mh-PoW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lAp-OD-06D"/>
+                                <exclude reference="j5B-on-bn3"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="tTY-EB-zcD"/>
+                    <connections>
+                        <outlet property="view" destination="6Ko-EC-OCe" id="8mp-sp-Zkd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WH4-7t-BRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -961,12 +984,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="x9p-rU-Dfb" kind="relationship" relationship="rootViewController" id="zRD-d9-hgD"/>
+                        <segue destination="Drp-J8-VhL" kind="relationship" relationship="rootViewController" id="hz2-yA-7wz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFn-QS-9Tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="232"/>
+            <point key="canvasLocation" x="2070" y="-600"/>
         </scene>
         <!--Rules of the Game-->
         <scene sceneID="kws-ON-MOC">
@@ -1280,11 +1303,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mW-HF-pXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="192"/>
+            <point key="canvasLocation" x="1788" y="232"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="djX-Eo-qjY"/>
-        <segue reference="Tms-0E-7BK"/>
+        <segue reference="ex7-Ih-uCw"/>
     </inferredMetricsTieBreakers>
 </document>

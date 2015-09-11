@@ -8,13 +8,17 @@
 
 import UIKit
 
-class RuleTableViewController: UITableViewController {
+class RuleTableViewController: UIViewController {
+   
     var rules: [String] = ["1. Each player inputs one letter on their turn","2. The letter must have potential to spell a word  after it is added to the prior letters, but does not spell one itself!","3. You can challenge the player before you if you believe the letter they added cannot spell a word","4. You have 5 lives before 'GHOST' is spelled and you lose the game","5. Every round that someone loses, they get a letter added to their score above, and the word resets","6. If you spell a word equal to the minimum word size then you lose the round automatically"]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColorFromRGB(0x848484)
 
+        //self.tableView.dataSource = self
+        //self.tableView.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,34 +33,31 @@ class RuleTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 6
+        return rules.count
     }
-
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("rule", forIndexPath: indexPath) as! RuleViewCell
-
+    
         cell.RuleLabel.text = rules[indexPath.row]
-        //println(self.currentGame?.players[indexPath.row].name)
         cell.RuleLabel.textColor = UIColor.whiteColor()
         cell.RuleLabel.numberOfLines = 0
         cell.RuleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        cell.layer.borderColor = UIColor.clearColor().CGColor
-        cell.backgroundColor = UIColor.grayColor()
+        cell.RuleLabel.sizeToFit()
+        cell.backgroundColor = UIColor.clearColor()
         tableView.separatorColor = UIColor.clearColor()
         return cell
     }
-    
-    
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
