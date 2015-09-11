@@ -209,10 +209,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UNx-Qh-S8F">
-                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="343" width="600" height="257"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="aCz-S0-2Ev"/>
+                                    <constraint firstAttribute="height" constant="257" id="aCz-S0-2Ev"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="amg-64-wTW">
                                     <size key="itemSize" width="55" height="53"/>
@@ -269,7 +269,7 @@
                                 </variation>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hCc-lO-aQ4">
-                                <rect key="frame" x="-5" y="44" width="605" height="188"/>
+                                <rect key="frame" x="-5" y="80" width="605" height="115"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sOF-SU-9uM">
                                     <size key="itemSize" width="212" height="37"/>
@@ -302,7 +302,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RJ-se-9s3">
-                                                    <rect key="frame" x="86" y="6" width="101" height="26"/>
+                                                    <rect key="frame" x="68" y="6" width="131" height="26"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -314,10 +314,10 @@
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="817-tj-hw0" firstAttribute="leading" secondItem="QwB-C9-Jor" secondAttribute="leadingMargin" id="65X-90-Y1u"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="3RJ-se-9s3" secondAttribute="trailing" constant="17" id="OrP-4d-R9p"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="3RJ-se-9s3" secondAttribute="trailing" constant="5" id="OrP-4d-R9p"/>
                                             <constraint firstItem="3RJ-se-9s3" firstAttribute="top" secondItem="QwB-C9-Jor" secondAttribute="topMargin" constant="-2" id="S7P-wR-oSu"/>
                                             <constraint firstItem="817-tj-hw0" firstAttribute="top" secondItem="QwB-C9-Jor" secondAttribute="topMargin" constant="-4" id="XI3-Aq-ljg"/>
-                                            <constraint firstItem="3RJ-se-9s3" firstAttribute="leading" secondItem="QwB-C9-Jor" secondAttribute="leadingMargin" constant="78" id="dfQ-iK-J3U"/>
+                                            <constraint firstItem="3RJ-se-9s3" firstAttribute="leading" secondItem="QwB-C9-Jor" secondAttribute="leadingMargin" constant="60" id="dfQ-iK-J3U"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="3RJ-se-9s3" secondAttribute="bottom" constant="-3" id="kHA-Hq-kRq"/>
                                             <constraint firstItem="817-tj-hw0" firstAttribute="centerY" secondItem="QwB-C9-Jor" secondAttribute="centerY" id="mCR-SL-Igu"/>
                                         </constraints>
@@ -329,10 +329,10 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KkV-YA-6P0">
-                                <rect key="frame" x="0.0" y="179" width="600" height="121"/>
+                                <rect key="frame" x="0.0" y="250" width="600" height="93"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="121" id="ZYK-kP-7WI"/>
+                                    <constraint firstAttribute="height" constant="93" id="ZYK-kP-7WI"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cag-kK-Eiu">
                                     <size key="itemSize" width="64" height="47"/>
@@ -349,7 +349,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7e-Vt-R2l">
-                                                    <rect key="frame" x="-268" y="-126" width="600" height="300"/>
+                                                    <rect key="frame" x="-268" y="-126.5" width="600" height="300"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="3Ze-SN-qfU"/>
                                                         <constraint firstAttribute="width" constant="600" id="lcL-62-sjM"/>
@@ -363,9 +363,15 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="Z7e-Vt-R2l" secondAttribute="centerY" constant="-0.5" id="AtS-MZ-icj"/>
+                                            <constraint firstAttribute="centerY" secondItem="Z7e-Vt-R2l" secondAttribute="centerY" id="AtS-MZ-icj"/>
+                                            <constraint firstItem="Z7e-Vt-R2l" firstAttribute="top" secondItem="8An-E9-4Lx" secondAttribute="topMargin" constant="-134" id="gAJ-OT-VX0"/>
                                             <constraint firstItem="Z7e-Vt-R2l" firstAttribute="centerX" secondItem="8An-E9-4Lx" secondAttribute="centerX" id="wLg-8J-960"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="gAJ-OT-VX0"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="letterLabel" destination="Z7e-Vt-R2l" id="ZLS-It-Gon"/>
                                         </connections>
@@ -388,8 +394,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hCc-lO-aQ4" secondAttribute="trailing" constant="-11" id="U16-Nb-NFG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KkV-YA-6P0" secondAttribute="trailing" constant="-16" id="XjC-v8-d5Z"/>
                             <constraint firstAttribute="trailing" secondItem="UNx-Qh-S8F" secondAttribute="trailing" id="adl-m1-GSq"/>
-                            <constraint firstItem="hCc-lO-aQ4" firstAttribute="top" secondItem="i8E-PL-XvM" secondAttribute="bottom" constant="-36" id="bEX-nC-26a"/>
-                            <constraint firstItem="KkV-YA-6P0" firstAttribute="top" secondItem="hCc-lO-aQ4" secondAttribute="bottom" constant="-53" id="flD-QE-G4J"/>
+                            <constraint firstItem="hCc-lO-aQ4" firstAttribute="top" secondItem="i8E-PL-XvM" secondAttribute="bottom" id="bEX-nC-26a"/>
+                            <constraint firstItem="KkV-YA-6P0" firstAttribute="top" secondItem="hCc-lO-aQ4" secondAttribute="bottom" constant="55" id="flD-QE-G4J"/>
                             <constraint firstItem="i8E-PL-XvM" firstAttribute="top" secondItem="6Ak-t3-Fx1" secondAttribute="bottom" constant="8" id="iHK-Dm-kI0"/>
                             <constraint firstAttribute="centerX" secondItem="i8E-PL-XvM" secondAttribute="centerX" id="m1r-jK-Ygg"/>
                             <constraint firstAttribute="centerX" secondItem="i8E-PL-XvM" secondAttribute="centerX" id="nmQ-el-Vqo"/>
@@ -679,9 +685,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="lAp-OD-06D"/>
                                 <exclude reference="5us-ZT-P5J"/>
                                 <exclude reference="Y7X-ml-f4Z"/>
-                                <exclude reference="lAp-OD-06D"/>
                                 <exclude reference="753-Fj-jDg"/>
                                 <exclude reference="Qz6-Yg-Jh8"/>
                                 <exclude reference="j5B-on-bn3"/>
