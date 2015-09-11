@@ -17,8 +17,6 @@ class RuleTableViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColorFromRGB(0x848484)
 
-        //self.tableView.dataSource = self
-        //self.tableView.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -47,14 +45,15 @@ class RuleTableViewController: UIViewController {
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("rule", forIndexPath: indexPath) as! RuleViewCell
-    
-        cell.RuleLabel.text = rules[indexPath.row]
-        cell.RuleLabel.textColor = UIColor.whiteColor()
         cell.RuleLabel.numberOfLines = 0
         cell.RuleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        cell.RuleLabel.text = rules[indexPath.row]
+        cell.RuleLabel.textColor = UIColor.whiteColor()
         cell.RuleLabel.sizeToFit()
+        
         cell.backgroundColor = UIColor.clearColor()
         tableView.separatorColor = UIColor.clearColor()
+       
         return cell
     }
 
